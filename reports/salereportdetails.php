@@ -1,7 +1,15 @@
 <?php
 session_start();
 error_reporting(0);
-include('../inc/connection.php');
+
+if (strlen($_SESSION['aid'] == 0)) {
+    header('location:index.php');
+} else {
+    include('../inc/menu.php');
+    include('../inc/connection.php');
+    $fdate = $_POST['fromdate'];
+    $tdate = $_POST['todate'];
+
 
 if (isset($_POST['prod_delete_multiple_btn'])) {
     $all_id = $_POST['product_delete_id'];
@@ -19,13 +27,9 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
     // }
 }
 
-if (strlen($_SESSION['aid'] == 0)) {
-    header('location:logout.php');
-} else {
-    include('../inc/menu.php');
-    $fdate = $_POST['fromdate'];
-    $tdate = $_POST['todate'];
 ?>
+
+
     <!DOCTYPE html>
     <html lang="en">
 

@@ -268,8 +268,8 @@
           <i class="fas fa-angle-down"></i>
         </a>
         <div class="drop-content">
-          <a href="#">Manage Account</a>
-          <a href="#">Change Password</a>
+          <a href="../account/profile.php">Manage Account</a>
+          <a href="../account/change_password.php">Change Password</a>
           <a href="../logout.php">Logout</a>
 
           <!-- Creating sub menu Dropdown -->

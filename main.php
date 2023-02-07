@@ -1,4 +1,10 @@
 <?php
+session_start();
+error_reporting(0);
+
+if (strlen($_SESSION['aid'] == 0)) {
+    header('location:index.php');
+} else {
 include('inc/connection.php');
 // include('header.php');
 // include('sidebar.php');
@@ -89,3 +95,5 @@ include('inc/connection.php');
 </body>
 
 </html>
+
+<?php } ?>

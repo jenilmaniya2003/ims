@@ -1,6 +1,12 @@
 <?php
+session_start();
 include('inc/connection.php');
+if (strlen($_SESSION['aid']==0)) {
+  header('location:index.php');
+  } else{
 // include('inc/menu.php');
+
+
 $sql = "select * from sales where challan_no=" . $_GET['id'];
 $result = mysqli_query($con, $sql);
 
@@ -156,13 +162,25 @@ $result = mysqli_query($con, $sql);
                     <div class="header">Company Details</div>
                 </div>
                 <div class="content">
+                    <?php
+
+$adminid=$_SESSION['aid'];
+$query=mysqli_query($con,"select * from admin where id='$adminid'");
+while($row=mysqli_fetch_array($query)){
+?>
                     <ul>
-                        <li> <strong> Name: Avalon Metalic </strong> </li>
-                        <li><strong> Address: </strong> Bhatiawadi, near Phool Market,Surat</li>
-                        <li><strong> Phone: </strong> +91 8238564354</li>
-                        <li><strong> Email: </strong> avalonmetalic@gmail.com</li>
-                        <li><strong> Contact: </strong> Uttam Vachhani</li>
+                        <!-- <li> <strong> Name: Avalon Metalic </strong> </li> -->
+                        <li> <strong> Name: <?php echo $row['name']; ?> </strong> </li>
+                        <!-- <li><strong> Address: </strong> Bhatiawadi, near Phool Market,Surat</li> -->
+                        <li><strong> Address: </strong> <?php echo $row['address']; ?> </li>
+                        <!-- <li><strong> Phone: </strong> +91 8238564354</li> -->
+                        <li><strong> Phone: </strong> <?php echo $row['mobile_no']; ?></li>
+                        <!-- <li><strong> Email: </strong> avalonmetalic@gmail.com</li> -->
+                        <li><strong> Email: </strong> <?php echo $row['email']; ?></li>
+                        <!-- <li><strong> Contact: </strong> Uttam Vachhani</li> -->
+                        <li><strong> Contact: </strong> <?php echo $row['contact']; ?></li>
                     </ul>
+                    <?php } ?>
                 </div>
             </div>
             <div class="ui card customercard">
@@ -281,6 +299,5 @@ $result = mysqli_query($con, $sql);
         </div>
     </div>
 </body>
-
-
 </html>
+<?php } ?>

@@ -1,7 +1,22 @@
 <?php
 session_start();
 error_reporting(0);
-include('../inc/connection.php');
+if (strlen($_SESSION['aid'] == 0)) {
+    header('location:index.php');
+} else {
+    include('../inc/connection.php');
+    include('../inc/menu.php');
+    // Code for deletion   
+    if (isset($_GET['del'])) {
+        $cmpid = substr(base64_decode($_GET['del']), 0, -5);
+        $query = mysqli_query($con, "delete from tblcategory where id='$cmpid'");
+        echo "<script>alert('Category record deleted.');</script>";
+        echo "<script>window.location.href='manage-categories.php'</script>";
+    }
+    $fdate = $_POST['fromdate'];
+    $tdate = $_POST['todate'];
+
+
 
 if (isset($_POST['prod_delete_multiple_btn'])) {
     $all_id = $_POST['product_delete_id'];
@@ -19,20 +34,9 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
     // }
 }
 
-if (strlen($_SESSION['aid'] == 0)) {
-    header('location:logout.php');
-} else {
-    include('../inc/menu.php');
-    // Code for deletion   
-    if (isset($_GET['del'])) {
-        $cmpid = substr(base64_decode($_GET['del']), 0, -5);
-        $query = mysqli_query($con, "delete from tblcategory where id='$cmpid'");
-        echo "<script>alert('Category record deleted.');</script>";
-        echo "<script>window.location.href='manage-categories.php'</script>";
-    }
-    $fdate = $_POST['fromdate'];
-    $tdate = $_POST['todate'];
 ?>
+
+
     <!DOCTYPE html>
     <html lang="en">
 

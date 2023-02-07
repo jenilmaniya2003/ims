@@ -1,12 +1,12 @@
 <?php
 session_start();
 error_reporting(0);
-include('../inc/connection.php');
 
 if (strlen($_SESSION['aid'] == 0)) {
-    header('location:logout.php');
+    header('location:index.php');
 } else {
     include('../inc/menu.php');
+    include('../inc/connection.php');
     // Add company Code
     // if (isset($_POST['submit'])) {
     //     //Getting Post Values
