@@ -59,7 +59,7 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
         </a>
         <div class="data_table">
             <form method="post">
-                <table id="example" class="table table-striped table-bordered">
+                <table id="example" class="table table-striped table-bordered table-hover">
                     <thead class="table-dark">
                         <tr>
                             <th style="width: 90px; text-align:center;">
@@ -70,6 +70,7 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                             <th>Sr.No</th>
                             <th>Name</th>
                             <th>Category</th>
+                            <th>Price</th>
                             <th>Opening Stock</th>
                             <th>Action</th>
                         </tr>
@@ -92,12 +93,13 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                             <td style="text-align: center;"><?= $cnt; ?></td>
                             <td style="text-align: center;"><?= $row['name']; ?></td>
                             <td style="text-align: center;"><?= $row['category']; ?></td>
+                            <td style="text-align: center;"><?= $row['price']; ?></td>
                             <td style="text-align: center;"><?= $row['opening_stock']; ?></td>
                             <td>
                                 <a href="updt_prod.php?id=<?php echo $row['id']; ?>"><img src="../IMG/edit.png"
                                         height="25px" width="30PX"></a>&nbsp;
                                 <a href="del_prod.php?id=<?php echo $row['id']; ?>"
-                                    onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png"
+                                    onclick="return confirm('Are You Sure?');"><img src="../IMG/delete.png"
                                         height="20px" width="20px"></a>
                             </td>
                         </tr>

@@ -71,6 +71,7 @@ if (strlen($_SESSION['aid'] == 0)) {
         $quantity = $_POST['quantity'];
         $rate = $_POST['rate'];
         $amount = $_POST['amount'];
+        $total_amount=$_POST['total_amount'];
         $pmode = $_POST['paymentmode'];
         $value = array_combine($pid, $quantity);
         
@@ -83,11 +84,16 @@ if (strlen($_SESSION['aid'] == 0)) {
             $q = "insert into sales(productid,challan_no,party_name,product_name,box_no,bobin,quantity,rate,amount,pymnt_mode) values('$pdid','$challan_no','$party_name','$product_name','$box_no','$bobin','$qty1','$rate','$amount','$pmode')";
             $query = mysqli_query($con, $q);
         }
-    
+
+        $q1="insert into transaction (cid,challan_no,total_amount) values ('$party_name','$challan_no','$total_amount')";
+        $query1=mysqli_query($con,$q1);
+        
         echo '<script>alert("Challan genrated successfully. Challan number is "+"' . $challan_no . '")</script>';
         unset($_SESSION["cart_item"]);
         $_SESSION['challan'] = $challan_no;
         // echo "<script>window.location.href='srch_prod.php'</script>";
+
+
     }
 
 ?>
@@ -302,6 +308,7 @@ $cnt++;
                                                         name="rate[<?php echo $item['code']; ?>]">
                                                     <input type="hidden" value="<?php echo $item_price; ?>"
                                                         name="amount[<?php echo $item['code']; ?>]">
+                                                        
                                                     <!-- <input type="hidden" value="<?php //echo $item['quantity']; 
                                                                                                     ?>" name="quantity[<?php //echo $item['code']; 
                                                                                                                         ?>]"> -->
@@ -326,9 +333,10 @@ $cnt++;
                                                                 $total_quantity += $item["quantity"];
                                                                 $total_price += ($item["price"] * $item["quantity"]);
                                                             }
+                                                            
                                                             $_SESSION['productid'] = $productid;
                                                             ?>
-
+                                                        
                                                     <tr>
                                                         <td colspan="4" align="right">Total:</td>
                                                         <td colspan="2"><?php echo number_format($total_quantity, 3); ?>
@@ -336,8 +344,10 @@ $cnt++;
                                                         <td colspan=>
                                                             <strong><?php echo number_format($total_price, 2); ?></strong>
                                                         </td>
-                                                        <td></td>
+                                                        <td><input type='hidden' value='<?php echo $total_price; ?>'
+                                                            name='total_amount'></td>
                                                     </tr>
+                                                    <?php //$_SESSION['productid'] = $productid; ?>
                                                 </tbody>
                                             </table>
 
@@ -449,10 +459,8 @@ $cnt++;
 </body>
 
 </html>
-<?php
-}
-?>
 
 <?php
+}
 include('../inc/footer.php');
 ?>

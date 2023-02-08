@@ -1,19 +1,33 @@
 <?php
+session_start();
+// error_reporting(0);
+if (strlen($_SESSION['aid']==0)) {
+  header('location:index.php');
+  } else{
 include('../inc/connection.php');
 //  include("../inc/menu.php");
-$sql = "select*from product where id=" . $_GET['id'];
+$sql = "select * from product where id=" . $_GET['id'];
 $res = mysqli_query($con, $sql);
+
 $row = mysqli_fetch_object($res);
 
-if (isset($_REQUEST['btnsubmit'])) {
+if (isset($_REQUEST['submit'])) {
     $q = "update product set
-		name='" . $_REQUEST['name'] . "',
+		name='" . $_REQUEST['productname'] . "',
 		category='" . $_REQUEST['category'] . "',
-		opening_stock='" . $_REQUEST['opening_stock'] . "'
+		opening_stock='" . $_REQUEST['opening_stock'] . "',
+        price='".$_REQUEST['productprice']."'
         where id='" . $_GET['id'] . "'
 		";
-    mysqli_query($con, $q);
-    header("location:view_prod.php");
+    $query=mysqli_query($con, $q);
+    // header("location:view_prod.php");
+    if($query){
+        echo "<script>alert('Product Update successfully.');</script>";   
+        echo "<script>window.location.href='view_prod.php'</script>";
+        } else{
+        echo "<script>alert('Something went wrong. Please try again.');</script>";   
+        echo "<script>window.location.href='updt_prod.php'</script>";    
+        }
 }
 
 ?>
@@ -23,46 +37,66 @@ if (isset($_REQUEST['btnsubmit'])) {
 <html lang="en">
 
 <head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Colorlib Templates">
-    <meta name="author" content="Colorlib">
-    <meta name="keywords" content="Colorlib Templates">
-
-    <!-- Title Page-->
-    <title>Avalon Metalic</title>
-    <link rel="icon" href="../IMG/logo.png" type="image/x-icon">
-
-    <!-- Icons font CSS-->
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-
-    <!-- Vendor CSS-->
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
-
-    <!-- Main CSS-->
-    <link href="css/main.css" rel="stylesheet" media="all">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Add Product</title>
+    <link href="../vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
+    <link href="../vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
+    <link href="../dist/css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
-        <div class="wrapper wrapper--w680">
-            <div class="card card-1">
-                <div class="card-body">
-                    <h2 class="title">Product Registration</h2>
-                    <form method="POST">
-                        <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="NAME" name="name" value="<?php echo $row->name; ?>" required>
-                        </div>
+    
+    
+	<!-- HK Wrapper -->
+	<div class="hk-wrapper">
 
-                        <div class="input-group">
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="category" required>
-                                    <option disabled="disabled" selected="selected">Category</option>
+<!-- Top Navbar -->
+<?php include_once('../inc/menu.php'); ?>
+       
+
+
+        <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
+        <!-- /Vertical Nav -->
+
+
+
+        <!-- Main Content -->
+        <div class="hk-pg-wrapper">
+            <!-- Breadcrumb -->
+           
+            <!-- /Breadcrumb -->
+
+            <!-- Container -->
+            <div class="container">
+                <!-- Title -->
+                <div class="hk-pg-header">
+                    <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="external-link"></i></span></span>Update Product</h4>
+                </div>
+                <!-- /Title -->
+
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-xl-12">
+<section class="hk-sec-wrapper">
+
+<div class="row">
+<div class="col-sm">
+<form class="needs-validation" method="post" novalidate>
+                
+<div class="form-row">
+<div class="col-md-6 mb-10">
+<label for="validationCustom03">Product Name</label>
+<input type="text" class="form-control" id="validationCustom03" placeholder="Product Name" name="productname" value="<?php echo $row->name; ?>" required>
+<div class="invalid-feedback">Please provide a valid product name.</div>
+</div>
+</div>   
+
+<div class="form-row">
+<div class="col-md-6 mb-10">
+<label for="validationCustom03">Category</label>
+ <select class="form-control custom-select" name="category" required>
+ <option disabled="disabled" selected="selected">Category</option>
                                     <option value="One Side" <?php if ($row->category == "One Side") {
                                                                     echo "selected";
                                                                 } ?>>One Side</option>
@@ -81,36 +115,60 @@ if (isset($_REQUEST['btnsubmit'])) {
                                     <option value="Silver" <?php if ($row->category == "Silver") {
                                                                 echo "selected";
                                                             } ?>>Silver</option>
-                                </select>
-                                <div class="select-dropdown"></div>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Opening Stock" name="opening_stock" value="<?php echo $row->opening_stock; ?>" required>
-                        </div>
-                        <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit" name="btnsubmit">Submit</button>&nbsp;&nbsp;&nbsp;
-                            <button class="btn btn--radius btn--red" type="reset">Reset</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+</select>
+<div class="invalid-feedback">Please select a category.</div>
+</div>
+</div>
+
+
+ <div class="form-row">
+<div class="col-md-6 mb-10">
+<label for="validationCustom03">Opening Stock</label>
+<input type="text" class="form-control" id="validationCustom03" placeholder="Opening Stock" name="opening_stock" value="<?php echo $row->opening_stock; ?>" required>
+<div class="invalid-feedback">Please provide a valid opening stock.</div>
+</div>
+</div>   
+
+<div class="form-row">
+<div class="col-md-6 mb-10">
+<label for="validationCustom03">Product Price</label>
+<input type="text" class="form-control" id="validationCustom03" placeholder="Product Price" name="productprice" value="<?php echo $row->price; ?>"required>
+<div class="invalid-feedback">Please provide a valid product price.</div>
+</div>
+</div>
+
+<button class="btn btn-primary" type="submit" name="submit">Update</button>
+</form>
+</div>
+</div>
+</section>
+                     
+</div>
+</div>
+</div>
+
+
+            <!-- Footer -->
+<?php include_once('../inc/footer.php');?>
+            <!-- /Footer -->
+
         </div>
+        <!-- /Main Content -->
+
     </div>
 
-    <!-- Jquery JS-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <!-- Vendor JS-->
-    <script src="vendor/select2/select2.min.js"></script>
-    <script src="vendor/datepicker/moment.min.js"></script>
-    <script src="vendor/datepicker/daterangepicker.js"></script>
-
-    <!-- Main JS-->
-    <script src="js/global.js"></script>
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../vendors/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
+    <script src="../dist/js/jquery.slimscroll.js"></script>
+    <script src="../dist/js/dropdown-bootstrap-extended.js"></script>
+    <script src="../dist/js/feather.min.js"></script>
+    <script src="../vendors/jquery-toggles/toggles.min.js"></script>
+    <script src="../dist/js/toggle-data.js"></script>
+    <script src="../dist/js/init.js"></script>
+    <script src="../dist/js/validation-data.js"></script>
 
 </body>
-
 </html>
-<?php
-include('../inc/footer.php');
-?>
+<?php } ?>
