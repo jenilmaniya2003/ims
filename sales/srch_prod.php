@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+// error_reporting(0);
 include('../inc/connection.php');
 
 $sql1 = "select * from product";
@@ -9,7 +9,7 @@ $sql2 = "select * from party";
 $res2 = mysqli_query($con, $sql2);
 
 if (strlen($_SESSION['aid'] == 0)) {
-    header('location:../login.php');
+    header('location:../index.php');
 } else {
     include('../inc/menu.php');
     // code for Cart 
@@ -85,13 +85,15 @@ if (strlen($_SESSION['aid'] == 0)) {
             $query = mysqli_query($con, $q);
         }
 
-        $q1="insert into transaction (cid,challan_no,total_amount) values ('$party_name','$challan_no','$total_amount')";
+        if($pmode=='credit'){
+        $q1="insert into transaction (cid,challan_no,total_amount,pending_amount) values ('$party_name','$challan_no','$total_amount','$total_amount')";
         $query1=mysqli_query($con,$q1);
+    }
         
         echo '<script>alert("Challan genrated successfully. Challan number is "+"' . $challan_no . '")</script>';
         unset($_SESSION["cart_item"]);
         $_SESSION['challan'] = $challan_no;
-        // echo "<script>window.location.href='srch_prod.php'</script>";
+        echo "<script>window.location.href='srch_prod.php'</script>";
 
 
     }

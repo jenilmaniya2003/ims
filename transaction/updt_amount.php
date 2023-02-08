@@ -1,29 +1,43 @@
 <?php
 session_start();
-//error_reporting(0);
-include('../inc/connection.php');
+// error_reporting(0);
 if (strlen($_SESSION['aid']==0)) {
   header('location:index.php');
   } else{
-// Add product Code
-if(isset($_POST['submit']))
-{
-//Getting Post Values
-$catname=$_POST['category']; 
-$opening_stock=$_POST['opening_stock'];   
-$pname=$_POST['productname'];
-$pprice=$_POST['productprice'];
-$query=mysqli_query($con,"insert into product (name,category,opening_stock,price) values('$pname','$catname','$opening_stock','$pprice')"); 
-if($query){
-echo "<script>alert('Product added successfully.');</script>";   
-echo "<script>window.location.href='add_prod.php'</script>";
-} else{
-echo "<script>alert('Something went wrong. Please try again.');</script>";   
-echo "<script>window.location.href='add_prod.php'</script>";    
-}
+include('../inc/connection.php');
+//  include("../inc/menu.php");
+$sql = "select * from transaction where id=" . $_GET['id'];
+$res = mysqli_query($con, $sql);
+
+$row = mysqli_fetch_object($res);
+
+if (isset($_REQUEST['submit'])) {
+        $total_amount=$_POST['total_amount'];
+        $received_amount=$_POST['received_amount'];
+        $pending_amount=$_POST['pending_amount'];
+        $pending_amount1=($pending_amount) - ($received_amount);
+
+        $q="update transaction set 
+        total_amount='$total_amount',
+        received_amount='$received_amount',
+        pending_amount='$pending_amount1'
+        where id=".$_GET['id'];
+
+        $query=mysqli_query($con, $q);
+
+        
+    if($query){
+        echo "<script>alert('Transaction Update successfully.');</script>";   
+        echo "<script>window.location.href='view_pending_payment.php'</script>";
+        } else{
+        echo "<script>alert('Something went wrong. Please try again.');</script>";   
+        echo "<script>window.location.href='updt_amount.php'</script>";    
+        }
 }
 
-    ?>
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +77,7 @@ echo "<script>window.location.href='add_prod.php'</script>";
                 <!-- Title -->
                 <div class="hk-pg-header">
                     <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i
-                                    data-feather="external-link"></i></span></span>Add Product</h4>
+                                    data-feather="external-link"></i></span></span>Update Product</h4>
                 </div>
                 <!-- /Title -->
 
@@ -78,53 +92,48 @@ echo "<script>window.location.href='add_prod.php'</script>";
 
                                         <div class="form-row">
                                             <div class="col-md-6 mb-10">
-                                                <label for="validationCustom03">Product Name</label>
+                                                <label for="validationCustom03">Challan No</label>
                                                 <input type="text" class="form-control" id="validationCustom03"
-                                                    placeholder="Product Name" name="productname" required>
-                                                <div class="invalid-feedback">Please provide a valid product name.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-row">
-                                            <div class="col-md-6 mb-10">
-                                                <label for="validationCustom03">Category</label>
-                                                <select class="form-control custom-select" name="category" required>
-                                                    <option value="">Select category</option>
-                                                    <!--  -->
-                                                    <option>One Side</option>
-                                                    <option>Both Side</option>
-                                                    <option>Flora</option>
-                                                    <option>Gray</option>
-                                                    <option>Black</option>
-                                                    <option>Silver</option>
-                                                </select>
-                                                <div class="invalid-feedback">Please select a category.</div>
+                                                    placeholder="Product Name" name="productname"
+                                                    value="<?php echo $row->challan_no; ?>" readonly required>
+                                                <div class="invalid-feedback">Please provide a valid challan no.</div>
                                             </div>
                                         </div>
 
 
+
                                         <div class="form-row">
                                             <div class="col-md-6 mb-10">
-                                                <label for="validationCustom03">Opening Stock</label>
+                                                <label for="validationCustom03">Total Amount</label>
                                                 <input type="text" class="form-control" id="validationCustom03"
-                                                    placeholder="Opening Stock" name="opening_stock" required>
-                                                <div class="invalid-feedback">Please provide a valid opening stock.
+                                                    placeholder="Total Amount" name="total_amount"
+                                                    value="<?php echo $row->total_amount; ?>" readonly required>
+                                                <div class="invalid-feedback">Please provide a valid total amount.
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="col-md-6 mb-10">
-                                                <label for="validationCustom03">Product Price</label>
+                                                <label for="validationCustom03">Recevid Amount</label>
                                                 <input type="text" class="form-control" id="validationCustom03"
-                                                    placeholder="Product Price" name="productprice" required>
-                                                <div class="invalid-feedback">Please provide a valid product price.
+                                                    placeholder="Received Amount" name="received_amount" required>
+                                                <div class="invalid-feedback">Please provide a valid received amount.
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <button class="btn btn-primary" type="submit" name="submit">Submit</button>
-                                        <button class="btn btn-danger" type="reset" name="reset">Reset</button>
+                                        <div class="form-row">
+                                            <div class="col-md-6 mb-10">
+                                                <label for="validationCustom03">Pending Amount</label>
+                                                <input type="text" class="form-control" id="validationCustom03"
+                                                    placeholder="Pending Amount" name="pending_amount"
+                                                    value="<?php echo $row->pending_amount; ?>" readonly required>
+                                                <div class="invalid-feedback">Please provide a valid pending amount.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary" type="submit" name="submit">Update</button>
                                     </form>
                                 </div>
                             </div>

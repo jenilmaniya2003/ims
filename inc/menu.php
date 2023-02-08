@@ -234,7 +234,7 @@
       <a href="../sales/srch_prod.php">Sales Challan</a>
       <a href="#">Purc. Invoice</a>
       <a href="#">Account Ledger</a>
-      <a href="#">Pending Payment</a>
+      <a href="../transaction/view_pending_payment.php">Pending Payment</a>
       <!-- <a href="#">Reports</a> -->
 
       <div class="dropdown">

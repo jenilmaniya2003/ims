@@ -75,7 +75,7 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                     <tbody>
                         <?php
                         $cnt = 1;
-                        $query = "select party.name,sales.id,sales.challan_no,sales.date,sales.product_name,sales.quantity,sales.rate,sales.amount from sales join party on party.id=sales.party_name;";
+                        $query = "select party.name,transaction.id,transaction.challan_no,transaction.pending_amount,transaction.total_amount,transaction.cid from transaction join party on party.id=transaction.cid;";
                         $res = mysqli_query($con, $query);
                         while ($row = mysqli_fetch_array($res)) {
                         // if (mysqli_num_rows($res) > 0) {

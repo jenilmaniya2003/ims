@@ -39,7 +39,7 @@ if (strlen($_SESSION['aid'] == 0)) {
 
 
         <!-- HK Wrapper -->
-        <div class="hk-wrapper hk-vertical-nav">
+        <div class="hk-wrapper">
 
             <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
             <!-- /Vertical Nav -->
