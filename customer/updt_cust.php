@@ -116,7 +116,7 @@ if (isset($_REQUEST['btnsubmit'])) {
 					</div>
 
 					<div class="form-row-last">
-						<input type="submit" name="btnsubmit" class="register" value="Register">
+						<input type="submit" name="btnsubmit" class="register" value="Update">
 					</div>
 				</div>
 			</form>
