@@ -232,7 +232,16 @@
       <a href="../customer/view_cust.php">Customer</a>
       <a href="../product/view_prod.php">Product</a>
       <a href="../sales/srch_prod.php">Sales Challan</a>
-      <a href="#">Purc. Invoice</a>
+      <!-- <a href="#">Purc. Invoice</a> -->
+      <div class="dropdown">
+        <a class="dropBtn" href="#">Invoice
+          <i class="fas fa-angle-down"></i>
+        </a>
+        <div class="drop-content">
+          <a href="../sales/view_inv.php">Sales Invoice</a>
+          <a href="#">Purchase Invoice</a>
+        </div>
+      </div>
       <a href="#">Account Ledger</a>
       <a href="../transaction/view_pending_payment.php">Pending Payment</a>
       <!-- <a href="#">Reports</a> -->
@@ -259,6 +268,8 @@
           </div> -->
         </div>
       </div>
+
+      
 
       <!-- <a href="#">Blogs</a>
       <a href="#">Contact</a> -->

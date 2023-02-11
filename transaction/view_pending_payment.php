@@ -70,6 +70,7 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                             <th style="width: 90px; text-align:center;">
                                 <button type="submit" name="prod_delete_multiple_btn"
                                     class="btn btn-danger">Delete</button>
+                                <input type="checkbox" id="chkAll">
                             </th>
                             <th>Sr.</th>
                             <th>Challan No</th>

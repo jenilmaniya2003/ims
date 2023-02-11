@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2023 at 11:11 AM
+-- Generation Time: Feb 11, 2023 at 06:41 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -29,17 +29,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `id` int(10) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `address` varchar(250) NOT NULL,
+  `mobile_no` varchar(250) NOT NULL,
   `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(200) NOT NULL
+  `contact` varchar(250) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `admin_reg_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updation_date` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `username`, `email`, `password`) VALUES
-(1, 'test', 'test@example.com', '098f6bcd4621d373cade4e832627b4f6');
+INSERT INTO `admin` (`id`, `name`, `address`, `mobile_no`, `username`, `email`, `contact`, `password`, `admin_reg_date`, `updation_date`) VALUES
+(1, 'Avalon Metalic', 'Bhatiawadi,near Phool Market, Surat', '+91 8238564354', 'test', 'avalonmetalic@gmail.com', 'Uttam Vachhani', '202cb962ac59075b964b07152d234b70', '2023-02-07 05:27:50', '2023-02-07 06:44:29');
 
 -- --------------------------------------------------------
 
@@ -73,7 +79,6 @@ CREATE TABLE `party` (
 
 INSERT INTO `party` (`id`, `name`, `alias`, `city`, `area`, `state`, `pan_no`, `adhar_no`, `gstin`, `con_per_name`, `address`, `pin`, `mo_no`, `phone_no`, `fax`, `email`, `website`) VALUES
 (4, 'Sumilon Jari', '', 'Surat', 'Katargam', 'GUJARAT', '', '', '', 'GB', 'Katargam GIDC', '399651', '98451322024', '', '', 'ahs@gam.co', ''),
-(6, 'Tesr', 'test', 'trs', 'vuhv', 'vu', 'vgvgv', 'hgvhgvhgvhg', 'gjvhj ', 'hjvhgv', 'jvg', 'vhgvhgv', 'vghv', 'vjvu', 'gvg', 'vgjv', 'vv'),
 (8, 'Ansh', 'MR.A', 'Surat', 'Sarthana', 'Gujarat', 'DNKP06605X', '1236547854545', '12547GHST445', 'Ansh', 'Surat', '395006', '52136547890', '0216 126547', '', 'ansh@gmail.com', 'www.ansh.com');
 
 -- --------------------------------------------------------
@@ -95,26 +100,13 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `category`, `price`, `opening_stock`) VALUES
-(26, 'Chandan 50/69', 'One Side', '50', '56'),
-(27, 'Chandan 2 50/69', 'Both Side', '55', '36'),
-(28, 'D Anmol2', 'Both Side', '77', '45'),
-(29, 'D Anmol2', 'Both Side', '88', '45'),
-(30, 'DBCH', 'Both Side', '95', ''),
-(31, 'D coper', 'Both Side', '85', '45'),
-(32, 'D Firozi', 'One Side', '22', '34'),
-(33, 'Dark BCH', 'Black', '85', '67'),
-(34, 'Dark BCH', 'Black', '66', '67'),
-(35, 'E Gold', 'Both Side', '89', '78'),
-(36, 'F 10', 'One Side', '55', '34'),
-(37, 'FL 1010', 'One Side', '63', '45'),
-(38, 'FL 1010', 'One Side', '75', '45'),
+(38, 'FL 1010', 'One Side', '50', '50'),
 (39, 'FL BCH 303', 'Flora', '58', '45'),
-(40, 'FL MJ', 'One Side', '96', ''),
+(40, 'FL MJ', 'One Side', '96', '35'),
 (41, 'FL Orange', 'Silver', '36', '45'),
-(42, 'FL Orange', 'Silver', '23', ''),
-(43, 'GP Water', 'Both Side', '12', ''),
-(44, 'GR 4-B63', 'Both Side', '45', ''),
-(45, 'G Water', 'One Side', '23', ''),
+(42, 'FL Orange', 'Silver', '23', '88'),
+(43, 'GP Water', 'Both Side', '12', '66'),
+(44, 'GR 4-B63', 'Both Side', '45', '40'),
 (46, 'J Anmol', 'Both Side', '23', ''),
 (47, 'J BCH', 'Both Side', '53', ''),
 (48, 'J Gold 50/35', 'Both Side', '42', ''),
@@ -156,9 +148,9 @@ INSERT INTO `product` (`id`, `name`, `category`, `price`, `opening_stock`) VALUE
 (84, 'Y Water', 'Flora', '45', ''),
 (85, 'Zaina 303', 'Both Side', '52', ''),
 (86, 'AB GOLD', 'Flora', '45', '50'),
-(87, 'Test', 'Flora', '32', '70'),
-(88, 'Test', 'Flora', '58', '50'),
-(90, 'Test', 'Gray', '63', '90');
+(92, 'Test', 'Both Side', '20', '35'),
+(93, 'test2', 'Flora', '30', '30'),
+(94, 'test2', 'One Side', '20', '35');
 
 -- --------------------------------------------------------
 
@@ -207,11 +199,15 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`id`, `productid`, `challan_no`, `party_name`, `date`, `product_name`, `box_no`, `bobin`, `quantity`, `rate`, `amount`, `pymnt_mode`) VALUES
-(1, '41', '1', '8', '2023-02-03', 'FL Orange', '45', '15', '75', '36.00', '2700', 'cash'),
-(2, '43', '1', '8', '2023-02-03', 'GP Water', '10', '30', '59', '12.00', '708', 'cash'),
-(3, '44', '1', '8', '2023-02-03', 'GR 4-B63', '45', '20', '30', '45.00', '1350', 'cash'),
-(4, '42', '2', '4', '2023-02-03', 'FL Orange', '1', '1', '1', '23.00', '23', 'cash'),
-(5, '42', '45', '8', '2023-02-03', 'FL Orange', '1', '1', '1', '23.00', '23', 'cash');
+(1, '39', '1', '8', '2023-02-08', 'FL BCH 303', '1', '1', '1', '58.00', '58', 'credit'),
+(4, '50', '2', '4', '2023-02-08', 'L Pink', '18', '65', '250', '75.00', '18750', 'credit'),
+(5, '42', '2', '4', '2023-02-08', 'FL Orange', '18', '15', '42', '23.00', '966', 'credit'),
+(6, '50', '2', '4', '2023-02-08', 'L Pink', '18', '65', '250', '75.00', '18750', 'credit'),
+(7, '42', '5', '8', '2023-02-08', 'FL Orange', '17', '84', '40', '23.00', '920', 'credit'),
+(8, '53', '5', '8', '2023-02-08', 'LG Water', '78', '10', '60', '32.00', '1920', 'credit'),
+(9, '54', '5', '8', '2023-02-09', 'M Anmol', '78', '10', '50', '45.00', '2250', 'credit'),
+(10, '43', '5', '8', '2023-02-09', 'GP Water', '78', '10', '60', '12.00', '720', 'credit'),
+(11, '42', '5', '4', '2023-02-09', 'FL Orange', '1', '1', '1', '23.00', '23', 'cash');
 
 -- --------------------------------------------------------
 
@@ -232,11 +228,19 @@ CREATE TABLE `supplier_list` (
 
 CREATE TABLE `transaction` (
   `id` int(250) NOT NULL,
-  `cid` int(250) NOT NULL,
-  `total_amount` int(250) NOT NULL,
-  `pending_amount` int(250) NOT NULL,
-  `received_amount` int(250) NOT NULL
+  `challan_no` varchar(250) NOT NULL,
+  `cid` varchar(250) NOT NULL,
+  `total_amount` varchar(250) NOT NULL,
+  `pending_amount` varchar(250) NOT NULL,
+  `received_amount` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `transaction`
+--
+
+INSERT INTO `transaction` (`id`, `challan_no`, `cid`, `total_amount`, `pending_amount`, `received_amount`) VALUES
+(2, '5', '8', '2970', '1000', '1000');
 
 --
 -- Indexes for dumped tables
@@ -304,7 +308,7 @@ ALTER TABLE `party`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `purchase`
@@ -316,7 +320,7 @@ ALTER TABLE `purchase`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `supplier_list`
@@ -328,7 +332,7 @@ ALTER TABLE `supplier_list`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

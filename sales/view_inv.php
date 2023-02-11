@@ -75,7 +75,7 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                     <tbody>
                         <?php
                         $cnt = 1;
-                        $query = "select party.name,transaction.id,transaction.challan_no,transaction.pending_amount,transaction.total_amount,transaction.cid from transaction join party on party.id=transaction.cid;";
+                        $query = "select party.name,sales.id,sales.challan_no,sales.date,sales.product_name,sales.quantity,sales.rate,sales.amount from sales join party on party.id=sales.party_name;";
                         $res = mysqli_query($con, $query);
                         while ($row = mysqli_fetch_array($res)) {
                         // if (mysqli_num_rows($res) > 0) {
@@ -97,7 +97,7 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                                     <td style="text-align: center;"><?= $row['amount']; ?></td>
                                     <td>
                                         <a href="#?id=<?php echo $row['id']; ?>"><img src="../IMG/edit.png" height="25px" width="30PX"></a>&nbsp;
-                                        <a href="#?id=<?php echo $row['id']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="25px"></a>&nbsp;
+                                        <a href="del_inv.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="25px"></a>&nbsp;
                                         <a href="../print.php?id=<?php echo $row['challan_no']; ?>"><img src="../IMG/print.png" height="25px" width="25PX" ></a>
                                     </td>
                                 </tr>
