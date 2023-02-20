@@ -58,10 +58,9 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
 
 <body>
     <div class="container ">
-        <a href="add_cust.php">
-            <!-- <button class="btn1">+</button> -->
+        <!-- <a href="add_cust.php">
             <img src="../IMG/add.png" height="40px" width="40px" alt="" class="img1">
-        </a>
+        </a> -->
         <div class="data_table">
             <form method="post">
                 <table id="example" class="table table-striped table-bordered">

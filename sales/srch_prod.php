@@ -221,7 +221,7 @@ while($row=mysqli_fetch_array($query))
                                                         <td><?php echo $cnt; ?></td>
                                                         <td><?php echo $row['name']; ?> &nbsp;
                                                             (<?php echo $row['category']; ?>)</td>
-
+                                                        
 
                                                         <!-- <td><?php //echo $row['category']; 
                                                                                 ?></td> -->
@@ -235,12 +235,14 @@ while($row=mysqli_fetch_array($query))
                                                                 value="1" size="3" /></td>
                                                         <td><input type="text" class="product-quantity" name="quantity"
                                                                 value="1" size="3" /></td>
-                                                        <td><input type="text" class="product-quantity"
-                                                                name="ProductPrice" value="<?php echo $row['price']; ?>"
-                                                                size="3" /></td>
+                                                        <!-- <td><input type="text" class="product-quantity"
+                                                                name="ProductPrice" value="<?php //echo $row['price']; ?>"
+                                                                size="3" /></td> -->
+                                                                <td><?php echo $row['price']; ?></td>
                                                         <td>
                                                             <input type="submit" value="Add to Cart"
-                                                                class="btnAddAction" />
+                                                                class="btnAddAction btn btn-outline-primary" />
+                                                                
                                                         </td>
                                                     </tr>
 
