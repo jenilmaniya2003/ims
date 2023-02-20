@@ -5,7 +5,7 @@ include('../inc/connection.php');
 
 $sql1 = "select * from product";
 $res1 = mysqli_query($con, $sql1);
-$sql2 = "select * from party";
+$sql2 = "select * from supplier";
 $res2 = mysqli_query($con, $sql2);
 
 if (strlen($_SESSION['aid'] == 0)) {
@@ -22,7 +22,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                     $pid = $_GET["pid"];
                     $result = mysqli_query($con, "SELECT * FROM product WHERE id='$pid'");
                     while ($productByCode = mysqli_fetch_array($result)) {
-                        $itemArray = array($productByCode["id"] => array('catname' => $productByCode["category"], 'box_no' => $_POST["box_no"], 'bobin' => $_POST["bobin"], 'quantity' => $_POST["quantity"], 'name' => $productByCode["name"], 'price' => $_POST["ProductPrice"], 'code' => $productByCode["id"]));
+                        $itemArray = array($productByCode["id"] => array('catname' => $productByCode["category"], 'quantity' => $_POST["quantity"], 'name' => $productByCode["name"], 'price' => $_POST["ProductPrice"], 'code' => $productByCode["id"]));
                         if (!empty($_SESSION["cart_item"])) {
                             if (in_array($productByCode["id"], array_keys($_SESSION["cart_item"]))) {
                                 foreach ($_SESSION["cart_item"] as $k => $v) {
@@ -64,10 +64,10 @@ if (strlen($_SESSION['aid'] == 0)) {
     //Code for Checkout
     if (isset($_POST['checkout'])) {
         $pid = $_SESSION['productid'];
-        $challan_no = $_POST['challan_no'];
-        $party_name = $_POST['party_name'];
-        $box_no = $_POST['box_no'];
-        $bobin = $_POST['bobin'];
+        $supplier_name = $_POST['supplier_name'];
+        $invoice_no = $_POST['invoice_no'];
+        $bill_no = $_POST['bill_no'];
+        $bill_date = $_POST['bill_date'];
         $quantity = $_POST['quantity'];
         $rate = $_POST['rate'];
         $amount = $_POST['amount'];
@@ -77,23 +77,21 @@ if (strlen($_SESSION['aid'] == 0)) {
 
         foreach ($value as $pdid => $qty1) {
             $product_name = $_POST['product_name'][$pdid];
-            $bobin = $_POST['bobin'][$pdid];
-            $box_no = $_POST['box_no'][$pdid];
             $amount = $_POST['amount'][$pdid];
             $rate = $_POST['rate'][$pdid];
-            $q = "insert into sales(productid,challan_no,party_name,product_name,box_no,bobin,quantity,rate,amount,pymnt_mode) values('$pdid','$challan_no','$party_name','$product_name','$box_no','$bobin','$qty1','$rate','$amount','$pmode')";
+            $q = "insert into purchase(productid,supplier_name,invoice_no,bill_no,bill_date,product_name,quantity,rate,amount,pymnt_mode) values('$pdid','$supplier_name','$invoice_no', '$bill_no', '$bill_date','$product_name','$qty1','$rate','$amount','$pmode')";
             $query = mysqli_query($con, $q);
         }
 
         if ($pmode == 'credit') {
-            $q1 = "insert into sale_trans (cid,challan_no,total_amount,pending_amount) values ('$party_name','$challan_no','$total_amount','$total_amount')";
+            $q1 = "insert into purch_trans (sid,invoice_no,total_amount,pending_amount) values ('$supplier_name','$invoice_no','$total_amount','$total_amount')";
             $query1 = mysqli_query($con, $q1);
         }
 
-        echo '<script>alert("Challan genrated successfully. Challan number is "+"' . $challan_no . '")</script>';
+        echo '<script>alert("Invoice genrated successfully. Invoice number is "+"' . $invoice_no . '")</script>';
         unset($_SESSION["cart_item"]);
-        $_SESSION['challan'] = $challan_no;
-        echo "<script>window.location.href='srch_prod.php'</script>";
+        $_SESSION['invoice'] = $invoice_no;
+        echo "<script>window.location.href='purch_prod.php'</script>";
     }
 
 ?>
@@ -194,8 +192,6 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                         <tr>
                                                             <th>#</th>
                                                             <th>Name</th>
-                                                            <th>Box No</th>
-                                                            <th>Bobin</th>
                                                             <th>Weight</th>
                                                             <th>Rate</th>
                                                             <!-- <th>Product</th> -->
@@ -211,7 +207,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                         $cnt = 1;
                                                         while ($row = mysqli_fetch_array($query)) {
                                                         ?>
-                                                            <form method="post" action="srch_prod.php?action=add&pid=<?php echo $row["id"]; ?>">
+                                                            <form method="post" action="purch_prod.php?action=add&pid=<?php echo $row["id"]; ?>">
                                                                 <tr>
                                                                     <td><?php echo $cnt; ?></td>
                                                                     <td><?php echo $row['name']; ?> &nbsp;
@@ -224,8 +220,6 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                                                 ?></td>
                                                                     <td><?php //echo $row['ProductPrice']; 
                                                                         ?></td> -->
-                                                                    <td><input type="text" class="product-quantity" name="box_no" value="1" size="3" /></td>
-                                                                    <td><input type="text" class="product-quantity" name="bobin" value="1" size="3" /></td>
                                                                     <td><input type="text" class="product-quantity" name="quantity" value="1" size="3" /></td>
                                                                     <td><input type="text" class="product-quantity" name="ProductPrice" size="3" /></td>
                                                                     <td>
@@ -258,7 +252,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                 <h4>Shopping Cart</h4>
                                                 <hr />
 
-                                                <a id="btnEmpty" href="srch_prod.php?action=empty">Empty Cart</a>
+                                                <a id="btnEmpty" href="purch_prod.php?action=empty">Empty Cart</a>
                                                 <?php
                                                 if (isset($_SESSION["cart_item"])) {
                                                     $total_quantity = 0;
@@ -270,9 +264,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                                 <th>Product Name</th>
                                                                 <th>Category</th>
                                                                 <!-- <th>Company</th> -->
-                                                                <th width="10%">Box No</th>
-                                                                <th width="10%">Bobin</th>
-                                                                <th width="5%">Weight</th>
+                                                                <th width="10%">Weight</th>
                                                                 <th width="10%">Rate</th>
                                                                 <th width="10%">Amount</th>
                                                                 <th width="5%">Remove</th>
@@ -286,8 +278,6 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                             ?>
                                                                 <!-- New code added -->
                                                                 <input type="hidden" value="<?php echo $item['name']; ?>" name="product_name[<?php echo $item['code']; ?>]">
-                                                                <input type="hidden" value="<?php echo $item['box_no']; ?>" name="box_no[<?php echo $item['code']; ?>]">
-                                                                <input type="hidden" value="<?php echo $item['bobin']; ?>" name="bobin[<?php echo $item['code']; ?>]">
                                                                 <input type="hidden" value="<?php echo $item['quantity']; ?>" name="quantity[<?php echo $item['code']; ?>]">
                                                                 <input type="hidden" value="<?php echo number_format($item["price"], 2); ?>" name="rate[<?php echo $item['code']; ?>]">
                                                                 <input type="hidden" value="<?php echo $item_price; ?>" name="amount[<?php echo $item['code']; ?>]">
@@ -302,12 +292,10 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                                     <td><?php echo $item["catname"]; ?></td>
                                                                     <!-- <td><?php //echo $item["compname"]; 
                                                                                 ?></td> -->
-                                                                    <td><?php echo $item["box_no"]; ?></td>
-                                                                    <td><?php echo $item["bobin"]; ?></td>
-                                                                    <td><?php echo number_format($item["quantity"], 3); ?></td>
-                                                                    <td><?php echo number_format($item["price"], 2); ?></td>
-                                                                    <td><?php echo number_format($item_price, 2); ?></td>
-                                                                    <td><a href="srch_prod.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="../IMG/delete.png" height="20px" width="20px" alt="Remove Item" /></a>
+                                                                    <td style="text-align: center;"><?php echo number_format($item["quantity"], 3); ?></td>
+                                                                    <td style="text-align: center;"><?php echo number_format($item["price"], 2); ?></td>
+                                                                    <td style="text-align: center;"><?php echo number_format($item_price, 2); ?></td>
+                                                                    <td><a href="purch_prod.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="../IMG/delete.png" height="20px" width="20px" alt="Remove Item" /></a>
                                                                     </td>
                                                                 </tr>
                                                             <?php
@@ -319,14 +307,35 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                             ?>
 
                                                             <tr>
-                                                                <td colspan="4" align="right">Total:</td>
+                                                                <td colspan="2" align="right">Sub Total:</td>
                                                                 <td colspan="2"><?php echo number_format($total_quantity, 3); ?>
                                                                 </td>
-                                                                <td colspan=>
+                                                                <td style="text-align: center;">
                                                                     <strong><?php echo number_format($total_price, 2); ?></strong>
                                                                 </td>
                                                                 <td><input type='hidden' value='<?php echo $total_price; ?>' name='total_amount'></td>
                                                             </tr>
+
+                                                            <tr>
+                                                                <td colspan="2" align="right">GST(18%):</td>
+                                                                <td colspan="2"></td>
+                                                                <td style="text-align: right;">
+                                                                    <strong><?php $gst = round(($total_price * 18) / 100);
+                                                                            echo number_format($gst, 2); ?></strong>
+                                                                </td>
+
+                                                                <td><input type='hidden' value='<?php echo $gst; ?>' name='gst'></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" align="right">Total:</td>
+                                                                <td colspan="2"></td>
+                                                                <td style="text-align: right;">
+                                                                    <strong><?php echo number_format(($gst + $total_price), 2); ?></strong>
+                                                                </td>
+
+                                                                <td><input type='hidden' value='<?php echo $gst; ?>' name='gst'></td>
+                                                            </tr>
+
                                                             <?php //$_SESSION['productid'] = $productid; 
                                                             ?>
                                                         </tbody>
@@ -334,19 +343,19 @@ if (strlen($_SESSION['aid'] == 0)) {
 
                                                     <div class="form-row">
                                                         <div class="col-md-6 mb-10">
-                                                            <label for="validationCustom03">Challan No</label>
-                                                            <input type="text" class="form-control" id="validationCustom03" placeholder="Challan No" name="challan_no" required>
+                                                            <label for="validationCustom03">Invoice No</label>
+                                                            <input type="text" class="form-control" id="validationCustom03" placeholder="Invoice No" name="invoice_no" required>
                                                             <div class="invalid-feedback">Please provide a valid customer name.
                                                             </div>
                                                         </div>
 
                                                         <div class="col-md-6 mb-10">
                                                             <label for="validationCustom03">Customer Name</label>
-                                                            <!-- <input type="text" class="form-control" id="validationCustom03" placeholder="Customer Name" name="party_name" required>
+                                                            <!-- <input type="text" class="form-control" id="validationCustom03" placeholder="Customer Name" name="supplier_name" required>
                                                         <div class="invalid-feedback">Please provide a valid customer name.
                                                         </div> -->
 
-                                                            <select name="party_name" id="party_name" class="form-control custom-select">
+                                                            <select name="supplier_name" id="supplier_name" class="form-control custom-select">
                                                                 <option value="">Select Name</option>
                                                                 <?php
                                                                 while ($id = mysqli_fetch_array($res2)) {
@@ -358,6 +367,22 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                                 ?>
                                                             </select>
 
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="col-md-6 mb-10">
+                                                            <label for="validationCustom03">Bill No</label>
+                                                            <input type="text" class="form-control" id="validationCustom03" placeholder="Bill No" name="bill_no" required>
+                                                            <div class="invalid-feedback">Please provide a valid Bill No.
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6 mb-10">
+                                                            <label for="validationCustom03">Bill Date</label>
+                                                            <input type="date" class="form-control" id="validationCustom03" name="bill_date" required>
+                                                            <div class="invalid-feedback">Please provide a valid date.
+                                                            </div>
                                                         </div>
 
                                                     </div>

@@ -10,7 +10,7 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
     $extract_id = implode(',', $all_id);
     // echo $extract_id;
 
-    $query = "DELETE FROM party where id IN($extract_id)";
+    $query = "DELETE FROM supplier where id IN($extract_id)";
     $query_run = mysqli_query($con, $query);
     // if ($query_run) {
     // 	$_SESSION['status'] = "Data Delete";
@@ -56,7 +56,7 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
 
 <body>
     <div class="container ">
-        <a href="add_cust.php">
+        <a href="add_supplier.php">
             <!-- <button class="btn1">+</button> -->
             <img src="../IMG/add.png" height="40px" width="40px" alt="" class="img1">
         </a>
@@ -73,7 +73,6 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                             <th>Name</th>
                             <th>Area</th>
                             <th>City</th>
-                            <th>Contact Person</th>
                             <th>Mobile No</th>
                             <th>View More</th>
                             <th>Action</th>
@@ -82,7 +81,7 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                     <tbody>
                         <?php
                         $cnt = 1;
-                        $query = "SELECT * FROM party";
+                        $query = "SELECT * FROM supplier";
                         $res = mysqli_query($con, $query);
                         //while ($row = mysqli_fetch_array($res)) {
                         if (mysqli_num_rows($res) > 0) {
@@ -97,7 +96,6 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                                     <td style="text-align: center;"><?= $row['name']; ?></td>
                                     <td style="text-align: center;"><?= $row['area']; ?></td>
                                     <td style="text-align: center;"><?= $row['city']; ?></td>
-                                    <td style="text-align: center;"><?= $row['con_per_name']; ?></td>
                                     <td style="text-align: center;"><?= $row['mo_no']; ?></td>
                                     <td style="text-align: center;"> <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal<?php echo $row['id'] ?>">View</button>
                                     </td>
@@ -105,8 +103,8 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                                         <!-- <a href="viewmore.php?id=<?php //echo $row['id']; 
                                                                         ?>"><img src="../IMG/seemore.png"
                                         height="30px" width="30PX"></a>&nbsp; -->
-                                        <a href="updt_cust.php?id=<?php echo $row['id']; ?>"><img src="../IMG/edit.png" height="25px" width="30PX"></a>&nbsp;
-                                        <a href="del_cust.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="20px"></a>&nbsp;
+                                        <a href="updt_supplier.php?id=<?php echo $row['id']; ?>"><img src="../IMG/edit.png" height="25px" width="30PX"></a>&nbsp;
+                                        <a href="del_supplier.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="20px"></a>&nbsp;
                                     </td>
                                 </tr>
 
@@ -127,10 +125,7 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                                                                 <label for="name">Name</label>
                                                                 <input type="text" class="form-control" id="name" placeholder="No Data Available" value="<?php echo $row['name'] ?>" readonly>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="alias">Alias</label>
-                                                                <input type="text" class="form-control" id="alias" placeholder="No Data Available" value="<?php echo $row['alias'] ?>" readonly>
-                                                            </div>
+
                                                             <div class="form-group">
                                                                 <label for="city">City</label>
                                                                 <input type="text" class="form-control" id="city" placeholder="No Data Available" value="<?php echo $row['city'] ?>" readonly>
@@ -151,16 +146,13 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                                                                 <label for="panno">Pan No.</label>
                                                                 <input type="text" class="form-control" id="panno" placeholder="No Data Available" value="<?php echo $row['pan_no'] ?>" readonly>
                                                             </div>
+                                                        </div>
+                                                        <div class="col-6">
                                                             <div class="form-group">
                                                                 <label for="adharno">Aadhar No.</label>
                                                                 <input type="text" class="form-control" id="adharno" placeholder="No Data Available" value="<?php echo $row['adhar_no'] ?>" readonly>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <div class="form-group">
-                                                                <label for="con_per_name">Contact Person Name</label>
-                                                                <input type="text" class="form-control" id="con_per_name" placeholder="No Data Available" value="<?php echo $row['con_per_name'] ?>" readonly>
-                                                            </div>
+
                                                             <div class="form-group">
                                                                 <label for="address">Address</label>
                                                                 <input type="text" class="form-control" id="address" placeholder="No Data Available" value="<?php echo $row['address'] ?>" readonly>
@@ -173,14 +165,8 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                                                                 <label for="mobile_no">Mobile No.</label>
                                                                 <input type="text" class="form-control" id="mobile_no" placeholder="No Data Available" value="<?php echo $row['mo_no'] ?>" readonly>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="phone_no">Phone No.</label>
-                                                                <input type="text" class="form-control" id="phone_no" placeholder="No Data Available" value="<?php echo $row['phone_no'] ?>" readonly>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="fax">Fax</label>
-                                                                <input type="text" class="form-control" id="fax" placeholder="No Data Avaiable" value="<?php echo $row['fax'] ?>" readonly>
-                                                            </div>
+
+
                                                             <div class="form-group">
                                                                 <label for="email">Email</label>
                                                                 <input type="text" class="form-control" id="email" placeholder="No Data Available" value="<?php echo $row['email'] ?>" readonly>

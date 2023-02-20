@@ -12,7 +12,7 @@ if (isset($_POST['login'])) {
         header('location:main.php');
     } else {
         echo "<script>alert('Invalid details. Please try again.');</script>";
-        echo "<script>window.location.href='login.php'</script>";
+        echo "<script>window.location.href='index.php'</script>";
     }
 }
 ?>
@@ -44,18 +44,19 @@ if (isset($_POST['login'])) {
         <!-- Main Content -->
         <div class="hk-pg-wrapper hk-auth-wrapper">
             <header class="d-flex justify-content-between align-items-center">
-                <a class="d-flex auth-brand align-items-center" href="#">
-                    <b><span class="text-dark font-50">Avalon Metalic</span></b>
-                    
-                </a>
+                <b><span class="text-dark font-50">
+                        <font face="Bookman Old Style">Avalon Metalic</font>
+                    </span></b>
+                <!-- <a class="d-flex auth-brand align-items-center" href="#">
+
+                </a> -->
 
             </header>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xl-5 pa-0">
                         <div id="owl_demo_1" class="owl-carousel dots-on-item owl-theme">
-                            <div class="fadeOut item auth-cover-img overlay-wrap"
-                                style="background-image:url(IMG/metallic.jpg);">
+                            <div class="fadeOut item auth-cover-img overlay-wrap" style="background-image:url(IMG/metallic.jpg);">
                                 <div class="auth-cover-info py-xl-0 pt-100 pb-50">
                                     <div class="auth-cover-content text-center w-xxl-75 w-sm-90 w-xs-100">
 
@@ -63,8 +64,7 @@ if (isset($_POST['login'])) {
                                 </div>
                                 <div class="bg-overlay"></div>
                             </div>
-                            <div class="fadeOut item auth-cover-img overlay-wrap"
-                                style="background-image:url(IMG/metallic2.jpg);">
+                            <div class="fadeOut item auth-cover-img overlay-wrap" style="background-image:url(IMG/metallic2.jpg);">
                                 <div class="auth-cover-info py-xl-0 pt-100 pb-50">
                                     <div class="auth-cover-content text-center w-xxl-75 w-sm-90 w-xs-100">
 
@@ -79,33 +79,32 @@ if (isset($_POST['login'])) {
                             <div class="auth-form w-xxl-55 w-xl-75 w-sm-90 w-xs-100">
 
                                 <form method="post">
-                                    
+
                                     <h1 class="display-4 mb-10">Welcome Back :)</h1>
 
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Username" type="text" name="username"
-                                            required="true">
+                                        <input class="form-control" placeholder="Username" type="text" name="username" required="true">
                                     </div>
 
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input class="form-control" placeholder="Password" type="password"
-                                                name="password" required="true">
-                                            
+                                            <input class="form-control" placeholder="Password" type="password" name="password" required="true">
+
                                         </div>
                                     </div>
 
                                     <button class="btn btn-warning btn-block" type="submit" name="login">Login</button>
 
                                 </form>
-                                <br><center><a href="#" >forgot password?</a></center>
+                                <br>
+                                <center><a href="#">forgot password?</a></center>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <!-- /Main Content -->
 
     </div>
