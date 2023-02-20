@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2023 at 06:41 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Feb 20, 2023 at 08:50 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -104,7 +104,6 @@ INSERT INTO `product` (`id`, `name`, `category`, `price`, `opening_stock`) VALUE
 (39, 'FL BCH 303', 'Flora', '58', '45'),
 (40, 'FL MJ', 'One Side', '96', '35'),
 (41, 'FL Orange', 'Silver', '36', '45'),
-(42, 'FL Orange', 'Silver', '23', '88'),
 (43, 'GP Water', 'Both Side', '12', '66'),
 (44, 'GR 4-B63', 'Both Side', '45', '40'),
 (46, 'J Anmol', 'Both Side', '23', ''),
@@ -160,18 +159,47 @@ INSERT INTO `product` (`id`, `name`, `category`, `price`, `opening_stock`) VALUE
 
 CREATE TABLE `purchase` (
   `id` int(50) NOT NULL,
-  `party_name` varchar(100) NOT NULL,
+  `productid` varchar(100) NOT NULL,
+  `supplier_name` varchar(100) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
-  `voucher_no` varchar(50) NOT NULL,
+  `invoice_no` varchar(50) NOT NULL,
   `bill_no` varchar(100) NOT NULL,
   `bill_date` date NOT NULL,
   `product_name` varchar(200) NOT NULL,
   `quantity` varchar(50) NOT NULL,
   `rate` varchar(100) NOT NULL,
-  `sgst` varchar(100) NOT NULL,
-  `cgst` varchar(100) NOT NULL,
-  `ammount` varchar(100) NOT NULL
+  `amount` varchar(100) NOT NULL,
+  `pymnt_mode` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `purchase`
+--
+
+INSERT INTO `purchase` (`id`, `productid`, `supplier_name`, `date`, `invoice_no`, `bill_no`, `bill_date`, `product_name`, `quantity`, `rate`, `amount`, `pymnt_mode`) VALUES
+(1, '41', '1', '2023-02-20', '45', '40', '2023-02-19', 'FL Orange', '100', '280.00', '28000', 'credit');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purch_trans`
+--
+
+CREATE TABLE `purch_trans` (
+  `id` int(250) NOT NULL,
+  `invoice_no` varchar(250) NOT NULL,
+  `sid` varchar(250) NOT NULL,
+  `total_amount` varchar(250) NOT NULL,
+  `pending_amount` varchar(250) NOT NULL,
+  `paid_amount` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `purch_trans`
+--
+
+INSERT INTO `purch_trans` (`id`, `invoice_no`, `sid`, `total_amount`, `pending_amount`, `paid_amount`) VALUES
+(1, '45', '1', '28000', '28000', '');
 
 -- --------------------------------------------------------
 
@@ -207,26 +235,17 @@ INSERT INTO `sales` (`id`, `productid`, `challan_no`, `party_name`, `date`, `pro
 (8, '53', '5', '8', '2023-02-08', 'LG Water', '78', '10', '60', '32.00', '1920', 'credit'),
 (9, '54', '5', '8', '2023-02-09', 'M Anmol', '78', '10', '50', '45.00', '2250', 'credit'),
 (10, '43', '5', '8', '2023-02-09', 'GP Water', '78', '10', '60', '12.00', '720', 'credit'),
-(11, '42', '5', '4', '2023-02-09', 'FL Orange', '1', '1', '1', '23.00', '23', 'cash');
+(11, '42', '5', '4', '2023-02-09', 'FL Orange', '1', '1', '1', '23.00', '23', 'cash'),
+(12, '41', '12', '4', '2023-02-20', 'FL Orange', '1', '100', '10.02', '36.00', '360.72', 'credit'),
+(13, '41', '125', '4', '2023-02-20', 'FL Orange', '15', '100', '10.02', '280.00', '2805.6', 'cash');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `supplier_list`
+-- Table structure for table `sale_trans`
 --
 
-CREATE TABLE `supplier_list` (
-  `id` int(250) NOT NULL,
-  `name` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transaction`
---
-
-CREATE TABLE `transaction` (
+CREATE TABLE `sale_trans` (
   `id` int(250) NOT NULL,
   `challan_no` varchar(250) NOT NULL,
   `cid` varchar(250) NOT NULL,
@@ -236,11 +255,41 @@ CREATE TABLE `transaction` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `transaction`
+-- Dumping data for table `sale_trans`
 --
 
-INSERT INTO `transaction` (`id`, `challan_no`, `cid`, `total_amount`, `pending_amount`, `received_amount`) VALUES
-(2, '5', '8', '2970', '1000', '1000');
+INSERT INTO `sale_trans` (`id`, `challan_no`, `cid`, `total_amount`, `pending_amount`, `received_amount`) VALUES
+(2, '5', '8', '2970', '1000', '1000'),
+(3, '12', '4', '360.72', '360.72', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `supplier`
+--
+
+CREATE TABLE `supplier` (
+  `id` int(50) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `area` varchar(100) NOT NULL,
+  `state` varchar(100) NOT NULL,
+  `pan_no` varchar(100) NOT NULL,
+  `adhar_no` varchar(100) NOT NULL,
+  `gstin` varchar(100) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `pin` varchar(100) NOT NULL,
+  `mo_no` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `website` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `supplier`
+--
+
+INSERT INTO `supplier` (`id`, `name`, `city`, `area`, `state`, `pan_no`, `adhar_no`, `gstin`, `address`, `pin`, `mo_no`, `email`, `website`) VALUES
+(1, 'Brightlon Metalic', 'Surat', 'Pipodara', 'GUJARAT', 'GVXPM260P', '526556522541', '4545454545hghh', 'Beside Tempo Gali', '395060', '9845132202', 'admin01@gmail.com', 'brightlonmet@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -271,21 +320,27 @@ ALTER TABLE `purchase`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `purch_trans`
+--
+ALTER TABLE `purch_trans`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sales`
 --
 ALTER TABLE `sales`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `supplier_list`
+-- Indexes for table `sale_trans`
 --
-ALTER TABLE `supplier_list`
+ALTER TABLE `sale_trans`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `transaction`
+-- Indexes for table `supplier`
 --
-ALTER TABLE `transaction`
+ALTER TABLE `supplier`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -314,25 +369,31 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `purch_trans`
+--
+ALTER TABLE `purch_trans`
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `supplier_list`
+-- AUTO_INCREMENT for table `sale_trans`
 --
-ALTER TABLE `supplier_list`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `sale_trans`
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `transaction`
+-- AUTO_INCREMENT for table `supplier`
 --
-ALTER TABLE `transaction`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `supplier`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
