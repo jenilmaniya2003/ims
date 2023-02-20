@@ -44,7 +44,7 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>Avalon Metalic</title>
-        <link rel="icon" href="../IMG/logo.png" type="image/x-icon">
+        <link rel="icon" href="../IMG/logo.png" type="image/png">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/datatables.min.css">
@@ -68,12 +68,6 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                     <table id="example" class="table table-striped table-bordered">
                         <thead class="table-dark">
                             <tr>
-                            <tr>
-                            <th style="width: 90px; text-align:center;">
-                                <button type="submit" name="prod_delete_multiple_btn"
-                                    class="btn btn-danger">Delete</button>
-                                <input type="checkbox" id="chkAll">
-                            </th>
                                 <th>Sr.No</th>
                                 <th>Challan No</th>
                                 <th>Party Name</th>
@@ -88,16 +82,11 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                         </thead>
                         <tbody>
                             <?php
-                            $rno = mt_rand(10000, 99999);
                             $query = mysqli_query($con, "select * from sales where date(date) between '$fdate' and '$tdate'");
                             $cnt = 1;
                             while ($row = mysqli_fetch_array($query)) {
                             ?>
                                 <tr>
-                                <td style="width: 10px; text-align:center;">
-                                <input type="checkbox" name="product_delete_id[]" value="<?= $row['id']; ?>"
-                                    class="tblChk">
-                            </td>
                                     <td style="text-align: center;"><?= $cnt; ?></td>
                                     <td style="text-align: center;"><?= $row['challan_no']; ?></td>
                                     <td style="text-align: center;"><?= $row['party_name']; ?></td>

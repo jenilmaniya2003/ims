@@ -119,8 +119,10 @@ echo "<script>window.location.href='change_password.php'</script>";
                                                 <div class="invalid-feedback">Please provide confirm password.</div>
                                             </div>
                                         </div>
-
-                                        <button class="btn btn-primary" type="submit" name="submit">Change</button>
+                                        <div>
+                                            <button class="btn btn-outline-danger" type="submit" name="submit">Change
+                                                Password</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
