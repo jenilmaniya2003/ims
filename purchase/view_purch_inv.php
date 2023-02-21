@@ -76,11 +76,7 @@ include('../inc/menu.php');
                     <tbody>
                         <?php
                         $cnt = 1;
-                        $query = "SELECT party.name, sales.id, sales.challan_no, sales.date, sales.product_name, sales.quantity, sales.rate, sales.amount
-                        FROM sales
-                        JOIN party ON party.id = sales.party_name
-                        GROUP BY sales.challan_no;
-                         ";
+                        $query = "SELECT supplier.name, purchase.id, purchase.invoice_no, purchase.date, purchase.bill_no, purchase.bill_date, purchase.product_name, purchase.quantity,purchase.rate,purchase.amount FROM purchase JOIN supplier ON supplier.id = purchase.supplier_name GROUP BY purchase.invoice_no;";
                         $res = mysqli_query($con, $query);
                         while ($row = mysqli_fetch_array($res)) {
                             // if (mysqli_num_rows($res) > 0) {
@@ -94,8 +90,10 @@ include('../inc/menu.php');
                                 </td> -->
                                 <td style="text-align: center;"><?= $cnt; ?></td>
                                 <td style="text-align: center;"><?= $row['invoice_no']; ?></td>
-                                <td style="text-align: center;"><?= $row['name']; ?></td>
                                 <td style="text-align: center;"><?= $row['date']; ?></td>
+                                <td style="text-align: center;"><?= $row['bill_no']; ?></td>
+                                <td style="text-align: center;"><?= $row['bill_date']; ?></td>
+                                <td style="text-align: center;"><?= $row['name']; ?></td>
                                 <td style="text-align: center;"><?= $row['product_name']; ?></td>
                                 <td style="text-align: center;"><?= $row['quantity']; ?></td>
                                 <td style="text-align: center;"><?= $row['rate']; ?></td>
@@ -103,7 +101,7 @@ include('../inc/menu.php');
                                 <td style="text-align: center;">
                                     <!-- <a href="#?id=<?php //echo $row['id']; 
                                                         ?>"><img src="../IMG/edit.png" height="25px" width="30PX"></a>&nbsp; -->
-                                    <a href="del_inv.php?id=<?php echo $row['invoice_no']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="25px"></a>&nbsp;
+                                    <a href="del_purch_inv.php?id=<?php echo $row['invoice_no']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="25px"></a>&nbsp;
                                     <a href="../print.php?id=<?php echo $row['invoice_no']; ?>"><img src="../IMG/print.png" height="25px" width="25PX"></a>
                                 </td>
                             </tr>
