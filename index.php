@@ -80,7 +80,9 @@ if (isset($_POST['login'])) {
 
                                 <form method="post">
 
-                                    <h1 class="display-4 mb-10">Welcome Back :)</h1>
+                                    <h3 class="display-6 mb-10">
+                                        <font face="Bookman Old Style">Welcome Back :)</font>
+                                    </h3>
 
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Username" type="text" name="username" required="true">

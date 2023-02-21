@@ -88,7 +88,8 @@ if (strlen($_SESSION['aid'] == 0)) {
                     $q = "select sum(amount) as tt  from sales";
                     $r = mysqli_query($con, $q);
                     $row = mysqli_fetch_array($r);
-                    echo $row['tt'];
+                    $tt = $row['tt'];
+                    echo number_format(round($tt), 2);
                     ?>]
             </div>
         </div>

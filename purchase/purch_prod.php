@@ -249,7 +249,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                     <div class="row">
                                         <div class="col-sm">
                                             <div class="table-wrap">
-                                                <h4>Shopping Cart</h4>
+                                                <h4>Purchase Cart</h4>
                                                 <hr />
 
                                                 <a id="btnEmpty" href="purch_prod.php?action=empty">Empty Cart</a>

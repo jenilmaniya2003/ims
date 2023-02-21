@@ -231,7 +231,8 @@
       <a href="../main.php">Home</a>
       <a href="../customer/view_cust.php">Customer</a>
       <a href="../product/view_prod.php">Product</a>
-      <a href="../sales/srch_prod.php">Sales Challan</a>
+      <a href="../sales/srch_prod.php">Sales</a>
+      <a href="../purchase/purch_prod.php">Purchase</a>
       <!-- <a href="#">Purc. Invoice</a> -->
       <div class="dropdown">
         <a class="dropBtn" href="#">Invoice
@@ -269,7 +270,7 @@
         </div>
       </div>
 
-      
+
 
       <!-- <a href="#">Blogs</a>
       <a href="#">Contact</a> -->
