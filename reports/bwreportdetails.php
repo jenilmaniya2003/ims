@@ -76,8 +76,6 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                                 <th>Quantity</th>
                                 <th>Rate</th>
                                 <th>Amount</th>
-                                <th>Action</th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -95,14 +93,7 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                                     <td style="text-align: center;"><?= $row['quantity']; ?></td>
                                     <td style="text-align: center;"><?= $row['rate']; ?></td>
                                     <td style="text-align: center;"><?= $row['amount']; ?></td>
-                                    <td>
-                                        <a href="updt_prod.php?id=<?php echo $row['id']; ?>"><img src="../IMG/edit.png" height="25px" width="30PX"></a>&nbsp;
-                                        <a href="del_prod.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="25px"></a>&nbsp;
-                                        <a href="../print.php?id=<?php echo $row['challan_no']; ?>"><img src="../IMG/print.png" height="25px" width="25PX"></a>
-                                    </td>
-                                    <!-- <td>
-                                        <a href="../sales/view-invoice.php?invid=<?php echo base64_encode($row['challan_no'] . $rno); ?>" class="mr-25" data-toggle="tooltip" data-original-title="View Details" target="_blank"> <i class="glyphicon glyphicon-envelope"></i></a>
-                                    </td> -->
+                                    
                                 </tr>
                             <?php
                                 $cnt++;
