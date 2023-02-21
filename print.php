@@ -9,6 +9,11 @@ if (strlen($_SESSION['aid'] == 0)) {
 
     $sql = "select * from sales where challan_no=" . $_GET['id'];
     $result = mysqli_query($con, $sql);
+    $a = "select date from sales where challan_no= " . $_GET['id'];
+    $b = mysqli_query($con, $a);
+    while ($r = $b->fetch_assoc()) {
+        $date = $r['date'] . "<br>";
+    }
 
 ?>
 
@@ -127,8 +132,10 @@ if (strlen($_SESSION['aid'] == 0)) {
         }
         $cust_qry = $con->query("SELECT sales.party_name, sales.challan_no,sales.date,party.name,party.address, party.mo_no,party.city,party.gstin,party.email,party.con_per_name FROM sales RIGHT JOIN party ON sales.party_name=party.id WHERE party_name='$party_name'");
         $customer = $cust_qry->fetch_array();
+
         ?>
         <div class="container invoice" id="content">
+
             <div class="invoice-header">
                 <div class="ui left aligned grid">
                     <div class="row">
@@ -141,8 +148,8 @@ if (strlen($_SESSION['aid'] == 0)) {
                                 </div>
                                 <h1 class="ui header pageTitle">Invoice <small class="ui sub header"></small>
                                 </h1>
-                                <h4 class="ui sub header invDetails">NO: <?php echo $customer['challan_no'] ?> | Date:
-                                    <?php echo $customer['date'] ?></h4>
+                                <h4 class="ui sub header invDetails">Challan NO: <?php echo $_GET['id']; ?> <br>
+                                    Challan Date: <?php echo $date; ?></h4>
                             </div>
                         </div>
                         <div class="right floated left aligned four wide column">
@@ -177,7 +184,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                 <!-- <li><strong> Email: </strong> avalonmetalic@gmail.com</li> -->
                                 <li><strong> Email: </strong> <?php echo $row['email']; ?></li>
                                 <!-- <li><strong> Contact: </strong> Uttam Vachhani</li> -->
-                                <li><strong> Contact: </strong> <?php echo $row['contact']; ?></li>
+                                <li><strong> Contact: </strong> <?php echo $row['contact'];  ?></li>
                             </ul>
                         <?php } ?>
                     </div>
@@ -190,13 +197,13 @@ if (strlen($_SESSION['aid'] == 0)) {
 
                     <div class="content">
                         <ul>
-                            <li> <strong> Name: <?php echo $customer['name'] ?> </strong> </li>
-                            <li><strong> Address: </strong> <?php echo $customer['address'] ?></li>
-                            <li><strong> City: </strong> <?php echo $customer['city'] ?></li>
-                            <li><strong> Mobile No: </strong> <?php echo $customer['mo_no'] ?></li>
-                            <li><strong> Email: </strong> <?php echo $customer['email'] ?></li>
-                            <li><strong> Contact Person Name: </strong> <?php echo $customer['con_per_name'] ?></li>
-                            <li><strong> GSTIN No: </strong> <?php echo $customer['gstin'] ?></li>
+                            <li> <strong> Name: <?php echo $customer['name']; ?> </strong> </li>
+                            <li><strong> Address: </strong> <?php echo $customer['address']; ?></li>
+                            <li><strong> City: </strong> <?php echo $customer['city']; ?></li>
+                            <li><strong> Mobile No: </strong> <?php echo $customer['mo_no']; ?></li>
+                            <li><strong> Email: </strong> <?php echo $customer['email']; ?></li>
+                            <li><strong> Contact Person Name: </strong> <?php echo $customer['con_per_name']; ?></li>
+                            <li><strong> GSTIN No: </strong> <?php echo $customer['gstin']; ?></li>
                         </ul>
                     </div>
                 </div>

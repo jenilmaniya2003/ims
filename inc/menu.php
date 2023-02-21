@@ -240,11 +240,23 @@
         </a>
         <div class="drop-content">
           <a href="../sales/view_inv.php">Sales Invoice</a>
-          <a href="#">Purchase Invoice</a>
+          <a href="../purchase/view_purch_inv.php">Purchase Invoice</a>
         </div>
       </div>
+
       <a href="#">Account Ledger</a>
-      <a href="../transaction/view_pending_payment.php">Pending Payment</a>
+
+      <div class="dropdown">
+        <a class="dropBtn" href="#">Pending Payment
+          <i class="fas fa-angle-down"></i>
+        </a>
+        <div class="drop-content">
+          <a href="../transaction/view_pending_payment.php">Sales Pending</a>
+          <a href="../purchase/view_purch_inv.php">Purchase Pending</a>
+        </div>
+      </div>
+
+      <!-- <a href="../transaction/view_pending_payment.php">Pending Payment</a> -->
       <!-- <a href="#">Reports</a> -->
 
       <div class="dropdown">
@@ -253,7 +265,9 @@
         </a>
         <div class="drop-content">
           <a href="../reports/salereport.php">Sales Reports</a>
-          <a href="../reports/bwreport.php">B/W Reports</a>
+          <a href="../reports/bwreport.php">B/W Sales Reports</a>
+          <a href="../reports/bwreport.php">Purchase Reports</a>
+          <a href="../reports/bwreport.php">B/W Purchase Reports</a>
           <!-- <a href="#">WordPress</a>
  
           <div class="dropdown2">

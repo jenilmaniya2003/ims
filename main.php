@@ -42,12 +42,12 @@ if (strlen($_SESSION['aid'] == 0)) {
             </div><br>
             <div class="div4 d3">
                 <a href="sales/srch_prod.php"><br><img src="IMG/sale.png" alt="add" height=80 width=80><br><br>
-                    <font class="f1">Sales Challan</font>
+                    <font class="f1">Sales </font>
                 </a>
             </div>
             <div class="div5 d3">
                 <a href="purchase/purch_prod.php"><br><img src="IMG/purchase.png" alt="add" height=100 width=100><br>
-                    <font class="f1">Purc. Invoice</font>
+                    <font class="f1">Purchase</font>
                 </a>
             </div>
             <div class="div6 d3">

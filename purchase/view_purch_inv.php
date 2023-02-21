@@ -61,9 +61,11 @@ include('../inc/menu.php');
                                 <input type="checkbox" id="chkAll">
                             </th> -->
                             <th style="text-align: center;">Sr.No</th>
-                            <th style="text-align: center;">Challan No</th>
-                            <th style="text-align: center;">Party Name</th>
+                            <th style="text-align: center;">Invoice No</th>
                             <th style="text-align: center;">Date</th>
+                            <th style="text-align: center;">Bill No</th>
+                            <th style="text-align: center;">Bill Date</th>
+                            <th style="text-align: center;">Supplier Name</th>
                             <th style="text-align: center;">Product Name</th>
                             <th style="text-align: center;">Quantity</th>
                             <th style="text-align: center;">Rate</th>
@@ -91,7 +93,7 @@ include('../inc/menu.php');
                                                                                                 ?>" class="tblChk">
                                 </td> -->
                                 <td style="text-align: center;"><?= $cnt; ?></td>
-                                <td style="text-align: center;"><?= $row['challan_no']; ?></td>
+                                <td style="text-align: center;"><?= $row['invoice_no']; ?></td>
                                 <td style="text-align: center;"><?= $row['name']; ?></td>
                                 <td style="text-align: center;"><?= $row['date']; ?></td>
                                 <td style="text-align: center;"><?= $row['product_name']; ?></td>
@@ -101,8 +103,8 @@ include('../inc/menu.php');
                                 <td style="text-align: center;">
                                     <!-- <a href="#?id=<?php //echo $row['id']; 
                                                         ?>"><img src="../IMG/edit.png" height="25px" width="30PX"></a>&nbsp; -->
-                                    <a href="del_inv.php?id=<?php echo $row['challan_no']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="25px"></a>&nbsp;
-                                    <a href="../print.php?id=<?php echo $row['challan_no']; ?>"><img src="../IMG/print.png" height="25px" width="25PX"></a>
+                                    <a href="del_inv.php?id=<?php echo $row['invoice_no']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="25px"></a>&nbsp;
+                                    <a href="../print.php?id=<?php echo $row['invoice_no']; ?>"><img src="../IMG/print.png" height="25px" width="25PX"></a>
                                 </td>
                             </tr>
                         <?php
