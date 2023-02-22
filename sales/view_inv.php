@@ -81,22 +81,25 @@ include('../inc/menu.php');
 
                             //     foreach ($res as $row) {
                         ?>
-                            <tr>
-                                <!-- <td style="width: 10px; text-align:center;">
+                        <tr>
+                            <!-- <td style="width: 10px; text-align:center;">
                                     <input type="checkbox" name="product_delete_id[]" value="<?php //echo $row['id']; 
                                                                                                 ?>" class="tblChk">
                                 </td> -->
-                                <td style="text-align: center;"><?= $cnt; ?></td>
-                                <td style="text-align: center;"><?= $row['challan_no']; ?></td>
-                                <td style="text-align: center;"><?= $row['name']; ?></td>
-                                <td style="text-align: center;"><?= $row['date']; ?></td>
-                                <td style="text-align: center;">
-                                    <!-- <a href="#?id=<?php //echo $row['id']; 
+                            <td style="text-align: center;"><?= $cnt; ?></td>
+                            <td style="text-align: center;"><?= $row['challan_no']; ?></td>
+                            <td style="text-align: center;"><?= $row['name']; ?></td>
+                            <td style="text-align: center;"><?= $row['date']; ?></td>
+                            <td style="text-align: center;">
+                                <!-- <a href="#?id=<?php //echo $row['id']; 
                                                         ?>"><img src="../IMG/edit.png" height="25px" width="30PX"></a>&nbsp; -->
-                                    <a href="del_inv.php?id=<?php echo $row['challan_no']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="25px"></a>&nbsp;
-                                    <a href="print.php?id=<?php echo $row['challan_no']; ?>"><img src="../IMG/print.png" height="25px" width="25PX"></a>
-                                </td>
-                            </tr>
+                                <a href="del_inv.php?id=<?php echo $row['challan_no']; ?>"
+                                    onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png"
+                                        height="20px" width="25px"></a>&nbsp;
+                                <a href="print.php?id=<?php echo $row['challan_no']; ?>"><img src="../IMG/print.png"
+                                        height="25px" width="25PX"></a>
+                            </td>
+                        </tr>
                         <?php
                             $cnt++;
                         }
@@ -120,17 +123,17 @@ include('../inc/menu.php');
     </div>
 
     <script>
-        $(document).ready(function() {
-            $("#chkAll").change(function() {
-                debugger;
-                if ($(this).prop('checked')) {
-                    $('.tblChk').not(this).prop('checked', true);
-                } else {
-                    $('.tblChk').not(this).prop('checked', false);
-                }
+    $(document).ready(function() {
+        $("#chkAll").change(function() {
+            debugger;
+            if ($(this).prop('checked')) {
+                $('.tblChk').not(this).prop('checked', true);
+            } else {
+                $('.tblChk').not(this).prop('checked', false);
+            }
 
-            })
-        });
+        })
+    });
     </script>
 
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
