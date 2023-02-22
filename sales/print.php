@@ -262,23 +262,28 @@ if (strlen($_SESSION['aid'] == 0)) {
                                     $r2 = mysqli_query($con, $q2);
                                     $row = mysqli_fetch_array($r2);
                                     ?>
-                                    <th colspan="1" style="text-align: right;"><?php echo number_format($row['tt'], 3); ?> </th>
+                                    <th colspan="1" style="text-align: right;"><?php echo number_format($row['tt'], 3); ?>
+                                    </th>
                                     <?php
                                     $q = "select sum(rate) as tt  from sales where challan_no=" . $_GET['id'];
                                     $r = mysqli_query($con, $q);
                                     $row = mysqli_fetch_array($r);
                                     ?>
-                                    <th colspan="1" style="text-align: right;"><?php echo number_format($row['tt'], 2); ?> </th>
+                                    <th colspan="1" style="text-align: right;"><?php echo number_format($row['tt'], 2); ?>
+                                    </th>
                                     <?php
                                     $q1 = "select sum(amount) as tt  from sales where challan_no=" . $_GET['id'];
                                     $r1 = mysqli_query($con, $q1);
                                     $row = mysqli_fetch_array($r1);
                                     ?>
-                                    <th colspan="1" style="text-align: right;"> <?php echo  number_format($row['tt'], 2); ?> </th>
+                                    <th colspan="1" style="text-align: right;"> <?php echo  number_format($row['tt'], 2); ?>
+                                    </th>
                                 </tr>
                                 <tr>
                                     <th colspan="5">Round Figure:</th>
-                                    <th style="text-align: right;">(&plusmn;)&nbsp;<?php echo number_format($row['tt'] - (round($row['tt'])), 2); ?></th>
+                                    <th style="text-align: right;">
+                                        (&plusmn;)&nbsp;<?php echo number_format($row['tt'] - (round($row['tt'])), 2); ?>
+                                    </th>
 
                                     <th colspan="1" style="text-align: right;"><b> <?php echo  number_format(round($row['tt'], 2));
                                                                                     echo ".00"; ?></b> </th>
