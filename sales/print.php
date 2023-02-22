@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('inc/connection.php');
+include('../inc/connection.php');
 if (strlen($_SESSION['aid'] == 0)) {
     header('location:index.php');
 } else {
@@ -25,7 +25,7 @@ if (strlen($_SESSION['aid'] == 0)) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../vendors/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -36,8 +36,9 @@ if (strlen($_SESSION['aid'] == 0)) {
             // });
 
             $(document).ready(function() {
-                $("#hide").click(function() {
-                    $("#p1").hide();
+                $("#p1").click(function() {
+                    $("#hide").hide();
+                    // $("#p2").hide();
                     window.print();
                     {
                         setTimeout(function() {
@@ -45,7 +46,6 @@ if (strlen($_SESSION['aid'] == 0)) {
                         }, 1);
                     }
                 });
-
             });
         </script>
         <style>
@@ -141,11 +141,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                     <div class="row">
                         <div class="left floated left aligned six wide column" style="margin: 20px;">
                             <div class="ui">
-                                <div id="hide">
-                                    <button id="p1" class="btn btn-flat btn-success">
-                                        Print
-                                    </button>
-                                </div>
+
                                 <h1 class="ui header pageTitle">Invoice <small class="ui sub header"></small>
                                 </h1>
                                 <h4 class="ui sub header invDetails">Challan NO: <?php echo $_GET['id']; ?> <br>
@@ -155,7 +151,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                         <div class="right floated left aligned four wide column">
                             <div class="ui">
                                 <div>
-                                    <img class="logo" height="100px" width="100px" src="IMG/logo.png" style="position: absolute; right: 0px; top: 50px;" />
+                                    <img class="logo" height="100px" width="100px" src="../IMG/logo.png" style="position: absolute; right: 0px; top: 30px;" />
                                 </div>
                             </div>
                         </div>
@@ -213,7 +209,8 @@ if (strlen($_SESSION['aid'] == 0)) {
                         <table class="ui celled table">
                             <thead>
                                 <tr>
-                                    <th>Item / Details</th>
+                                    <th class="text-center colfix">Sr. No.</th>
+                                    <th class="text-center colfix">Item / Details</th>
                                     <th class="text-center colfix">Box No</th>
                                     <th class="text-center colfix">Bobin</th>
                                     <th class="text-center colfix">Weight</th>
@@ -222,12 +219,14 @@ if (strlen($_SESSION['aid'] == 0)) {
                                 </tr>
                             </thead>
                             <?php
+                            $cnt = 1;
                             $result1 = array($result);
                             foreach ($result1 as $res) {
                                 while ($row = mysqli_fetch_object($res)) {
                             ?>
                                     <tbody>
                                         <tr>
+                                            <td><?php echo $cnt; ?></td>
                                             <td>
                                                 <?php echo $row->product_name; ?>
                                             </td>
@@ -250,14 +249,20 @@ if (strlen($_SESSION['aid'] == 0)) {
                                         </tr>
                                     </tbody>
                             <?php
+                                    $cnt++;
                                 }
                             }
                             ?>
                             <tfoot class="full-width">
                                 <tr>
-                                    <th> Total: </th>
-                                    <th colspan="3"></th>
-                                    <!-- <th colspan="1"> $500 </th> -->
+                                    <th colspan="4"> Total: </th>
+                                    <!-- <th colspan=" 1"> $500 </th> -->
+                                    <?php
+                                    $q2 = "select sum(quantity) as tt  from sales where challan_no=" . $_GET['id'];
+                                    $r2 = mysqli_query($con, $q2);
+                                    $row = mysqli_fetch_array($r2);
+                                    ?>
+                                    <th colspan="1" style="text-align: right;"><?php echo number_format($row['tt'], 3); ?> </th>
                                     <?php
                                     $q = "select sum(rate) as tt  from sales where challan_no=" . $_GET['id'];
                                     $r = mysqli_query($con, $q);
@@ -270,6 +275,13 @@ if (strlen($_SESSION['aid'] == 0)) {
                                     $row = mysqli_fetch_array($r1);
                                     ?>
                                     <th colspan="1" style="text-align: right;"> <?php echo  number_format($row['tt'], 2); ?> </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="5">Round Figure:</th>
+                                    <th style="text-align: right;">(&plusmn;)&nbsp;<?php echo number_format($row['tt'] - (round($row['tt'])), 2); ?></th>
+
+                                    <th colspan="1" style="text-align: right;"><b> <?php echo  number_format(round($row['tt'], 2));
+                                                                                    echo ".00"; ?></b> </th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -304,7 +316,16 @@ if (strlen($_SESSION['aid'] == 0)) {
                     </div>
 
                 </div>
-
+                <div id="hide">
+                    <button id="p1" class="btn btn-flat btn-success">
+                        Print
+                    </button>
+                    <a href="view_inv.php">
+                        <button id="p2" class="btn btn-flat btn-danger">
+                            Back
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
     </body>

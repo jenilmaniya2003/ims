@@ -102,7 +102,7 @@ include('../inc/menu.php');
                                     <!-- <a href="#?id=<?php //echo $row['id']; 
                                                         ?>"><img src="../IMG/edit.png" height="25px" width="30PX"></a>&nbsp; -->
                                     <a href="del_purch_inv.php?id=<?php echo $row['invoice_no']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="25px"></a>&nbsp;
-                                    <a href="../print.php?id=<?php echo $row['invoice_no']; ?>"><img src="../IMG/print.png" height="25px" width="25PX"></a>
+                                    <a href="purch_print.php?id=<?php echo $row['invoice_no']; ?>"><img src="../IMG/print.png" height="25px" width="25PX"></a>
                                 </td>
                             </tr>
                         <?php
