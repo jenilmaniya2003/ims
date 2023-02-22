@@ -64,10 +64,6 @@ include('../inc/menu.php');
                             <th style="text-align: center;">Challan No</th>
                             <th style="text-align: center;">Party Name</th>
                             <th style="text-align: center;">Date</th>
-                            <th style="text-align: center;">Product Name</th>
-                            <th style="text-align: center;">Quantity</th>
-                            <th style="text-align: center;">Rate</th>
-                            <th style="text-align: center;">Amount</th>
                             <th style="text-align: center;">Action</th>
                         </tr>
                     </thead>
@@ -94,10 +90,6 @@ include('../inc/menu.php');
                                 <td style="text-align: center;"><?= $row['challan_no']; ?></td>
                                 <td style="text-align: center;"><?= $row['name']; ?></td>
                                 <td style="text-align: center;"><?= $row['date']; ?></td>
-                                <td style="text-align: center;"><?= $row['product_name']; ?></td>
-                                <td style="text-align: center;"><?= $row['quantity']; ?></td>
-                                <td style="text-align: center;"><?= $row['rate']; ?></td>
-                                <td style="text-align: center;"><?= $row['amount']; ?></td>
                                 <td style="text-align: center;">
                                     <!-- <a href="#?id=<?php //echo $row['id']; 
                                                         ?>"><img src="../IMG/edit.png" height="25px" width="30PX"></a>&nbsp; -->
