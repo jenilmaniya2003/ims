@@ -83,7 +83,18 @@ if (strlen($_SESSION['aid'] == 0)) {
             $rate = $_POST['rate'][$pdid];
             $q = "insert into sales(productid,challan_no,party_name,product_name,box_no,bobin,quantity,rate,amount,pymnt_mode) values('$pdid','$challan_no','$party_name','$product_name','$box_no','$bobin','$qty1','$rate','$amount','$pmode')";
             $query = mysqli_query($con, $q);
+
+            $q1="select opening_stock from product where id='$pdid'";
+            $query1=mysqli_query($con,$q1);
+            while ($row = mysqli_fetch_array($query1)) {
+                $os=$row['opening_stock'];
+                $update_stock=$os-$qty1;
+                $q2="update product set opening_stock=$update_stock where id=$pdid";
+                mysqli_query($con,$q2);
+            }
+            
         }
+       
 
         if ($pmode == 'credit') {
             $q1 = "insert into sale_trans (cid,challan_no,total_amount,pending_amount) values ('$party_name','$challan_no','$total_amount','$total_amount')";
