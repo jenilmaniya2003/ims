@@ -266,8 +266,8 @@
         <div class="drop-content">
           <a href="../reports/salereport.php">Sales Reports</a>
           <a href="../reports/bwreport.php">B/W Sales Reports</a>
-          <a href="../reports/bwreport.php">Purchase Reports</a>
-          <a href="../reports/bwreport.php">B/W Purchase Reports</a>
+          <a href="../reports/purch_report.php">Purchase Reports</a>
+          <a href="../reports/purch_bwreport.php">B/W Purchase Reports</a>
           <!-- <a href="#">WordPress</a>
  
           <div class="dropdown2">

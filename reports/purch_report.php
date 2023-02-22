@@ -1,12 +1,12 @@
 <?php
 session_start();
 error_reporting(0);
-include('../inc/connection.php');
 
 if (strlen($_SESSION['aid'] == 0)) {
     header('location:index.php');
 } else {
     include('../inc/menu.php');
+    include('../inc/connection.php');
     // Add company Code
     // if (isset($_POST['submit'])) {
     //     //Getting Post Values
@@ -36,30 +36,44 @@ if (strlen($_SESSION['aid'] == 0)) {
     </head>
 
     <body>
+
+
         <!-- HK Wrapper -->
         <div class="hk-wrapper">
-            <!-- Top Navbar -->
+
             <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
+            <!-- /Vertical Nav -->
+
+
+
             <!-- Main Content -->
             <div class="hk-pg-wrapper">
+                <!-- Breadcrumb -->
+
+                <!-- /Breadcrumb -->
+
+                <!-- Container -->
                 <div class="container">
                     <!-- Title -->
                     <div class="hk-pg-header">
-                        <h4 class="hk-pg-title"><i data-feather="external-link"></i></span></span>B/w Sales Report Date Selection</h4>
+                        <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="external-link"></i></span></span>Purchase Report Date Selection</h4>
                     </div>
+                    <!-- /Title -->
+
+                    <!-- Row -->
                     <div class="row">
                         <div class="col-xl-12">
                             <section class="hk-sec-wrapper">
 
                                 <div class="row">
                                     <div class="col-sm">
-                                        <form class="needs-validation" method="post" action="bwreportdetails.php" novalidate>
+                                        <form class="needs-validation" method="post" action="purch_reportdetails.php" novalidate>
 
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">From Date</label>
                                                     <input class="form-control" type="date" name="fromdate" required />
-                                                    <div class="invalid-feedback">Please provide a from date.</div>
+                                                    <div class="invalid-feedback">Please provide a valid from date.</div>
                                                 </div>
                                             </div>
 
@@ -67,7 +81,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">To Date</label>
                                                     <input class="form-control" type="date" name="todate" required />
-                                                    <div class="invalid-feedback">Please provide a to date.</div>
+                                                    <div class="invalid-feedback">Please provide a valid to date.</div>
                                                 </div>
                                             </div>
                                             <button class="btn btn-primary" type="submit" name="submit">Submit</button>
@@ -75,27 +89,34 @@ if (strlen($_SESSION['aid'] == 0)) {
                                     </div>
                                 </div>
                             </section>
+
                         </div>
                     </div>
                 </div>
+
+
+                <!-- Footer -->
                 <?php
                 include('../inc/footer.php');
                 ?>
+                <!-- /Footer -->
+
             </div>
+            <!-- /Main Content -->
 
         </div>
 
-        <script src="../vendors/jquery/dist/jquery.min.js"></script>
-        <script src="../vendors/popper.js/dist/umd/popper.min.js"></script>
-        <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="../vendors/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
-        <script src="../dist/js/jquery.slimscroll.js"></script>
-        <script src="../dist/js/dropdown-bootstrap-extended.js"></script>
-        <script src="../dist/js/feather.min.js"></script>
-        <script src="../vendors/jquery-toggles/toggles.min.js"></script>
-        <script src="../dist/js/toggle-data.js"></script>
-        <script src="../dist/js/init.js"></script>
-        <script src="../dist/js/validation-data.js"></script>
+        <script src="../../vendors/jquery/dist/jquery.min.js"></script>
+        <script src="../../vendors/popper.js/dist/umd/popper.min.js"></script>
+        <script src="../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../../vendors/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
+        <script src="../../dist/js/jquery.slimscroll.js"></script>
+        <script src="../../dist/js/dropdown-bootstrap-extended.js"></script>
+        <script src="../../dist/js/feather.min.js"></script>
+        <script src="../../vendors/jquery-toggles/toggles.min.js"></script>
+        <script src="../../dist/js/toggle-data.js"></script>
+        <script src="../../dist/js/init.js"></script>
+        <script src="../../dist/js/validation-data.js"></script>
 
     </body>
 

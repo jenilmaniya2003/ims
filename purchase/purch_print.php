@@ -130,7 +130,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                 $supplier_name = $row->supplier_name;
             }
         }
-        $cust_qry = $con->query("SELECT supplier.name, purchase.invoice_no,purchase.date,supplier.name,supplier.address, supplier.mo_no,supplier.city,supplier.gstin,supplier.email FROM purchase RIGHT JOIN supplier ON purchase.supplier_name=supplier.id WHERE supplier_name='$supplier_name'");
+        $cust_qry = $con->query("SELECT supplier.name, purchase.invoice_no,purchase.date,purchase.bill_no,purchase.bill_date,supplier.name,supplier.address, supplier.mo_no,supplier.city,supplier.gstin,supplier.email FROM purchase RIGHT JOIN supplier ON purchase.supplier_name=supplier.id WHERE supplier_name='$supplier_name'");
         $customer = $cust_qry->fetch_array();
 
         ?>
@@ -145,7 +145,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                 <h1 class="ui header pageTitle">Purchase Invoice <small class="ui sub header"></small>
                                 </h1>
                                 <h4 class="ui sub header invDetails">INVOICE NO: <?php echo $_GET['id']; ?> <br>
-                                    INVOICE Date: <?php echo $date; ?></h4>
+                                    INVOICE Date: <?php echo $date; ?> <br> Bill No: <?php echo $customer['bill_no']; ?> <br>Bill Date: <?php echo $customer['bill_date']; ?> </h4>
                             </div>
                         </div>
                         <div class="right floated left aligned four wide column">
@@ -275,11 +275,12 @@ if (strlen($_SESSION['aid'] == 0)) {
                 </div>
 
                 <div class="ui card">
-                    <div class="content center aligned text segment">
-                        <small class="ui header"> Receiver's Sign</small>
-
-                        <!-- <p class="bigfont"> $5000.25 </p> -->
-
+                    <div class="content center aligned text">
+                        <div class="header">NOTE:</div>
+                    </div>
+                    <div class="content center aligned text">
+                        <p> <strong>This Print is </strong> </p>
+                        <p> <strong>Only For Office Use.</strong> </p>
                     </div>
                 </div>
                 <div class="ui card">

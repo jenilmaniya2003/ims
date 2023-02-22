@@ -23,7 +23,7 @@ if (strlen($_SESSION['aid'] == 0)) {
         $extract_id = implode(',', $all_id);
         // echo $extract_id;
 
-        $query = "DELETE FROM sales where id IN($extract_id)";
+        $query = "DELETE FROM purchase where id IN($extract_id)";
         $query_run = mysqli_query($con, $query);
         // if ($query_run) {
         //     $_SESSION['status'] = "Data Delete";
@@ -69,7 +69,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                         <thead class="table-dark">
                             <tr>
                                 <th>Sr.No</th>
-                                <th>Challan No</th>
+                                <th>Invoice No</th>
                                 <th>Party Name</th>
                                 <th>Date</th>
                                 <th>Product Name</th>
@@ -80,13 +80,14 @@ if (strlen($_SESSION['aid'] == 0)) {
                         </thead>
                         <tbody>
                             <?php
-                            $query = mysqli_query($con, "SELECT party.name, sales.id, sales.challan_no, sales.date, sales.product_name, sales.quantity, sales.rate, sales.amount FROM sales JOIN party ON party.id = sales.party_name where date(date) between '$fdate' and '$tdate'");
+                            // $query = mysqli_query($con, "select * from purchase where date(date) between '$fdate' and '$tdate'");
+                            $query = mysqli_query($con, "SELECT supplier.name, purchase.id, purchase.invoice_no, purchase.date, purchase.bill_no, purchase.bill_date, purchase.product_name, purchase.quantity,purchase.rate,purchase.amount FROM purchase JOIN supplier ON supplier.id = purchase.supplier_name where date(date) between '$fdate' and '$tdate'");
                             $cnt = 1;
                             while ($row = mysqli_fetch_array($query)) {
                             ?>
                                 <tr>
                                     <td style="text-align: center;"><?= $cnt; ?></td>
-                                    <td style="text-align: center;"><?= $row['challan_no']; ?></td>
+                                    <td style="text-align: center;"><?= $row['invoice_no']; ?></td>
                                     <td style="text-align: center;"><?= $row['name']; ?></td>
                                     <td style="text-align: center;"><?= $row['date']; ?></td>
                                     <td style="text-align: center;"><?= $row['product_name']; ?></td>

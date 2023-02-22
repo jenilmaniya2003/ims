@@ -45,7 +45,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                 <div class="container">
                     <!-- Title -->
                     <div class="hk-pg-header">
-                        <h4 class="hk-pg-title"><i data-feather="external-link"></i></span></span>B/w Sales Report Date Selection</h4>
+                        <h4 class="hk-pg-title"><i data-feather="external-link"></i></span></span>B/w Purchase Report Date Selection</h4>
                     </div>
                     <div class="row">
                         <div class="col-xl-12">
@@ -53,7 +53,7 @@ if (strlen($_SESSION['aid'] == 0)) {
 
                                 <div class="row">
                                     <div class="col-sm">
-                                        <form class="needs-validation" method="post" action="bwreportdetails.php" novalidate>
+                                        <form class="needs-validation" method="post" action="purch_bwreportdetails.php" novalidate>
 
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">

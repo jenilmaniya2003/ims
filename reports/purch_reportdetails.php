@@ -1,21 +1,14 @@
 <?php
 session_start();
 error_reporting(0);
+
 if (strlen($_SESSION['aid'] == 0)) {
     header('location:index.php');
 } else {
-    include('../inc/connection.php');
     include('../inc/menu.php');
-    // Code for deletion   
-    if (isset($_GET['del'])) {
-        $cmpid = substr(base64_decode($_GET['del']), 0, -5);
-        $query = mysqli_query($con, "delete from tblcategory where id='$cmpid'");
-        echo "<script>alert('Category record deleted.');</script>";
-        echo "<script>window.location.href='manage-categories.php'</script>";
-    }
+    include('../inc/connection.php');
     $fdate = $_POST['fromdate'];
     $tdate = $_POST['todate'];
-
 
 
     if (isset($_POST['prod_delete_multiple_btn'])) {
@@ -23,7 +16,7 @@ if (strlen($_SESSION['aid'] == 0)) {
         $extract_id = implode(',', $all_id);
         // echo $extract_id;
 
-        $query = "DELETE FROM sales where id IN($extract_id)";
+        $query = "DELETE FROM purchase where id IN($extract_id)";
         $query_run = mysqli_query($con, $query);
         // if ($query_run) {
         //     $_SESSION['status'] = "Data Delete";
@@ -44,7 +37,7 @@ if (strlen($_SESSION['aid'] == 0)) {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>Avalon Metalic</title>
-        <link rel="icon" href="../IMG/logo.png" type="image/png">
+        <link rel="icon" href="../IMG/logo.png" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/css/datatables.min.css">
@@ -63,37 +56,35 @@ if (strlen($_SESSION['aid'] == 0)) {
         <div class="container">
             <!-- <div class="row"> -->
             <!-- <div class="col-12"> -->
+            <h4> Report from <?php echo $fdate ?> to <?php echo $tdate ?></h4>
             <div class="data_table">
                 <form method="post">
                     <table id="example" class="table table-striped table-bordered">
                         <thead class="table-dark">
                             <tr>
-                                <th>Sr.No</th>
-                                <th>Challan No</th>
-                                <th>Party Name</th>
-                                <th>Date</th>
-                                <th>Product Name</th>
-                                <th>Quantity</th>
-                                <th>Rate</th>
-                                <th>Amount</th>
+                                <th style="width: 90px; text-align:center;">
+                                    <button type="submit" name="prod_delete_multiple_btn" class="btn btn-danger">Delete</button>
+                                    <input type="checkbox" id="chkAll">
+                                </th>
+                                <th>#</th>
+                                <th>Month / Year</th>
+                                <th>Sale Amount</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $query = mysqli_query($con, "SELECT party.name, sales.id, sales.challan_no, sales.date, sales.product_name, sales.quantity, sales.rate, sales.amount FROM sales JOIN party ON party.id = sales.party_name where date(date) between '$fdate' and '$tdate'");
+                            $rno = mt_rand(10000, 99999);
+                            $query = mysqli_query($con, "select month(date) as mnth,year(date) as yearr,sum(amount) as tt  from purchase where date(date) between '$fdate' and '$tdate' group by mnth,yearr");
                             $cnt = 1;
                             while ($row = mysqli_fetch_array($query)) {
                             ?>
                                 <tr>
-                                    <td style="text-align: center;"><?= $cnt; ?></td>
-                                    <td style="text-align: center;"><?= $row['challan_no']; ?></td>
-                                    <td style="text-align: center;"><?= $row['name']; ?></td>
-                                    <td style="text-align: center;"><?= $row['date']; ?></td>
-                                    <td style="text-align: center;"><?= $row['product_name']; ?></td>
-                                    <td style="text-align: center;"><?= number_format($row['quantity'], 3); ?></td>
-                                    <td style="text-align: center;"><?= number_format($row['rate'], 2); ?></td>
-                                    <td style="text-align: center;"><?= number_format($row['amount'], 2); ?></td>
-
+                                    <td style="width: 10px; text-align:center;">
+                                        <input type="checkbox" name="product_delete_id[]" value="<?= $row['id']; ?>" class="tblChk">
+                                    </td>
+                                    <td><?php echo $cnt; ?></td>
+                                    <td><?php echo $row['mnth'] . "/" . $row['yearr']; ?></td>
+                                    <td><?php echo number_format($row['tt'], 2); ?></td>
                                 </tr>
                             <?php
                                 $cnt++;

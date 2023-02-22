@@ -298,13 +298,12 @@ if (strlen($_SESSION['aid'] == 0)) {
                     </div>
                 </div>
                 <div class="ui card">
-                    <!-- <div class="content">
-                        <div class="header">Payment Details</div>
-                    </div> -->
-                    <div class="content">
-                        <!-- <p> <strong> Account Name: </strong> "RJCA" </p>
-                        <p> <strong> BSB: </strong> 111-111 </p>
-                        <p> <strong>Account Number: </strong> 1234101 </p> -->
+                    <div class="content center aligned text">
+                        <div class="header">NOTE:</div>
+                    </div>
+                    <div class="content center aligned text">
+                        <p> <strong>IN OUR CHALLAN ,</strong> </p>
+                        <p> <strong>THE PRICE IS WITH GST.</strong> </p>
                     </div>
                 </div>
                 <div class="ui card">
@@ -312,7 +311,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                         <small class="ui header">For,AVALON METALIC</small>
                     </div>
                     <div class="content" style="height: 80px;">
-                        <small style="position: absolute;right: 85px;top: 110px;">(Authorised Signatory)</small>
+                        <i><small style="position: absolute;right: 85px;top: 110px;">(Authorised Signatory)</small></i>
                     </div>
 
                 </div>
