@@ -144,8 +144,8 @@ if (strlen($_SESSION['aid'] == 0)) {
 
                                 <h1 class="ui header pageTitle">Purchase Invoice <small class="ui sub header"></small>
                                 </h1>
-                                <h4 class="ui sub header invDetails">Challan NO: <?php echo $_GET['id']; ?> <br>
-                                    Challan Date: <?php echo $date; ?></h4>
+                                <h4 class="ui sub header invDetails">INVOICE NO: <?php echo $_GET['id']; ?> <br>
+                                    INVOICE Date: <?php echo $date; ?></h4>
                             </div>
                         </div>
                         <div class="right floated left aligned four wide column">
@@ -305,7 +305,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                     <button id="p1" class="btn btn-flat btn-success">
                         Print
                     </button>
-                    <a href="view_inv.php">
+                    <a href="view_purch_inv.php">
                         <button id="p2" class="btn btn-flat btn-danger">
                             Back
                         </button>
