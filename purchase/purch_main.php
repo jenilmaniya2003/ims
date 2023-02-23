@@ -16,26 +16,26 @@ include('../inc/connection.php');
 
 <body>
     <div class="box1 box1img">
-        <a href="srch_prod.php"><br><img src="../IMG/sale.png" alt="add" height=100 width=100><br><br>
-            <font class="f1">Make Challan</font>
+        <a href="purch_prod.php"><br><img src="../IMG/purchase.png" alt="add" height=100 width=100><br><br>
+            <font class="f1">Add Invoice</font>
         </a>
     </div>
 
 
     <div class="box1 box2img">
-        <a href="../reports/salereport.php"><br><img src="../IMG/sale-report.png" alt="add" height=100 width=100><br><br>
-            <font class="f1">Sales Report</font>
+        <a href="../reports/purch_report.php"><br><img src="../IMG/sale-report.png" alt="add" height=100 width=100><br><br>
+            <font class="f1">Purchase Report</font>
         </a>
     </div>
 
     <div class="box1 box3img">
-        <a href="view_inv.php"><br><img src="../IMG/bill.png" alt="add" height=100 width=100><br><br>
-            <font class="f1">View Challan</font>
+        <a href="view_purch_inv.php"><br><img src="../IMG/bill.png" alt="add" height=100 width=100><br><br>
+            <font class="f1">View Invoices</font>
         </a>
     </div>
     <div class="box1 box4img">
-        <a href="../reports/bwreport.php"><br><img src="../IMG/bw-report.png" alt="add" height=100 width=100><br><br>
-            <font class="f1">B/W Sales Report</font>
+        <a href="../reports/purch_bwreport.php"><br><img src="../IMG/bw-report.png" alt="add" height=100 width=100><br><br>
+            <font class="f1">B/W Purchase Report</font>
         </a>
     </div>
     <div class="box5img">

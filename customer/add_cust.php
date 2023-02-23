@@ -1,28 +1,28 @@
 <?php
-	include('../inc/connection.php');
-	//  include("../inc/menu.php");
-	if (isset($_REQUEST['btnsubmit'])){
-		$q="insert into party set
-		name='" .$_REQUEST['name']."',
-		alias='" .$_REQUEST['alias']."',
-		city='" .$_REQUEST['city']."',
-		area='" .$_REQUEST['area']."',
-		state='" .$_REQUEST['state']."',
-		pan_no='" .$_REQUEST['pan_no']."',
-		adhar_no='" .$_REQUEST['adhar_no']."',
-		gstin='" .$_REQUEST['gstin']."',
-		con_per_name='" .$_REQUEST['con_per_name']."',
-		address='" .$_REQUEST['address']."',
-		pin='" .$_REQUEST['pin']."',
-		mo_no='" .$_REQUEST['mo_no']."',
-		phone_no='" .$_REQUEST['phone_no']."',
-		fax='" .$_REQUEST['fax']."',
-		email='" .$_REQUEST['email']."',
-		website='" .$_REQUEST['website']."'		
+include('../inc/connection.php');
+//  include("../inc/menu.php");
+if (isset($_REQUEST['btnsubmit'])) {
+    $q = "insert into party set
+		name='" . $_REQUEST['name'] . "',
+		alias='" . $_REQUEST['alias'] . "',
+		city='" . $_REQUEST['city'] . "',
+		area='" . $_REQUEST['area'] . "',
+		state='" . $_REQUEST['state'] . "',
+		pan_no='" . $_REQUEST['pan_no'] . "',
+		adhar_no='" . $_REQUEST['adhar_no'] . "',
+		gstin='" . $_REQUEST['gstin'] . "',
+		con_per_name='" . $_REQUEST['con_per_name'] . "',
+		address='" . $_REQUEST['address'] . "',
+		pin='" . $_REQUEST['pin'] . "',
+		mo_no='" . $_REQUEST['mo_no'] . "',
+		phone_no='" . $_REQUEST['phone_no'] . "',
+		fax='" . $_REQUEST['fax'] . "',
+		email='" . $_REQUEST['email'] . "',
+		website='" . $_REQUEST['website'] . "'		
 
 		";
-	mysqli_query($con, $q);
-	header("location:view_cust.php");
+    mysqli_query($con, $q);
+    header("location:view_cust.php");
 }
 
 ?>
@@ -37,7 +37,7 @@
     <link rel="icon" href="../IMG/logo.png" type="image/x-icon">
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	
+
     <!-- Main Style Css -->
     <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -80,8 +80,7 @@
                 <div class="form-right">
                     <h2>Contact Details</h2>
                     <div class="form-row">
-                        <input type="text" name="con_per_name" class="street" id="con_per_name"
-                            placeholder="Contact Person Name" required>
+                        <input type="text" name="con_per_name" class="street" id="con_per_name" placeholder="Contact Person Name" required>
                     </div>
                     <div class="form-row">
                         <input type="text" name="address" class="additional" id="address" placeholder="Address">
@@ -107,8 +106,7 @@
                         <input type="text" name="fax" class="additional" id="fax" placeholder="Fax">
                     </div>
                     <div class="form-row">
-                        <input type="text" name="email" id="email" class="input-text"
-                            pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email">
+                        <input type="text" name="email" id="email" class="input-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email">
                     </div>
                     <div class="form-row">
                         <input type="text" name="website" class="additional" id="website" placeholder="Website">
@@ -116,6 +114,7 @@
 
                     <div class="form-row-last">
                         <input type="submit" name="btnsubmit" class="register" value="Register">
+                        <a href="view_cust.php"> <input type="button" name="btnback" class="register" value="Back"></a>
                     </div>
                 </div>
             </form>

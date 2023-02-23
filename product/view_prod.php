@@ -70,7 +70,7 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                             <th style="text-align: center;">Name</th>
                             <th style="text-align: center;">Category</th>
                             <th style="text-align: center;">Price</th>
-                            <th style="text-align: center;">Opening Stock</th>
+                            <th style="text-align: center;">Stock</th>
                             <th style="text-align: center;">Action</th>
                         </tr>
                     </thead>

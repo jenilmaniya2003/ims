@@ -36,8 +36,8 @@ if (strlen($_SESSION['aid'] == 0)) {
                 </a>
             </div>
             <div class="div3 d3">
-                <a href="#"><br><img src="IMG/ledger.png" alt="add" height=80 width=80><br><br>
-                    <font class="f1">A/C. Ledger</font>
+                <a href="supplier/view_supplier.php"><br><img src="IMG/supplier.png" alt="add" height=80 width=80><br><br>
+                    <font class="f1">Supplier</font>
                 </a>
             </div><br>
             <div class="div4 d3">
@@ -46,7 +46,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                 </a>
             </div>
             <div class="div5 d3">
-                <a href="purchase/purch_prod.php"><br><img src="IMG/purchase.png" alt="add" height=100 width=100><br>
+                <a href="purchase/purch_main.php"><br><img src="IMG/purchase.png" alt="add" height=100 width=100><br>
                     <font class="f1">Purchase</font>
                 </a>
             </div>
@@ -61,13 +61,13 @@ if (strlen($_SESSION['aid'] == 0)) {
                 </a>
             </div>
             <div class="div8 d3">
-                <a href="reports/salereport.php"><br><img src="IMG/sale-report.png" alt="add" height=80 width=80><br><br>
-                    <font class="f1">Sales Report</font>
+                <a href="#"><br><img src="IMG/ledger.png" alt="add" height=80 width=80><br><br>
+                    <font class="f1">A/C. Ledger</font>
                 </a>
             </div>
             <div class="div9 d3">
-                <a href="reports/bwreport.php"><br><img src="IMG/bw-report.png" alt="add" height=80 width=80><br><br>
-                    <font class="f1">B/W Report</font>
+                <a href="reports/bwreport.php"><br><img src="IMG/user.png" alt="add" height=80 width=80><br><br>
+                    <font class="f1">Profile</font>
                 </a>
             </div>
             <div class="box1">
@@ -82,15 +82,9 @@ if (strlen($_SESSION['aid'] == 0)) {
             </div>
 
             <div class="box3">
-                Total Sales
+                Total Supplier
                 <br>
-                [<?php
-                    $q = "select sum(amount) as tt  from sales";
-                    $r = mysqli_query($con, $q);
-                    $row = mysqli_fetch_array($r);
-                    $tt = $row['tt'];
-                    echo number_format(round($tt), 2);
-                    ?>]
+                [<?php echo $con->query('select * from supplier')->num_rows; ?>]
             </div>
         </div>
     </body>
