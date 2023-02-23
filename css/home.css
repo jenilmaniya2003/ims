@@ -49,11 +49,15 @@
   width: 150px;
   height: 150px;
   border-radius: 15px;
-
-  animation-name: pulse;
+  transition: transform 0.2s;
+  display: inline-block;
+  /* animation-name: pulse; */
   animation-duration: 2s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+}
+.d3:hover {
+  transform: scale(1.1);
 }
 
 @keyframes pulse {
@@ -131,7 +135,7 @@ img:hover {
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
-@keyframes pulse1 {
+@keyframes pulse {
   0% {
     background-color: #439a97;
     transform: rotateZ(90deg);
@@ -142,6 +146,6 @@ img:hover {
   }
 }
 
-.hover:hover{
+.hover:hover {
   background-color: yellow;
 }
