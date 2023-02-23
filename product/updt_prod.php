@@ -126,11 +126,11 @@ if (isset($_REQUEST['submit'])) {
 
                                         <div class="form-row">
                                             <div class="col-md-6 mb-10">
-                                                <label for="validationCustom03">Opening Stock</label>
+                                                <label for="validationCustom03">Stock</label>
                                                 <input type="text" class="form-control" id="validationCustom03"
-                                                    placeholder="Opening Stock" name="opening_stock"
+                                                    placeholder="Stock" name="opening_stock" readonly
                                                     value="<?php echo $row->opening_stock; ?>" required>
-                                                <div class="invalid-feedback">Please provide a valid opening stock.
+                                                <div class="invalid-feedback">Please provide a stock.
                                                 </div>
                                             </div>
                                         </div>
