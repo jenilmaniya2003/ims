@@ -73,6 +73,7 @@ a {
   font-size: 20px;
   color: #7b2869;
 }
+
 img:hover {
   animation: shake 0.5s;
 }
