@@ -81,6 +81,15 @@ if (strlen($_SESSION['aid'] == 0)) {
             $rate = $_POST['rate'][$pdid];
             $q = "insert into purchase(productid,supplier_name,invoice_no,bill_no,bill_date,product_name,quantity,rate,amount,pymnt_mode) values('$pdid','$supplier_name','$invoice_no', '$bill_no', '$bill_date','$product_name','$qty1','$rate','$amount','$pmode')";
             $query = mysqli_query($con, $q);
+
+            $q1="select opening_stock from product where id='$pdid'";
+            $query1=mysqli_query($con,$q1);
+            while ($row = mysqli_fetch_array($query1)) {
+                $os=$row['opening_stock'];
+                $update_stock=$os+$qty1;
+                $q2="update product set opening_stock=$update_stock where id=$pdid";
+                mysqli_query($con,$q2);
+            }
         }
 
         if ($pmode == 'credit') {

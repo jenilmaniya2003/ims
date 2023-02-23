@@ -41,7 +41,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                 </a>
             </div><br>
             <div class="div4 d3">
-                <a href="sales/srch_prod.php"><br><img src="IMG/sale.png" alt="add" height=80 width=80><br><br>
+                <a href="sales/sales_main.php"><br><img src="IMG/sale.png" alt="add" height=80 width=80><br><br>
                     <font class="f1">Sales </font>
                 </a>
             </div>
