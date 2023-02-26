@@ -265,6 +265,7 @@
           <i class="fas fa-angle-down"></i>
         </a>
         <div class="drop-content">
+        <a href="../reports/stock_report.php">Stock Reports</a>
           <a href="../reports/salereport.php">Sales Reports</a>
           <a href="../reports/bwreport.php">B/W Sales Reports</a>
           <a href="../reports/purch_report.php">Purchase Reports</a>

@@ -51,7 +51,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                 </a>
             </div>
             <div class="div6 d3">
-                <a href="#"><br><img src="IMG/stock.png" alt="add" height=100 width=100><br>
+                <a href="reports/stock_report.php"><br><img src="IMG/stock.png" alt="add" height=100 width=100><br>
                     <font class="f1">Stock Report</font>
                 </a>
             </div>
@@ -66,7 +66,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                 </a>
             </div>
             <div class="div9 d3">
-                <a href="reports/bwreport.php"><br><img src="IMG/user.png" alt="add" height=80 width=80><br><br>
+                <a href="account/account_main.php"><br><img src="IMG/user.png" alt="add" height=80 width=80><br><br>
                     <font class="f1">Profile</font>
                 </a>
             </div>

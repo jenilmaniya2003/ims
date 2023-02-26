@@ -298,7 +298,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                         <small class="ui header">For,AVALON METALIC</small>
                     </div>
                     <div class="content" style="height: 80px;">
-                        <small style="position: absolute;right: 85px;top: 110px;">(Authorised Signatory)</small>
+                        <small style="position: absolute;right: 85px;top: 110px;">(Authorised Signature)</small>
                     </div>
 
                 </div>

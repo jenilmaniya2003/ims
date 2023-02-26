@@ -68,10 +68,9 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                                 <input type="checkbox" id="chkAll">
                             </th>
                             <th style="text-align: center;">Sr.No</th>
-                            <th style="text-align: center;">Name</th>
+                            <th style="text-align: center;">Product Name</th>
                             <th style="text-align: center;">Category</th>
-                            <th style="text-align: center;">Price</th>
-                            <th style="text-align: center;">Action</th>
+                            <th style="text-align: center;">Stock</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,11 +90,7 @@ if (isset($_POST['prod_delete_multiple_btn'])) {
                                     <td style="text-align: center;"><?= $cnt; ?></td>
                                     <td style="text-align: center;"><?= $row['name']; ?></td>
                                     <td style="text-align: center;"><?= $row['category']; ?></td>
-                                    <td style="text-align: center;"><?= $row['price']; ?></td>
-                                    <td>
-                                        <a href="updt_prod.php?id=<?php echo $row['id']; ?>"><img src="../IMG/edit.png" height="25px" width="30PX"></a>&nbsp;
-                                        <a href="del_prod.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are You Sure?');"><img src="../IMG/delete.png" height="20px" width="20px"></a>
-                                    </td>
+                                    <td style="text-align: center;"><?= $row['opening_stock']; ?></td>
                                 </tr>
                             <?php
                                 $cnt++;
