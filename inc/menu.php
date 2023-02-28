@@ -252,7 +252,7 @@
           <i class="fas fa-angle-down"></i>
         </a>
         <div class="drop-content">
-          <a href="../transaction/view_pending_payment.php">Sales Pending</a>
+          <a href="../transaction/view_pending_sales_payment.php">Sales Pending</a>
           <a href="../purchase/view_purch_inv.php">Purchase Pending</a>
         </div>
       </div>

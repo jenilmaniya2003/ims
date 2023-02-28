@@ -56,7 +56,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                 </a>
             </div>
             <div class="div7 d3">
-                <a href="transaction/view_pending_payment.php"><br><img src="IMG/payment.png" alt="add" height=80 width=80><br><br>
+                <a href="transaction/main_trans.php"><br><img src="IMG/payment.png" alt="add" height=80 width=80><br><br>
                     <font class="f1">Pending Payment</font>
                 </a>
             </div>

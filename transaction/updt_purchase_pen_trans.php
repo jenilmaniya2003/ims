@@ -6,20 +6,20 @@ if (strlen($_SESSION['aid'] == 0)) {
 } else {
     include('../inc/connection.php');
     //  include("../inc/menu.php");
-    $sql = "select * from sale_trans where id=" . $_GET['id'];
+    $sql = "select * from purch_trans where id=" . $_GET['id'];
     $res = mysqli_query($con, $sql);
 
     $row = mysqli_fetch_object($res);
 
     if (isset($_REQUEST['submit'])) {
         $total_amount = $_POST['total_amount'];
-        $received_amount = $_POST['received_amount'];
+        $paid_amount = $_POST['paid_amount'];
         $pending_amount = $_POST['pending_amount'];
-        $pending_amount1 = ($pending_amount) - ($received_amount);
+        $pending_amount1 = ($pending_amount) - ($paid_amount);
 
-        $q = "update sale_trans set 
+        $q = "update purch_trans set 
         total_amount='$total_amount',
-        received_amount='$received_amount',
+        paid_amount='$paid_amount',
         pending_amount='$pending_amount1'
         where id=" . $_GET['id'];
 
@@ -28,10 +28,10 @@ if (strlen($_SESSION['aid'] == 0)) {
 
         if ($query) {
             echo "<script>alert('Transaction Update successfully.');</script>";
-            echo "<script>window.location.href='view_pending_payment.php'</script>";
+            echo "<script>window.location.href='view_pending_purchase_payment.php'</script>";
         } else {
             echo "<script>alert('Something went wrong. Please try again.');</script>";
-            echo "<script>window.location.href='updt_amount.php'</script>";
+            echo "<script>window.location.href='updt_purchase_pen_trans.php'</script>";
         }
     }
 
@@ -91,8 +91,8 @@ if (strlen($_SESSION['aid'] == 0)) {
 
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Challan No</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Product Name" name="productname" value="<?php echo $row->challan_no; ?>" readonly required>
+                                                    <label for="validationCustom03">Invoice No</label>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Product Name" name="productname" value="<?php echo $row->invoice_no; ?>" readonly required>
                                                     <div class="invalid-feedback">Please provide a valid challan no.</div>
                                                 </div>
                                             </div>
@@ -111,7 +111,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-10">
                                                     <label for="validationCustom03">Recevid Amount</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Received Amount" name="received_amount" required>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Received Amount" name="paid_amount" required>
                                                     <div class="invalid-feedback">Please provide a valid received amount.
                                                     </div>
                                                 </div>

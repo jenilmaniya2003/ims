@@ -99,8 +99,8 @@ if (strlen($_SESSION['aid'] == 0)) {
                                     <td style="text-align: center;"><?= $row['pending_amount']; ?></td>
 
                                     <td>
-                                        <a href="updt_amount.php?id=<?php echo $row['id']; ?>"><img src="../IMG/edit.png" height="25px" width="30PX"></a>&nbsp;
-                                        <a href="del_pen_trans.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="20px"></a>&nbsp;
+                                        <a href="updt_sales_pen_trans.php?id=<?php echo $row['id']; ?>"><img src="../IMG/edit.png" height="25px" width="30PX"></a>&nbsp;
+                                        <a href="del_sales_pen_trans.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="20px"></a>&nbsp;
                                     </td>
                                 </tr>
                             <?php
