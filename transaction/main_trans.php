@@ -16,13 +16,13 @@ include('../inc/connection.php');
 
 <body>
     <div class="box1 box1img">
-        <a href="view_pending_sales_payment.php"><br><img src="../IMG/account-manager.png" alt="Manage Account" height=100 width=100><br><br>
+        <a href="view_pending_sales_payment.php"><br><img src="../IMG/sales pending.png" alt="Manage Account" height=100 width=100><br><br>
             <font class="f1">Sales Pending Payment</font>
         </a>
     </div>
 
     <div class="box1 box2img">
-        <a href="view_pending_purchase_payment.php"><br><img src="../IMG/change-password.png" alt="Change Password" height=100 width=100><br><br>
+        <a href="view_pending_purchase_payment.php"><br><img src="../IMG/purchase pending.png" alt="Change Password" height=100 width=100><br><br>
             <font class="f1">Purchase Pending Payment</font>
         </a>
     </div>
