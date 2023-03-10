@@ -84,27 +84,28 @@ if (strlen($_SESSION['aid'] == 0)) {
                             $query = "select supplier.name,purch_trans.id,purch_trans.invoice_no,purch_trans.pending_amount,purch_trans.total_amount,purch_trans.sid from purch_trans join supplier on supplier.id=purch_trans.sid;";
                             $res = mysqli_query($con, $query);
                             while ($row = mysqli_fetch_array($res)) {
-                                // if (mysqli_num_rows($res) > 0) {
+                                if ($row['pending_amount'] > 0) {
 
-                                // foreach ($res as $row) {
+                                    // foreach ($res as $row) {
                             ?>
-                                <tr>
-                                    <td style="width: 10px; text-align:center;">
-                                        <input type="checkbox" name="product_delete_id[]" value="<?= $row['id']; ?>" class="tblChk">
-                                    </td>
-                                    <td style="text-align: center;" class="see"><?= $cnt; ?></td>
-                                    <td style="text-align: center;"><?= $row['invoice_no']; ?></td>
-                                    <td style="text-align: center;"><?= $row['name']; ?></td>
-                                    <td style="text-align: center;"><?= $row['total_amount']; ?></td>
-                                    <td style="text-align: center;"><?= $row['pending_amount']; ?></td>
+                                    <tr>
+                                        <td style="width: 10px; text-align:center;">
+                                            <input type="checkbox" name="product_delete_id[]" value="<?= $row['id']; ?>" class="tblChk">
+                                        </td>
+                                        <td style="text-align: center;" class="see"><?= $cnt; ?></td>
+                                        <td style="text-align: center;"><?= $row['invoice_no']; ?></td>
+                                        <td style="text-align: center;"><?= $row['name']; ?></td>
+                                        <td style="text-align: center;"><?= $row['total_amount']; ?></td>
+                                        <td style="text-align: center;"><?= $row['pending_amount']; ?></td>
 
-                                    <td>
-                                        <a href="updt_purchase_pen_trans.php?id=<?php echo $row['id']; ?>"><img src="../IMG/edit.png" height="25px" width="30PX"></a>&nbsp;
-                                        <a href="del_purchase_pen_trans.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="20px"></a>&nbsp;
-                                    </td>
-                                </tr>
+                                        <td>
+                                            <a href="updt_purchase_pen_trans.php?id=<?php echo $row['id']; ?>"><img src="../IMG/edit.png" height="25px" width="30PX"></a>&nbsp;
+                                            <a href="del_purchase_pen_trans.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="20px"></a>&nbsp;
+                                        </td>
+                                    </tr>
                             <?php
-                                $cnt++;
+                                    $cnt++;
+                                }
                             }
                             ?>
 

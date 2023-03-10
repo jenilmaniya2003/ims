@@ -245,7 +245,7 @@
         </div>
       </div>
 
-      <a href="#">Account Ledger</a>
+      <!-- <a href="#">Account Ledger</a> -->
 
       <div class="dropdown">
         <a class="dropBtn" href="#">Pending Payment
@@ -253,7 +253,7 @@
         </a>
         <div class="drop-content">
           <a href="../transaction/view_pending_sales_payment.php">Sales Pending</a>
-          <a href="../purchase/view_purch_inv.php">Purchase Pending</a>
+          <a href="../transaction/view_pending_purchase_payment.php">Purchase Pending</a>
         </div>
       </div>
 
@@ -265,7 +265,7 @@
           <i class="fas fa-angle-down"></i>
         </a>
         <div class="drop-content">
-        <a href="../reports/stock_report.php">Stock Reports</a>
+          <a href="../reports/stock_report.php">Stock Reports</a>
           <a href="../reports/salereport.php">Sales Reports</a>
           <a href="../reports/bwreport.php">B/W Sales Reports</a>
           <a href="../reports/purch_report.php">Purchase Reports</a>
