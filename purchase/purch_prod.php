@@ -234,8 +234,8 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                                                 ?></td>
                                                                     <td><?php //echo $row['ProductPrice']; 
                                                                         ?></td> -->
-                                                                    <td><input type="text" class="product-quantity" name="quantity" size="3" /></td>
-                                                                    <td><input type="text" class="product-quantity" name="ProductPrice" size="3" autocomplete="off" /></td>
+                                                                    <td><input type="text" class="product-quantity" name="quantity" value="1" size="3" /></td>
+                                                                    <td><input type="text" class="product-quantity" name="ProductPrice" size="3" /></td>
                                                                     <td>
                                                                         <input type="submit" value="Add to Cart" class="btnAddAction btn btn-outline-primary" />
                                                                     </td>
