@@ -10,16 +10,18 @@ if (strlen($_SESSION['aid'] == 0)) {
     $res = mysqli_query($con, $sql);
 
     $row = mysqli_fetch_object($res);
+    $rm = $row->received_amount;
 
     if (isset($_REQUEST['submit'])) {
         $total_amount = $_POST['total_amount'];
         $received_amount = $_POST['received_amount'];
+        $rm1 = $_POST['received_amount'] + $rm;
         $pending_amount = $_POST['pending_amount'];
         $pending_amount1 = ($pending_amount) - ($received_amount);
 
         $q = "update sale_trans set 
         total_amount='$total_amount',
-        received_amount='$received_amount',
+        received_amount='$rm1',
         pending_amount='$pending_amount1'
         where id=" . $_GET['id'];
 

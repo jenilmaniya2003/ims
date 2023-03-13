@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2023 at 08:50 AM
+-- Generation Time: Mar 13, 2023 at 07:12 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -92,64 +92,65 @@ CREATE TABLE `product` (
   `name` varchar(100) NOT NULL,
   `category` varchar(100) NOT NULL,
   `price` varchar(250) NOT NULL,
-  `opening_stock` varchar(50) NOT NULL
+  `opening_stock` varchar(50) NOT NULL,
+  `updationdate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `category`, `price`, `opening_stock`) VALUES
-(38, 'FL 1010', 'One Side', '50', '50'),
-(39, 'FL BCH 303', 'Flora', '58', '45'),
-(40, 'FL MJ', 'One Side', '96', '35'),
-(41, 'FL Orange', 'Silver', '36', '45'),
-(43, 'GP Water', 'Both Side', '12', '66'),
-(44, 'GR 4-B63', 'Both Side', '45', '40'),
-(46, 'J Anmol', 'Both Side', '23', ''),
-(47, 'J BCH', 'Both Side', '53', ''),
-(48, 'J Gold 50/35', 'Both Side', '42', ''),
-(49, 'J Water', 'One Side', '63', ''),
-(50, 'L Pink', 'Flora', '75', ''),
-(51, 'L Anmol', 'Both Side', '52', ''),
-(52, 'L Water', 'Both Side', '41', ''),
-(53, 'LG Water', 'Both Side', '32', ''),
-(54, 'M Anmol', 'Both Side', '45', ''),
-(55, 'M Water', 'Flora', '74', ''),
-(56, 'MS 11', 'Silver', '85', ''),
-(57, 'NT Anmol', 'Flora', '22', ''),
-(58, 'PC Water', 'One Side', '32', ''),
-(59, 'PJ Water', 'One Side', '32', ''),
-(60, 'PS Water', 'Both Side', '12', ''),
-(61, 'Pink Flora', 'Flora', '22', ''),
-(62, 'Pink WATER', 'Both Side', '25', ''),
-(63, 'R Water', 'Both Side', '36', ''),
-(64, 'RB Water', 'Both Side', '22', ''),
-(65, 'R Coper', 'Both Side', '88', ''),
-(66, 'R Steel grey', 'Gray', '99', ''),
-(67, 'Rose Gold', 'Both Side', '25', ''),
-(68, 'S Anmol', 'One Side', '69', ''),
-(69, 'SBCH', 'Both Side', '85', ''),
-(70, 'SN Water', 'Both Side', '33', ''),
-(71, 'SPT Anmol', 'Both Side', '55', ''),
-(72, 'SR Anmol', 'One Side', '74', ''),
-(73, 'SR BCH', 'One Side', '12', ''),
-(74, 'Steel Grey', 'Gray', '56', ''),
-(75, 'V Gold', 'One Side', '88', ''),
-(76, 'VR GOLD', 'Both Side', '74', ''),
-(77, 'WPJ BS', 'Both Side', '22', ''),
-(78, 'Water 11 50/69', 'Both Side', '74', ''),
-(79, 'Water Gold', 'Both Side', '63', ''),
-(80, 'Y Anmol', 'Silver', '85', ''),
-(81, 'Y Gold', 'One Side', '32', ''),
-(82, 'Y Antic', 'Silver', '123', ''),
-(83, 'Y Antic', 'Silver', '45', ''),
-(84, 'Y Water', 'Flora', '45', ''),
-(85, 'Zaina 303', 'Both Side', '52', ''),
-(86, 'AB GOLD', 'Flora', '45', '50'),
-(92, 'Test', 'Both Side', '20', '35'),
-(93, 'test2', 'Flora', '30', '30'),
-(94, 'test2', 'One Side', '20', '35');
+INSERT INTO `product` (`id`, `name`, `category`, `price`, `opening_stock`, `updationdate`) VALUES
+(38, 'FL 1010', 'One Side', '280', '50', '2023-02-22 06:39:33'),
+(39, 'FL BCH 303', 'Flora', '58', '309.1', '2023-03-13 05:09:57'),
+(40, 'FL MJ', 'One Side', '96', '16.84', '2023-03-13 05:13:22'),
+(41, 'FL Orange', 'Silver', '36', '45', NULL),
+(43, 'GP Water', 'Both Side', '12', '528', '2023-03-13 05:24:00'),
+(44, 'GR 4-B63', 'Both Side', '45', '40', NULL),
+(46, 'J Anmol', 'Both Side', '23', '', NULL),
+(47, 'J BCH', 'Both Side', '53', '', NULL),
+(48, 'J Gold 50/35', 'Both Side', '42', '', NULL),
+(49, 'J Water', 'One Side', '63', '', NULL),
+(50, 'L Pink', 'Flora', '75', '', NULL),
+(51, 'L Anmol', 'Both Side', '52', '', NULL),
+(52, 'L Water', 'Both Side', '41', '', NULL),
+(53, 'LG Water', 'Both Side', '32', '', NULL),
+(54, 'M Anmol', 'Both Side', '45', '', NULL),
+(55, 'M Water', 'Flora', '74', '', NULL),
+(56, 'MS 11', 'Silver', '85', '', NULL),
+(57, 'NT Anmol', 'Flora', '22', '', NULL),
+(58, 'PC Water', 'One Side', '32', '', NULL),
+(59, 'PJ Water', 'One Side', '32', '', NULL),
+(60, 'PS Water', 'Both Side', '12', '', NULL),
+(61, 'Pink Flora', 'Flora', '22', '', NULL),
+(62, 'Pink WATER', 'Both Side', '25', '', NULL),
+(63, 'R Water', 'Both Side', '36', '', NULL),
+(64, 'RB Water', 'Both Side', '22', '', NULL),
+(65, 'R Coper', 'Both Side', '88', '', NULL),
+(66, 'R Steel grey', 'Gray', '99', '', NULL),
+(67, 'Rose Gold', 'Both Side', '25', '', NULL),
+(68, 'S Anmol', 'One Side', '69', '', NULL),
+(69, 'SBCH', 'Both Side', '85', '', NULL),
+(70, 'SN Water', 'Both Side', '33', '', NULL),
+(71, 'SPT Anmol', 'Both Side', '55', '', NULL),
+(72, 'SR Anmol', 'One Side', '74', '', NULL),
+(73, 'SR BCH', 'One Side', '12', '', NULL),
+(74, 'Steel Grey', 'Gray', '56', '', NULL),
+(75, 'V Gold', 'One Side', '88', '', NULL),
+(76, 'VR GOLD', 'Both Side', '74', '', NULL),
+(77, 'WPJ BS', 'Both Side', '22', '', NULL),
+(78, 'Water 11 50/69', 'Both Side', '74', '', NULL),
+(79, 'Water Gold', 'Both Side', '63', '', NULL),
+(80, 'Y Anmol', 'Silver', '85', '', NULL),
+(81, 'Y Gold', 'One Side', '32', '', NULL),
+(82, 'Y Antic', 'Silver', '123', '', NULL),
+(83, 'Y Antic', 'Silver', '45', '', NULL),
+(84, 'Y Water', 'Flora', '45', '', NULL),
+(85, 'Zaina 303', 'Both Side', '52', '', NULL),
+(86, 'AB GOLD', 'Flora', '45', '50', NULL),
+(92, 'Test', 'Both Side', '20', '35', NULL),
+(93, 'test2', 'Flora', '30', '30', NULL),
+(94, 'test2', 'One Side', '20', '35', NULL);
 
 -- --------------------------------------------------------
 
@@ -162,7 +163,7 @@ CREATE TABLE `purchase` (
   `productid` varchar(100) NOT NULL,
   `supplier_name` varchar(100) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
-  `invoice_no` varchar(50) NOT NULL,
+  `invoice_no` int(50) NOT NULL,
   `bill_no` varchar(100) NOT NULL,
   `bill_date` date NOT NULL,
   `product_name` varchar(200) NOT NULL,
@@ -177,7 +178,16 @@ CREATE TABLE `purchase` (
 --
 
 INSERT INTO `purchase` (`id`, `productid`, `supplier_name`, `date`, `invoice_no`, `bill_no`, `bill_date`, `product_name`, `quantity`, `rate`, `amount`, `pymnt_mode`) VALUES
-(1, '41', '1', '2023-02-20', '45', '40', '2023-02-19', 'FL Orange', '100', '280.00', '28000', 'credit');
+(1, '41', '1', '2023-02-20', 45, '40', '2023-02-19', 'FL Orange', '100', '280.00', '28000', 'credit'),
+(2, '44', '1', '2023-02-21', 10, '41', '2023-02-21', 'GR 4-B63', '260', '270.00', '70200', 'credit'),
+(3, '48', '1', '2023-02-21', 10, '41', '2023-02-21', 'J Gold 50/35', '250', '280.00', '70000', 'credit'),
+(4, '56', '1', '2023-02-21', 15, '45', '2023-02-22', 'MS 11', '190', '275.00', '52250', 'cash'),
+(5, '62', '1', '2023-02-21', 15, '45', '2023-02-22', 'Pink WATER', '220', '280.00', '61600', 'cash'),
+(6, '43', '1', '2023-03-10', 13, '49', '2023-03-02', 'GP Water', '280', '245.00', '68600', 'credit'),
+(7, '39', '1', '2023-03-10', 13, '49', '2023-03-02', 'FL BCH 303', '275', '250.00', '68750', 'credit'),
+(8, '55', '1', '2023-03-13', 46, '133', '2023-03-11', 'M Water', '150', '260.00', '39000', 'credit'),
+(10, '46', '1', '2023-03-13', 47, '123', '2023-03-12', 'J Anmol', '220', '275.00', '60500', 'credit'),
+(11, '43', '1', '2023-03-13', 48, '48', '2023-03-11', 'GP Water', '182', '240.00', '43680', 'credit');
 
 -- --------------------------------------------------------
 
@@ -191,7 +201,7 @@ CREATE TABLE `purch_trans` (
   `sid` varchar(250) NOT NULL,
   `total_amount` varchar(250) NOT NULL,
   `pending_amount` varchar(250) NOT NULL,
-  `paid_amount` varchar(250) NOT NULL
+  `paid_amount` int(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -199,7 +209,10 @@ CREATE TABLE `purch_trans` (
 --
 
 INSERT INTO `purch_trans` (`id`, `invoice_no`, `sid`, `total_amount`, `pending_amount`, `paid_amount`) VALUES
-(1, '45', '1', '28000', '28000', '');
+(1, '45', '1', '28000', '0', 28000),
+(2, '10', '1', '140200', '0', 108000),
+(3, '13', '1', '137350', '0', 70000),
+(5, '48', '1', '43680', '20000', 23680);
 
 -- --------------------------------------------------------
 
@@ -210,7 +223,7 @@ INSERT INTO `purch_trans` (`id`, `invoice_no`, `sid`, `total_amount`, `pending_a
 CREATE TABLE `sales` (
   `id` int(100) NOT NULL,
   `productid` varchar(250) NOT NULL,
-  `challan_no` varchar(50) NOT NULL,
+  `challan_no` int(50) NOT NULL,
   `party_name` varchar(200) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
   `product_name` varchar(200) NOT NULL,
@@ -227,17 +240,7 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`id`, `productid`, `challan_no`, `party_name`, `date`, `product_name`, `box_no`, `bobin`, `quantity`, `rate`, `amount`, `pymnt_mode`) VALUES
-(1, '39', '1', '8', '2023-02-08', 'FL BCH 303', '1', '1', '1', '58.00', '58', 'credit'),
-(4, '50', '2', '4', '2023-02-08', 'L Pink', '18', '65', '250', '75.00', '18750', 'credit'),
-(5, '42', '2', '4', '2023-02-08', 'FL Orange', '18', '15', '42', '23.00', '966', 'credit'),
-(6, '50', '2', '4', '2023-02-08', 'L Pink', '18', '65', '250', '75.00', '18750', 'credit'),
-(7, '42', '5', '8', '2023-02-08', 'FL Orange', '17', '84', '40', '23.00', '920', 'credit'),
-(8, '53', '5', '8', '2023-02-08', 'LG Water', '78', '10', '60', '32.00', '1920', 'credit'),
-(9, '54', '5', '8', '2023-02-09', 'M Anmol', '78', '10', '50', '45.00', '2250', 'credit'),
-(10, '43', '5', '8', '2023-02-09', 'GP Water', '78', '10', '60', '12.00', '720', 'credit'),
-(11, '42', '5', '4', '2023-02-09', 'FL Orange', '1', '1', '1', '23.00', '23', 'cash'),
-(12, '41', '12', '4', '2023-02-20', 'FL Orange', '1', '100', '10.02', '36.00', '360.72', 'credit'),
-(13, '41', '125', '4', '2023-02-20', 'FL Orange', '15', '100', '10.02', '280.00', '2805.6', 'cash');
+(1, '40', 1, '4', '2023-03-13', 'FL MJ', '15', '100', '9.080', '285.00', '2587.8', 'credit');
 
 -- --------------------------------------------------------
 
@@ -251,7 +254,7 @@ CREATE TABLE `sale_trans` (
   `cid` varchar(250) NOT NULL,
   `total_amount` varchar(250) NOT NULL,
   `pending_amount` varchar(250) NOT NULL,
-  `received_amount` varchar(250) NOT NULL
+  `received_amount` int(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -259,8 +262,10 @@ CREATE TABLE `sale_trans` (
 --
 
 INSERT INTO `sale_trans` (`id`, `challan_no`, `cid`, `total_amount`, `pending_amount`, `received_amount`) VALUES
-(2, '5', '8', '2970', '1000', '1000'),
-(3, '12', '4', '360.72', '360.72', '');
+(2, '5', '8', '2970', '0', 1000),
+(4, '126', '4', '8420.35', '0', 8420),
+(5, '128', '4', '3052', '0', 3052),
+(6, '1', '4', '2587.8', '0', 2587);
 
 -- --------------------------------------------------------
 
@@ -369,25 +374,25 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `purch_trans`
 --
 ALTER TABLE `purch_trans`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sale_trans`
 --
 ALTER TABLE `sale_trans`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `supplier`

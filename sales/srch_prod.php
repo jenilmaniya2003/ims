@@ -7,6 +7,11 @@ $sql1 = "select * from product";
 $res1 = mysqli_query($con, $sql1);
 $sql2 = "select * from party";
 $res2 = mysqli_query($con, $sql2);
+$sql3 = "select MAX(challan_no) as max from sales";
+$res3 = mysqli_query($con, $sql3);
+$row = mysqli_fetch_assoc($res3);
+$max = $row['max'];
+
 
 if (strlen($_SESSION['aid'] == 0)) {
     header('location:../index.php');
@@ -84,17 +89,16 @@ if (strlen($_SESSION['aid'] == 0)) {
             $q = "insert into sales(productid,challan_no,party_name,product_name,box_no,bobin,quantity,rate,amount,pymnt_mode) values('$pdid','$challan_no','$party_name','$product_name','$box_no','$bobin','$qty1','$rate','$amount','$pmode')";
             $query = mysqli_query($con, $q);
 
-            $q1="select opening_stock from product where id='$pdid'";
-            $query1=mysqli_query($con,$q1);
+            $q1 = "select opening_stock from product where id='$pdid'";
+            $query1 = mysqli_query($con, $q1);
             while ($row = mysqli_fetch_array($query1)) {
-                $os=$row['opening_stock'];
-                $update_stock=$os-$qty1;
-                $q2="update product set opening_stock=$update_stock where id=$pdid";
-                mysqli_query($con,$q2);
+                $os = $row['opening_stock'];
+                $update_stock = $os - $qty1;
+                $q2 = "update product set opening_stock=$update_stock where id=$pdid";
+                mysqli_query($con, $q2);
             }
-            
         }
-       
+
 
         if ($pmode == 'credit') {
             $q1 = "insert into sale_trans (cid,challan_no,total_amount,pending_amount) values ('$party_name','$challan_no','$total_amount','$total_amount')";
@@ -235,9 +239,9 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                                                 ?></td>
                                                                     <td><?php //echo $row['ProductPrice']; 
                                                                         ?></td> -->
-                                                                    <td><input type="text" class="product-quantity" name="box_no" value="1" size="3" /></td>
-                                                                    <td><input type="text" class="product-quantity" name="bobin" value="1" size="3" /></td>
-                                                                    <td><input type="text" class="product-quantity" name="quantity" value="1" size="3" /></td>
+                                                                    <td><input type="text" class="product-quantity" name="box_no" size="3" /></td>
+                                                                    <td><input type="text" class="product-quantity" name="bobin" size="3" /></td>
+                                                                    <td><input type="text" class="product-quantity" name="quantity" size="3" /></td>
                                                                     <td><input type="text" class="product-quantity" name="ProductPrice" size="3" /></td>
                                                                     <td>
                                                                         <input type="submit" value="Add to Cart" class="btnAddAction btn btn-outline-primary" />
@@ -346,7 +350,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                     <div class="form-row">
                                                         <div class="col-md-6 mb-10">
                                                             <label for="validationCustom03">Challan No</label>
-                                                            <input type="text" class="form-control" id="validationCustom03" placeholder="Challan No" name="challan_no" required>
+                                                            <input type="text" class="form-control" id="validationCustom03" value="<?php echo $max + 1; ?>" name="challan_no" readonly required>
                                                             <div class="invalid-feedback">Please provide a valid customer name.
                                                             </div>
                                                         </div>
