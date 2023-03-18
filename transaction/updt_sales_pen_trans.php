@@ -11,6 +11,8 @@ if (strlen($_SESSION['aid'] == 0)) {
 
     $row = mysqli_fetch_object($res);
     $rm = $row->received_amount;
+    $challan_no = $row->challan_no;
+    $cid = $row->cid;
 
     if (isset($_REQUEST['submit'])) {
         $total_amount = $_POST['total_amount'];
@@ -27,6 +29,8 @@ if (strlen($_SESSION['aid'] == 0)) {
 
         $query = mysqli_query($con, $q);
 
+        $q1 = "insert into ledger_trans (cid,challan_no,received_amount) values ('$cid','$challan_no','$received_amount')";
+        $res1 = mysqli_query($con, $q1);
 
         if ($query) {
             echo "<script>alert('Transaction Update successfully.');</script>";

@@ -365,9 +365,7 @@ if (strlen($_SESSION['aid'] == 0)) {
 
                                                         <div class="col-md-6 mb-10">
                                                             <label for="validationCustom03">Customer Name</label>
-                                                            <!-- <input type="text" class="form-control" id="validationCustom03" placeholder="Customer Name" name="supplier_name" required>
-                                                        <div class="invalid-feedback">Please provide a valid customer name.
-                                                        </div> -->
+
 
                                                             <select name="supplier_name" id="supplier_name" class="form-control custom-select">
                                                                 <option value="">Select Name</option>
