@@ -2,161 +2,84 @@
 session_start();
 //error_reporting(0);
 include('../inc/connection.php');
-if (strlen($_SESSION['aid']==0)) {
-  header('location:index.php');
-  } else{
-// Add product Code
-if(isset($_POST['submit']))
-{
-//Getting Post Values
-$catname=$_POST['category']; 
-$opening_stock=$_POST['opening_stock'];   
-$pname=$_POST['productname'];
-$pprice=$_POST['productprice'];
-$query=mysqli_query($con,"insert into product (name,category,opening_stock,price) values('$pname','$catname','$opening_stock','$pprice')"); 
-if($query){
-echo "<script>alert('Product added successfully.');</script>";   
-echo "<script>window.location.href='add_prod.php'</script>";
-} else{
-echo "<script>alert('Something went wrong. Please try again.');</script>";   
-echo "<script>window.location.href='add_prod.php'</script>";    
-}
-}
+if (strlen($_SESSION['aid'] == 0)) {
+    header('location:index.php');
+} else {
+    // Add product Code
+    if (isset($_POST['submit'])) {
+        //Getting Post Values
+        $catname = $_POST['category'];
+        // $opening_stock = $_POST['opening_stock'];
+        $pname = $_POST['productname'];
+        $pprice = $_POST['productprice'];
+        $query = mysqli_query($con, "insert into product (name,category,price) values('$pname','$catname','$pprice')");
+        if ($query) {
+            echo "<script>alert('Product added successfully.');</script>";
+            echo "<script>window.location.href='view_prod.php'</script>";
+        } else {
+            echo "<script>alert('Something went wrong. Please try again.');</script>";
+            echo "<script>window.location.href='add_prod.php'</script>";
+        }
+    }
 
-    ?>
-<!DOCTYPE html>
-<html lang="en">
+?>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Add Product</title>
-    <link href="../vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
-    <link href="../vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
-    <link href="../dist/css/style.css" rel="stylesheet" type="text/css">
-</head>
+    <!DOCTYPE html>
+    <html lang="en">
 
-<body>
+    <head>
+        <meta charset="utf-8">
+        <title>Avalon Metalic</title>
+        <link rel="icon" href="../IMG/logo.png" type="image/x-icon">
+        <!-- Mobile Specific Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+        <!-- Main Style Css -->
+        <link rel="stylesheet" href="../customer/css/style.css" />
+    </head>
 
-    <!-- HK Wrapper -->
-    <div class="hk-wrapper">
-
-        <!-- Top Navbar -->
-        <?php include_once('../inc/menu.php'); ?>
+    <body class="form-v10">
+        <div class="page-content">
+            <div class="form-v10-content">
+                <form class="form-detail" action="#" method="post" id="myform">
 
 
 
-        <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
-        <!-- /Vertical Nav -->
+                    <div class="form-right">
+                        <h2>Contact Details</h2>
+                        <div class="form-row">
+                            <input type="text" name="productname" class="street" id="productname" placeholder="Product Name" required>
+                        </div>
 
 
+                        <div class="form-row">
+                            <!-- <input type="text" name="email" id="email" class="input-text" placeholder="Categoty"> -->
+                            <select class="form-control custom-select" name="category" required>
+                                <option value="">Select category</option>
+                                <!--  -->
+                                <option>One Side</option>
+                                <option>Both Side</option>
+                                <option>Flora</option>
+                                <option>Gray</option>
+                                <option>Black</option>
+                                <option>Silver</option>
+                            </select>
+                        </div>
 
-        <!-- Main Content -->
-        <div class="hk-pg-wrapper">
-            <!-- Breadcrumb -->
+                        <div class="form-row">
+                            <input type="text" name="productprice" class="additional" id="productprice" placeholder="Product Price">
+                        </div>
 
-            <!-- /Breadcrumb -->
-
-            <!-- Container -->
-            <div class="container">
-                <!-- Title -->
-                <div class="hk-pg-header">
-                    <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i
-                                    data-feather="external-link"></i></span></span>Add Product</h4>
-                </div>
-                <!-- /Title -->
-
-                <!-- Row -->
-                <div class="row">
-                    <div class="col-xl-12">
-                        <section class="hk-sec-wrapper">
-
-                            <div class="row">
-                                <div class="col-sm">
-                                    <form class="needs-validation" method="post" novalidate>
-
-                                        <div class="form-row">
-                                            <div class="col-md-6 mb-10">
-                                                <label for="validationCustom03">Product Name</label>
-                                                <input type="text" class="form-control" id="validationCustom03"
-                                                    placeholder="Product Name" name="productname" required>
-                                                <div class="invalid-feedback">Please provide a valid product name.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-row">
-                                            <div class="col-md-6 mb-10">
-                                                <label for="validationCustom03">Category</label>
-                                                <select class="form-control custom-select" name="category" required>
-                                                    <option value="">Select category</option>
-                                                    <!--  -->
-                                                    <option>One Side</option>
-                                                    <option>Both Side</option>
-                                                    <option>Flora</option>
-                                                    <option>Gray</option>
-                                                    <option>Black</option>
-                                                    <option>Silver</option>
-                                                </select>
-                                                <div class="invalid-feedback">Please select a category.</div>
-                                            </div>
-                                        </div>
-
-
-                                        <!-- <div class="form-row">
-                                            <div class="col-md-6 mb-10">
-                                                <label for="validationCustom03">Stock</label>
-                                                <input type="text" class="form-control" id="validationCustom03"
-                                                    placeholder="Stock" name="opening_stock" disabled required>
-                                                <div class="invalid-feedback">Please provide a valid opening stock.
-                                                </div>
-                                            </div>
-                                        </div> -->
-
-                                        <div class="form-row">
-                                            <div class="col-md-6 mb-10">
-                                                <label for="validationCustom03">Product Price</label>
-                                                <input type="text" class="form-control" id="validationCustom03"
-                                                    placeholder="Product Price" name="productprice" required>
-                                                <div class="invalid-feedback">Please provide a valid product price.
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <button class="btn btn-primary" type="submit" name="submit">Submit</button>
-                                        <button class="btn btn-danger" type="reset" name="reset">Reset</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </section>
-
+                        <div class="form-row-last">
+                            <input type="submit" name="submit" class="register" value="Register">
+                            <a href="view_prod.php"> <input type="button" name="btnback" class="register" value="Back"></a>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
-
-
-            <!-- Footer -->
-            <?php include_once('../inc/footer.php');?>
-            <!-- /Footer -->
-
         </div>
-        <!-- /Main Content -->
+    </body>
+    <?php include_once('../inc/footer.php'); ?>
 
-    </div>
-
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../vendors/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
-    <script src="../dist/js/jquery.slimscroll.js"></script>
-    <script src="../dist/js/dropdown-bootstrap-extended.js"></script>
-    <script src="../dist/js/feather.min.js"></script>
-    <script src="../vendors/jquery-toggles/toggles.min.js"></script>
-    <script src="../dist/js/toggle-data.js"></script>
-    <script src="../dist/js/init.js"></script>
-    <script src="../dist/js/validation-data.js"></script>
-
-</body>
-
-</html>
+    </html>
 <?php } ?>
