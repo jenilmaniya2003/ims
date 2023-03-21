@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2023 at 07:12 AM
+-- Generation Time: Mar 21, 2023 at 05:45 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -50,6 +50,28 @@ INSERT INTO `admin` (`id`, `name`, `address`, `mobile_no`, `username`, `email`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ledger_trans`
+--
+
+CREATE TABLE `ledger_trans` (
+  `id` int(250) NOT NULL,
+  `challan_no` varchar(250) NOT NULL,
+  `cid` varchar(250) NOT NULL,
+  `received_amount` int(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ledger_trans`
+--
+
+INSERT INTO `ledger_trans` (`id`, `challan_no`, `cid`, `received_amount`) VALUES
+(1, '2', '4', 295),
+(2, '2', '4', 1000),
+(5, '2', '4', 2000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `party`
 --
 
@@ -92,7 +114,7 @@ CREATE TABLE `product` (
   `name` varchar(100) NOT NULL,
   `category` varchar(100) NOT NULL,
   `price` varchar(250) NOT NULL,
-  `opening_stock` varchar(50) NOT NULL,
+  `opening_stock` int(50) NOT NULL,
   `updationdate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -101,56 +123,56 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `category`, `price`, `opening_stock`, `updationdate`) VALUES
-(38, 'FL 1010', 'One Side', '280', '50', '2023-02-22 06:39:33'),
-(39, 'FL BCH 303', 'Flora', '58', '309.1', '2023-03-13 05:09:57'),
-(40, 'FL MJ', 'One Side', '96', '16.84', '2023-03-13 05:13:22'),
-(41, 'FL Orange', 'Silver', '36', '45', NULL),
-(43, 'GP Water', 'Both Side', '12', '528', '2023-03-13 05:24:00'),
-(44, 'GR 4-B63', 'Both Side', '45', '40', NULL),
-(46, 'J Anmol', 'Both Side', '23', '', NULL),
-(47, 'J BCH', 'Both Side', '53', '', NULL),
-(48, 'J Gold 50/35', 'Both Side', '42', '', NULL),
-(49, 'J Water', 'One Side', '63', '', NULL),
-(50, 'L Pink', 'Flora', '75', '', NULL),
-(51, 'L Anmol', 'Both Side', '52', '', NULL),
-(52, 'L Water', 'Both Side', '41', '', NULL),
-(53, 'LG Water', 'Both Side', '32', '', NULL),
-(54, 'M Anmol', 'Both Side', '45', '', NULL),
-(55, 'M Water', 'Flora', '74', '', NULL),
-(56, 'MS 11', 'Silver', '85', '', NULL),
-(57, 'NT Anmol', 'Flora', '22', '', NULL),
-(58, 'PC Water', 'One Side', '32', '', NULL),
-(59, 'PJ Water', 'One Side', '32', '', NULL),
-(60, 'PS Water', 'Both Side', '12', '', NULL),
-(61, 'Pink Flora', 'Flora', '22', '', NULL),
-(62, 'Pink WATER', 'Both Side', '25', '', NULL),
-(63, 'R Water', 'Both Side', '36', '', NULL),
-(64, 'RB Water', 'Both Side', '22', '', NULL),
-(65, 'R Coper', 'Both Side', '88', '', NULL),
-(66, 'R Steel grey', 'Gray', '99', '', NULL),
-(67, 'Rose Gold', 'Both Side', '25', '', NULL),
-(68, 'S Anmol', 'One Side', '69', '', NULL),
-(69, 'SBCH', 'Both Side', '85', '', NULL),
-(70, 'SN Water', 'Both Side', '33', '', NULL),
-(71, 'SPT Anmol', 'Both Side', '55', '', NULL),
-(72, 'SR Anmol', 'One Side', '74', '', NULL),
-(73, 'SR BCH', 'One Side', '12', '', NULL),
-(74, 'Steel Grey', 'Gray', '56', '', NULL),
-(75, 'V Gold', 'One Side', '88', '', NULL),
-(76, 'VR GOLD', 'Both Side', '74', '', NULL),
-(77, 'WPJ BS', 'Both Side', '22', '', NULL),
-(78, 'Water 11 50/69', 'Both Side', '74', '', NULL),
-(79, 'Water Gold', 'Both Side', '63', '', NULL),
-(80, 'Y Anmol', 'Silver', '85', '', NULL),
-(81, 'Y Gold', 'One Side', '32', '', NULL),
-(82, 'Y Antic', 'Silver', '123', '', NULL),
-(83, 'Y Antic', 'Silver', '45', '', NULL),
-(84, 'Y Water', 'Flora', '45', '', NULL),
-(85, 'Zaina 303', 'Both Side', '52', '', NULL),
-(86, 'AB GOLD', 'Flora', '45', '50', NULL),
-(92, 'Test', 'Both Side', '20', '35', NULL),
-(93, 'test2', 'Flora', '30', '30', NULL),
-(94, 'test2', 'One Side', '20', '35', NULL);
+(38, 'FL 1010', 'One Side', '280', 50, '2023-02-22 06:39:33'),
+(39, 'FL BCH 303', 'Flora', '58', 297, '2023-03-18 04:27:15'),
+(40, 'FL MJ', 'One Side', '96', 16, '2023-03-13 05:13:22'),
+(41, 'FL Orange', 'Silver', '36', 45, NULL),
+(43, 'GP Water', 'Both Side', '12', 528, '2023-03-13 05:24:00'),
+(44, 'GR 4-B63', 'Both Side', '45', 40, NULL),
+(46, 'J Anmol', 'Both Side', '23', 0, NULL),
+(47, 'J BCH', 'Both Side', '53', 0, NULL),
+(48, 'J Gold 50/35', 'Both Side', '42', 0, NULL),
+(49, 'J Water', 'One Side', '63', 0, NULL),
+(50, 'L Pink', 'Flora', '75', 0, NULL),
+(51, 'L Anmol', 'Both Side', '52', 0, NULL),
+(52, 'L Water', 'Both Side', '41', 0, NULL),
+(53, 'LG Water', 'Both Side', '32', 0, NULL),
+(54, 'M Anmol', 'Both Side', '45', 0, NULL),
+(55, 'M Water', 'Flora', '74', 0, NULL),
+(56, 'MS 11', 'Silver', '85', 0, NULL),
+(57, 'NT Anmol', 'Flora', '22', 0, NULL),
+(58, 'PC Water', 'One Side', '32', 0, NULL),
+(59, 'PJ Water', 'One Side', '32', 0, NULL),
+(60, 'PS Water', 'Both Side', '12', 0, NULL),
+(61, 'Pink Flora', 'Flora', '22', 0, NULL),
+(62, 'Pink WATER', 'Both Side', '25', 0, NULL),
+(63, 'R Water', 'Both Side', '36', 0, NULL),
+(64, 'RB Water', 'Both Side', '22', 0, NULL),
+(65, 'R Coper', 'Both Side', '88', 0, NULL),
+(66, 'R Steel grey', 'Gray', '99', 0, NULL),
+(67, 'Rose Gold', 'Both Side', '25', 0, NULL),
+(68, 'S Anmol', 'One Side', '69', 0, NULL),
+(69, 'SBCH', 'Both Side', '85', 0, NULL),
+(70, 'SN Water', 'Both Side', '33', 0, NULL),
+(71, 'SPT Anmol', 'Both Side', '55', 0, NULL),
+(72, 'SR Anmol', 'One Side', '74', 0, NULL),
+(73, 'SR BCH', 'One Side', '12', 0, NULL),
+(74, 'Steel Grey', 'Gray', '56', 0, NULL),
+(75, 'V Gold', 'One Side', '88', 0, NULL),
+(76, 'VR GOLD', 'Both Side', '74', 0, NULL),
+(77, 'WPJ BS', 'Both Side', '22', 0, NULL),
+(78, 'Water 11 50/69', 'Both Side', '74', 0, NULL),
+(79, 'Water Gold', 'Both Side', '63', 0, NULL),
+(80, 'Y Anmol', 'Silver', '85', 0, NULL),
+(81, 'Y Gold', 'One Side', '32', 0, NULL),
+(82, 'Y Antic', 'Silver', '123', 0, NULL),
+(83, 'Y Antic', 'Silver', '45', 0, NULL),
+(84, 'Y Water', 'Flora', '45', 0, NULL),
+(85, 'Zaina 303', 'Both Side', '52', 0, NULL),
+(86, 'AB GOLD', 'Flora', '45', 50, NULL),
+(92, 'Test', 'Both Side', '20', 35, NULL),
+(93, 'test2', 'Flora', '30', 30, NULL),
+(94, 'test2', 'One Side', '20', 35, NULL);
 
 -- --------------------------------------------------------
 
@@ -240,7 +262,8 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`id`, `productid`, `challan_no`, `party_name`, `date`, `product_name`, `box_no`, `bobin`, `quantity`, `rate`, `amount`, `pymnt_mode`) VALUES
-(1, '40', 1, '4', '2023-03-13', 'FL MJ', '15', '100', '9.080', '285.00', '2587.8', 'credit');
+(1, '40', 1, '4', '2023-03-13', 'FL MJ', '15', '100', '9.080', '285.00', '2587.8', 'credit'),
+(4, '39', 2, '4', '2023-03-18', 'FL BCH 303', '100', '100', '11.56', '285.00', '3294.6', 'credit');
 
 -- --------------------------------------------------------
 
@@ -265,7 +288,8 @@ INSERT INTO `sale_trans` (`id`, `challan_no`, `cid`, `total_amount`, `pending_am
 (2, '5', '8', '2970', '0', 1000),
 (4, '126', '4', '8420.35', '0', 8420),
 (5, '128', '4', '3052', '0', 3052),
-(6, '1', '4', '2587.8', '0', 2587);
+(6, '1', '4', '2587.8', '0', 2587),
+(7, '2', '4', '3294.6', '0', 5295);
 
 -- --------------------------------------------------------
 
@@ -304,6 +328,12 @@ INSERT INTO `supplier` (`id`, `name`, `city`, `area`, `state`, `pan_no`, `adhar_
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ledger_trans`
+--
+ALTER TABLE `ledger_trans`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -359,6 +389,12 @@ ALTER TABLE `admin`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `ledger_trans`
+--
+ALTER TABLE `ledger_trans`
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `party`
 --
 ALTER TABLE `party`
@@ -386,13 +422,13 @@ ALTER TABLE `purch_trans`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sale_trans`
 --
 ALTER TABLE `sale_trans`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `supplier`
