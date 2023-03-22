@@ -1,17 +1,46 @@
 <?php
 session_start();
 include('inc/connection.php');
+
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
-    $contact = $_POST['contact'];
-    $sql = "SELECT * FROM admin WHERE email='$email' AND mobile_no='$contact'";
-    $res = mysqli_query($con, $sql);
-    $row = array($res);
-    foreach ($res as $r) {
-        while ($row = mysqli_fetch_object($r)) {
-            echo $row->password;
-        }
+    $sql = mysqli_query($con,"SELECT * FROM admin WHERE email='$email'");
+    $row=mysqli_fetch_array($sql);
+    if($row>0){
+        $pass = $con->query("SELECT password from admin where email='$email'");
+        $user = $pass->fetch_array();
+        $match=$user['password'];
+        
     }
+    else{
+        echo "<script>alert('Email Not Match Our Database');</script>";
+    }
+}
+
+if(isset($_POST['submit'])){
+    $password=md5($_POST['password']);
+    $cpassword=md5($_POST['cpassword']);
+    $email = $_POST['email'];
+    
+    if($password!=$cpassword){
+        echo "<script>alert('New Password and Confirm is Not Match')</script>";
+    }
+    else{
+        $sql = mysqli_query($con,"SELECT * FROM admin WHERE email='$email'");
+        $row=mysqli_fetch_array($sql);
+
+        if($row>0){
+        $sql1="update admin set password='$password' where email='$email'";
+        $pass=mysqli_query($con,$sql1 );
+    }
+    if(@$pass){
+        echo "<script>alert('Password Change Successfully');</script>";
+    }
+    else{
+        echo "<script>alert('Please Write Correct Email');</script>";
+    }
+    
+}
 }
 ?>
 
@@ -49,19 +78,29 @@ if (isset($_POST['login'])) {
                             <form action="" class="mt" method="post">
                                 <label for="" class="text-uppercase text-sm">Your Email</label>
                                 <input type="email" placeholder="Email" name="email" class="form-control mb">
-                                <label for="" class="text-uppercase text-sm">Your Contact no</label>
-                                <input type="text" placeholder="Contact no" name="contact" class="form-control mb">
+                                
+                                <?php 
+                                    if(@$match)
+                                    {
+                                        echo '<label for="" class="text-uppercase text-sm">New Password</label>';
+                                        echo '<input type="text" placeholder="New Password" name="password" class="form-control mb">';
+                                        echo '<label for="" class="text-uppercase text-sm">Confirm Password</label>';
+                                        echo '<input type="text" placeholder="Confirm Password" name="cpassword" class="form-control mb">';
+                                        echo '<input type="submit" name="submit" class="btn btn-primary btn-block" value="Submit"><br>';
+                                        echo '<a href="http://localhost/IMS/"><input type="button" name="login" class="btn btn-primary btn-block" value="Back"></a>';
+                                    }
+                                    else{
+                                        echo '<input type="submit" name="login" class="btn btn-primary btn-block" value="Submit"><br>';
+                                        echo '<a href="http://localhost/IMS/"><input type="button" name="login" class="btn btn-primary btn-block" value="Back"></a>';
+                                    }
+                                ?>
 
 
-                                <input type="submit" name="login" class="btn btn-primary btn-block" value="login">
+                                
                             </form>
                         </div>
                     </div>
-                    <?php foreach ($res as $r) {
-                        while ($row = mysqli_fetch_object($r)) {
-                            echo $row->password;
-                        }
-                    } ?>
+                    
                 </div>
             </div>
         </div>

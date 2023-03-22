@@ -10,11 +10,12 @@ if (strlen($_SESSION['aid'] == 0)) {
         $adminid = $_SESSION['aid'];
         //Getting Post Values
         $adminname = $_POST['adminname'];
+        $username=$_POST['username'];
         $emailid = $_POST['emailid'];
         $mobileno = $_POST['mobilenumber'];
         $address = $_POST['address'];
         $contact = $_POST['contact'];
-        $query = mysqli_query($con, "update admin set name='$adminname',mobile_no='$mobileno',email='$emailid', address='$address',contact='$contact' where id='$adminid'");
+        $query = mysqli_query($con, "update admin set name='$adminname',mobile_no='$mobileno',username='$username',email='$emailid', address='$address',contact='$contact' where id='$adminid'");
         if ($query) {
             echo "<script>alert('Admin details updated successfully.');</script>";
             echo "<script>window.location.href='profile.php'</script>";
@@ -102,7 +103,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-10">
                                                         <label for="validationCustom03"> Username</label>
-                                                        <input type="text" class="form-control" id="validationCustom03" value="<?php echo $row['username']; ?>" name="username" readonly>
+                                                        <input type="text" class="form-control" id="validationCustom03" value="<?php echo $row['username']; ?>" name="username" >
                                                     </div>
                                                 </div>
 
