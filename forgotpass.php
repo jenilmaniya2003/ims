@@ -48,9 +48,9 @@ if (isset($_POST['login'])) {
 
                             <form action="" class="mt" method="post">
                                 <label for="" class="text-uppercase text-sm">Your Email</label>
-                                <input type="email" placeholder="Email" name="email" class="form-control mb">
+                                <input type="email" placeholder="Email" name="email" class="form-control mb" autocomplete="off">
                                 <label for="" class="text-uppercase text-sm">Your Contact no</label>
-                                <input type="text" placeholder="Contact no" name="contact" class="form-control mb">
+                                <input type="text" placeholder="Contact no" name="contact" class="form-control mb" autocomplete="off">
 
 
                                 <input type="submit" name="login" class="btn btn-primary btn-block" value="login">

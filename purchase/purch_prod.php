@@ -234,8 +234,8 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                                                 ?></td>
                                                                     <td><?php //echo $row['ProductPrice']; 
                                                                         ?></td> -->
-                                                                    <td><input type="text" class="product-quantity" name="quantity" value="1" size="3" /></td>
-                                                                    <td><input type="text" class="product-quantity" name="ProductPrice" size="3" /></td>
+                                                                    <td><input type="text" class="product-quantity" name="quantity" size="3" autocomplete="off" /></td>
+                                                                    <td><input type="text" class="product-quantity" name="ProductPrice" size="3" autocomplete="off" /></td>
                                                                     <td>
                                                                         <input type="submit" value="Add to Cart" class="btnAddAction btn btn-outline-primary" />
                                                                     </td>
@@ -385,7 +385,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                     <div class="form-row">
                                                         <div class="col-md-6 mb-10">
                                                             <label for="validationCustom03">Bill No</label>
-                                                            <input type="text" class="form-control" id="validationCustom03" placeholder="Bill No" name="bill_no" required>
+                                                            <input type="text" class="form-control" id="validationCustom03" placeholder="Bill No" name="bill_no" required autocomplete="off">
                                                             <div class="invalid-feedback">Please provide a valid Bill No.
                                                             </div>
                                                         </div>

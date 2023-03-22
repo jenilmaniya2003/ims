@@ -54,30 +54,30 @@ if (isset($_REQUEST['btnsubmit'])) {
 				<div class="form-left">
 					<h2>General Infomation</h2>
 					<div class="form-row form-row-1">
-						<input type="text" name="name" id="name" class="input-text" placeholder="Name" value="<?php echo $row->name; ?>" required>
+						<input type="text" name="name" id="name" class="input-text" placeholder="Name" value="<?php echo $row->name; ?>" required autocomplete="off">
 					</div>
 					<div class="form-row form-row-1">
-						<input type="text" name="alias" id="alias" class="input-text" placeholder="Alias" value="<?php echo $row->alias; ?>">
+						<input type="text" name="alias" id="alias" class="input-text" placeholder="Alias" value="<?php echo $row->alias; ?>" autocomplete="off">
 					</div>
 					<div class="form-group">
 						<div class="form-row form-row-1">
-							<input type="text" name="city" id="city" class="input-text" placeholder="City" value="<?php echo $row->city; ?>" required>
+							<input type="text" name="city" id="city" class="input-text" placeholder="City" value="<?php echo $row->city; ?>" required autocomplete="off">
 						</div>
 						<div class="form-row form-row-2">
-							<input type="text" name="area" id="area" class="input-text" placeholder="Area" value="<?php echo $row->area; ?>" required>
+							<input type="text" name="area" id="area" class="input-text" placeholder="Area" value="<?php echo $row->area; ?>" required autocomplete="off">
 						</div>
 					</div>
 					<div class="form-row form-row-2">
-						<input type="text" name="state" id="state" class="input-text" placeholder="State" value="<?php echo $row->state; ?>" required>
+						<input type="text" name="state" id="state" class="input-text" placeholder="State" value="<?php echo $row->state; ?>" required autocomplete="off">
 					</div>
 					<div class="form-row">
-						<input type="text" name="pan_no" class="company" id="pan_no" placeholder="Pan No" value="<?php echo $row->pan_no; ?>">
+						<input type="text" name="pan_no" class="company" id="pan_no" placeholder="Pan No" value="<?php echo $row->pan_no; ?>" autocomplete="off">
 					</div>
 					<div class="form-row">
-						<input type="text" name="adhar_no" class="company" id="adhar_no" placeholder="Adhar No" value="<?php echo $row->adhar_no; ?>">
+						<input type="text" name="adhar_no" class="company" id="adhar_no" placeholder="Adhar No" value="<?php echo $row->adhar_no; ?>" autocomplete="off">
 					</div>
 					<div class="form-row">
-						<input type="text" name="gstin" class="company" id="gstin" placeholder="GSTIN No" value="<?php echo $row->gstin; ?>">
+						<input type="text" name="gstin" class="company" id="gstin" placeholder="GSTIN No" value="<?php echo $row->gstin; ?>" autocomplete="off">
 					</div>
 				</div>
 
@@ -85,38 +85,39 @@ if (isset($_REQUEST['btnsubmit'])) {
 				<div class="form-right">
 					<h2>Contact Details</h2>
 					<div class="form-row">
-						<input type="text" name="con_per_name" class="street" id="con_per_name" placeholder="Contact Person Name" value="<?php echo $row->con_per_name; ?>" required>
+						<input type="text" name="con_per_name" class="street" id="con_per_name" placeholder="Contact Person Name" value="<?php echo $row->con_per_name; ?>" required autocomplete="off">
 					</div>
 					<div class="form-row">
-						<input type="text" name="address" class="additional" id="address" placeholder="Address" value="<?php echo $row->address; ?>" required>
+						<input type="text" name="address" class="additional" id="address" placeholder="Address" value="<?php echo $row->address; ?>" required autocomplete="off">
 					</div>
 
 					<div class="form-row">
-						<input type="text" name="pin" class="additional" id="pin" placeholder="Pin Code" value="<?php echo $row->pin; ?>">
+						<input type="text" name="pin" class="additional" id="pin" placeholder="Pin Code" value="<?php echo $row->pin; ?>" autocomplete="off">
 					</div>
 
 
 					<div class="form-row form-row-2">
-						<input type="text" name="mo_no" class="phone" id="mo_no" placeholder="Mobile Number" value="<?php echo $row->mo_no; ?>" required>
+						<input type="text" name="mo_no" class="phone" id="mo_no" placeholder="Mobile Number" value="<?php echo $row->mo_no; ?>" required autocomplete="off">
 					</div>
 
 
 					<div class="form-row form-row-2">
-						<input type="text" name="phone_no" class="phone" id="phone_no" placeholder="Phone Number" value="<?php echo $row->phone_no; ?>">
+						<input type="text" name="phone_no" class="phone" id="phone_no" placeholder="Phone Number" value="<?php echo $row->phone_no; ?>" autocomplete="off">
 					</div>
 
 					<div class="form-row">
-						<input type="text" name="fax" class="additional" id="fax" placeholder="Fax" value="<?php echo $row->fax; ?>">
+						<input type="text" name="fax" class="additional" id="fax" placeholder="Fax" value="<?php echo $row->fax; ?>" autocomplete="off">
 					</div>
 					<div class="form-row">
-						<input type="text" name="email" id="email" class="input-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email" value="<?php echo $row->email; ?>">
+						<input type="text" name="email" id="email" class="input-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email" value="<?php echo $row->email; ?>" autocomplete="off">
 					</div>
 					<div class="form-row">
-						<input type="text" name="website" class="additional" id="website" placeholder="Website" value="<?php echo $row->website; ?>">
+						<input type="text" name="website" class="additional" id="website" placeholder="Website" value="<?php echo $row->website; ?>" autocomplete="off">
 					</div>
 
 					<div class="form-row-last">
 						<input type="submit" name="btnsubmit" class="register" value="Update">
+						<a href="view_cust.php"> <input type="button" name="btnback" class="register" value="Back"></a>
 					</div>
 				</div>
 			</form>

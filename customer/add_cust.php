@@ -49,30 +49,30 @@ if (isset($_REQUEST['btnsubmit'])) {
                 <div class="form-left">
                     <h2>General Infomation</h2>
                     <div class="form-row form-row-1">
-                        <input type="text" name="name" id="name" class="input-text" placeholder="Name" required>
+                        <input type="text" name="name" id="name" class="input-text" placeholder="Name" required autocomplete="off">
                     </div>
                     <div class="form-row form-row-1">
-                        <input type="text" name="alias" id="alias" class="input-text" placeholder="Alias">
+                        <input type="text" name="alias" id="alias" class="input-text" placeholder="Alias" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <div class="form-row form-row-1">
-                            <input type="text" name="city" id="city" class="input-text" placeholder="City" required>
+                            <input type="text" name="city" id="city" class="input-text" placeholder="City" required autocomplete="off">
                         </div>
                         <div class="form-row form-row-2">
-                            <input type="text" name="area" id="area" class="input-text" placeholder="Area" required>
+                            <input type="text" name="area" id="area" class="input-text" placeholder="Area" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row form-row-2">
-                        <input type="text" name="state" id="state" class="input-text" placeholder="State" required>
+                        <input type="text" name="state" id="state" class="input-text" placeholder="State" required autocomplete="off">
                     </div>
                     <div class="form-row">
-                        <input type="text" name="pan_no" class="company" id="pan_no" placeholder="Pan No">
+                        <input type="text" name="pan_no" class="company" id="pan_no" placeholder="Pan No" autocomplete="off">
                     </div>
                     <div class="form-row">
-                        <input type="text" name="adhar_no" class="company" id="adhar_no" placeholder="Adhar No">
+                        <input type="text" name="adhar_no" class="company" id="adhar_no" placeholder="Adhar No" autocomplete="off">
                     </div>
                     <div class="form-row">
-                        <input type="text" name="gstin" class="company" id="gstin" placeholder="GSTIN No">
+                        <input type="text" name="gstin" class="company" id="gstin" placeholder="GSTIN No" autocomplete="off">
                     </div>
                 </div>
 
@@ -80,36 +80,36 @@ if (isset($_REQUEST['btnsubmit'])) {
                 <div class="form-right">
                     <h2>Contact Details</h2>
                     <div class="form-row">
-                        <input type="text" name="con_per_name" class="street" id="con_per_name" placeholder="Contact Person Name" required>
+                        <input type="text" name="con_per_name" class="street" id="con_per_name" placeholder="Contact Person Name" required autocomplete="off">
                     </div>
                     <div class="form-row">
-                        <input type="text" name="address" class="additional" id="address" placeholder="Address">
+                        <input type="text" name="address" class="additional" id="address" placeholder="Address" autocomplete="off">
                     </div>
 
                     <div class="form-row">
-                        <input type="text" name="pin" class="additional" id="pin" placeholder="Pin Code" required>
+                        <input type="text" name="pin" class="additional" id="pin" placeholder="Pin Code" required autocomplete="off">
                     </div>
 
 
                     <div class="form-row form-row-2">
-                        <input type="text" name="mo_no" class="phone" id="mo_no" placeholder="Mobile Number" required>
+                        <input type="text" name="mo_no" class="phone" id="mo_no" placeholder="Mobile Number" required autocomplete="off">
                     </div>
 
 
 
 
                     <div class="form-row form-row-2">
-                        <input type="text" name="phone_no" class="phone" id="phone_no" placeholder="Phone Number">
+                        <input type="text" name="phone_no" class="phone" id="phone_no" placeholder="Phone Number" autocomplete="off">
                     </div>
 
                     <div class="form-row">
-                        <input type="text" name="fax" class="additional" id="fax" placeholder="Fax">
+                        <input type="text" name="fax" class="additional" id="fax" placeholder="Fax" autocomplete="off">
                     </div>
                     <div class="form-row">
-                        <input type="text" name="email" id="email" class="input-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email">
+                        <input type="text" name="email" id="email" class="input-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email" autocomplete="off">
                     </div>
                     <div class="form-row">
-                        <input type="text" name="website" class="additional" id="website" placeholder="Website">
+                        <input type="text" name="website" class="additional" id="website" placeholder="Website" autocomplete="off">
                     </div>
 
                     <div class="form-row-last">

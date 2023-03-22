@@ -46,9 +46,9 @@ if (strlen($_SESSION['aid'] == 0)) {
 
 
                     <div class="form-right">
-                        <h2>Contact Details</h2>
+                        <h2>Add Product</h2>
                         <div class="form-row">
-                            <input type="text" name="productname" class="street" id="productname" placeholder="Product Name" required>
+                            <input type="text" name="productname" class="street" id="productname" placeholder="Product Name" required autocomplete="off">
                         </div>
 
 
@@ -67,7 +67,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                         </div>
 
                         <div class="form-row">
-                            <input type="text" name="productprice" class="additional" id="productprice" placeholder="Product Price">
+                            <input type="text" name="productprice" class="additional" id="productprice" placeholder="Product Price" autocomplete="off">
                         </div>
 
                         <div class="form-row-last">
