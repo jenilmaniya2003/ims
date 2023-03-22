@@ -1,6 +1,6 @@
 <?php
 session_start();
-// error_reporting(0);
+error_reporting(0);
 if (strlen($_SESSION['aid'] == 0)) {
     header('location:index.php');
 } else {
@@ -29,9 +29,6 @@ if (strlen($_SESSION['aid'] == 0)) {
 
         $query = mysqli_query($con, $q);
 
-        $q1 = "insert into ledger_trans (cid,challan_no,received_amount) values ('$cid','$challan_no','$received_amount')";
-        $res1 = mysqli_query($con, $q1);
-
         if ($query) {
             echo "<script>alert('Transaction Update successfully.');</script>";
             echo "<script>window.location.href='view_pending_sales_payment.php'</script>";
@@ -44,126 +41,113 @@ if (strlen($_SESSION['aid'] == 0)) {
 ?>
 
 
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>Add Product</title>
-        <link href="../vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
-        <link href="../vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
-        <link href="../dist/css/style.css" rel="stylesheet" type="text/css">
-    </head>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Add Product</title>
+    <link href="../vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
+    <link href="../vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
+    <link href="../dist/css/style.css" rel="stylesheet" type="text/css">
+</head>
 
-    <body>
+<body>
 
+    <div class="hk-wrapper">
 
-        <!-- HK Wrapper -->
-        <div class="hk-wrapper">
+        <?php include_once('../inc/menu.php'); ?>
+        <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
 
-            <!-- Top Navbar -->
-            <?php include_once('../inc/menu.php'); ?>
+        <div class="hk-pg-wrapper">
 
-
-
-            <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
-            <!-- /Vertical Nav -->
-
-
-
-            <!-- Main Content -->
-            <div class="hk-pg-wrapper">
-                <!-- Breadcrumb -->
-
-                <!-- /Breadcrumb -->
-
-                <!-- Container -->
-                <div class="container">
-                    <!-- Title -->
-                    <div class="hk-pg-header">
-                        <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="external-link"></i></span></span>Update Product</h4>
-                    </div>
-                    <!-- /Title -->
-
-                    <!-- Row -->
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <section class="hk-sec-wrapper">
-
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <form class="needs-validation" method="post" novalidate>
-
-                                            <div class="form-row">
-                                                <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Challan No</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Product Name" name="productname" value="<?php echo $row->challan_no; ?>" readonly required>
-                                                    <div class="invalid-feedback">Please provide a valid challan no.</div>
-                                                </div>
-                                            </div>
-
-
-
-                                            <div class="form-row">
-                                                <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Total Amount</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Total Amount" name="total_amount" value="<?php echo $row->total_amount; ?>" readonly required>
-                                                    <div class="invalid-feedback">Please provide a valid total amount.
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Recevid Amount</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Received Amount" name="received_amount" required>
-                                                    <div class="invalid-feedback">Please provide a valid received amount.
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Pending Amount</label>
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Pending Amount" name="pending_amount" value="<?php echo $row->pending_amount; ?>" readonly required>
-                                                    <div class="invalid-feedback">Please provide a valid pending amount.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button class="btn btn-primary" type="submit" name="submit">Update</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </section>
-
-                        </div>
-                    </div>
+            <div class="container">
+                <div class="hk-pg-header">
+                    <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i
+                                    data-feather="external-link"></i></span></span>Update Product</h4>
                 </div>
 
+                <div class="row">
+                    <div class="col-xl-12">
+                        <section class="hk-sec-wrapper">
 
-                <!-- Footer -->
-                <?php include_once('../inc/footer.php'); ?>
-                <!-- /Footer -->
+                            <div class="row">
+                                <div class="col-sm">
+                                    <form class="needs-validation" method="post" novalidate>
 
+                                        <div class="form-row">
+                                            <div class="col-md-6 mb-10">
+                                                <label for="validationCustom03">Challan No</label>
+                                                <input type="text" class="form-control" id="validationCustom03"
+                                                    placeholder="Product Name" name="productname"
+                                                    value="<?php echo $row->challan_no; ?>" readonly required>
+                                                <div class="invalid-feedback">Please provide a valid challan no.</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col-md-6 mb-10">
+                                                <label for="validationCustom03">Total Amount</label>
+                                                <input type="text" class="form-control" id="validationCustom03"
+                                                    placeholder="Total Amount" name="total_amount"
+                                                    value="<?php echo $row->total_amount; ?>" readonly required>
+                                                <div class="invalid-feedback">Please provide a valid total amount.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col-md-6 mb-10">
+                                                <label for="validationCustom03">Recevid Amount</label>
+                                                <input type="text" class="form-control" id="validationCustom03"
+                                                    placeholder="Received Amount" name="received_amount" required>
+                                                <div class="invalid-feedback">Please provide a valid received amount.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col-md-6 mb-10">
+                                                <label for="validationCustom03">Pending Amount</label>
+                                                <input type="text" class="form-control" id="validationCustom03"
+                                                    placeholder="Pending Amount" name="pending_amount"
+                                                    value="<?php echo $row->pending_amount; ?>" readonly required>
+                                                <div class="invalid-feedback">Please provide a valid pending amount.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary" type="submit" name="submit">Update</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
             </div>
-            <!-- /Main Content -->
+            <!-- Footer -->
+            <?php include_once('../inc/footer.php'); ?>
+            <!-- /Footer -->
 
         </div>
+        <!-- /Main Content -->
 
-        <script src="../vendors/jquery/dist/jquery.min.js"></script>
-        <script src="../vendors/popper.js/dist/umd/popper.min.js"></script>
-        <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="../vendors/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
-        <script src="../dist/js/jquery.slimscroll.js"></script>
-        <script src="../dist/js/dropdown-bootstrap-extended.js"></script>
-        <script src="../dist/js/feather.min.js"></script>
-        <script src="../vendors/jquery-toggles/toggles.min.js"></script>
-        <script src="../dist/js/toggle-data.js"></script>
-        <script src="../dist/js/init.js"></script>
-        <script src="../dist/js/validation-data.js"></script>
+    </div>
 
-    </body>
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../vendors/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
+    <script src="../dist/js/jquery.slimscroll.js"></script>
+    <script src="../dist/js/dropdown-bootstrap-extended.js"></script>
+    <script src="../dist/js/feather.min.js"></script>
+    <script src="../vendors/jquery-toggles/toggles.min.js"></script>
+    <script src="../dist/js/toggle-data.js"></script>
+    <script src="../dist/js/init.js"></script>
+    <script src="../dist/js/validation-data.js"></script>
 
-    </html>
+</body>
+
+</html>
 <?php } ?>

@@ -6,8 +6,7 @@ if (strlen($_SESSION['aid'] == 0)) {
     header('location:index.php');
 } else {
     include('inc/connection.php');
-    // include('header.php');
-    // include('sidebar.php');
+
 ?>
 
     <!DOCTYPE html>
@@ -60,11 +59,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                     <font class="f1">Pending Payment</font>
                 </a>
             </div>
-            <!-- <div class="div8 d3">
-                <a href="#"><br><img src="IMG/ledger.png" alt="add" height=80 width=80><br><br>
-                    <font class="f1">A/C. Ledger</font>
-                </a>
-            </div> -->
+          
             <div class="div8 d3">
                 <a href="account/account_main.php"><br><img src="IMG/user.png" alt="add" height=80 width=80><br><br>
                     <font class="f1">Profile</font>

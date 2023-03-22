@@ -35,6 +35,7 @@ if(isset($_POST['submit'])){
     }
     if(@$pass){
         echo "<script>alert('Password Change Successfully');</script>";
+        header('location:index.php');
     }
     else{
         echo "<script>alert('Please Write Correct Email');</script>";

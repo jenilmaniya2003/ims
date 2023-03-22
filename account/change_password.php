@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0);
+error_reporting(0);
 include('../inc/connection.php');
 if (strlen($_SESSION['aid']==0)) {
   header('location:index.php');

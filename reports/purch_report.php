@@ -7,19 +7,6 @@ if (strlen($_SESSION['aid'] == 0)) {
 } else {
     include('../inc/menu.php');
     include('../inc/connection.php');
-    // Add company Code
-    // if (isset($_POST['submit'])) {
-    //     //Getting Post Values
-    //     $cname = $_POST['companyname'];
-    //     $query = mysqli_query($con, "insert into tblcompany(CompanyName) values('$cname')");
-    //     if ($query) {
-    //         echo "<script>alert('Company added successfully.');</script>";
-    //         echo "<script>window.location.href='add-company.php'</script>";
-    //     } else {
-    //         echo "<script>alert('Something went wrong. Please try again.');</script>";
-    //         echo "<script>window.location.href='add-company.php'</script>";
-    //     }
-    // }
 
 ?>
     <!DOCTYPE html>
@@ -36,23 +23,13 @@ if (strlen($_SESSION['aid'] == 0)) {
     </head>
 
     <body>
-
-
         <!-- HK Wrapper -->
         <div class="hk-wrapper">
 
             <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
-            <!-- /Vertical Nav -->
-
-
 
             <!-- Main Content -->
             <div class="hk-pg-wrapper">
-                <!-- Breadcrumb -->
-
-                <!-- /Breadcrumb -->
-
-                <!-- Container -->
                 <div class="container">
                     <!-- Title -->
                     <div class="hk-pg-header">
@@ -93,7 +70,6 @@ if (strlen($_SESSION['aid'] == 0)) {
                         </div>
                     </div>
                 </div>
-
 
                 <!-- Footer -->
                 <?php

@@ -1,14 +1,12 @@
 <?php
 session_start();
-// error_reporting(0);
+error_reporting(0);
 if (strlen($_SESSION['aid']==0)) {
   header('location:index.php');
   } else{
 include('../inc/connection.php');
-//  include("../inc/menu.php");
 $sql = "select * from product where id=" . $_GET['id'];
 $res = mysqli_query($con, $sql);
-
 $row = mysqli_fetch_object($res);
 
 if (isset($_REQUEST['submit'])) {
@@ -20,7 +18,6 @@ if (isset($_REQUEST['submit'])) {
         where id='" . $_GET['id'] . "'
 		";
     $query=mysqli_query($con, $q);
-    // header("location:view_prod.php");
     if($query){
         echo "<script>alert('Product Update successfully.');</script>";   
         echo "<script>window.location.href='view_prod.php'</script>";
@@ -46,28 +43,11 @@ if (isset($_REQUEST['submit'])) {
 </head>
 
 <body>
-
-
-    <!-- HK Wrapper -->
     <div class="hk-wrapper">
-
-        <!-- Top Navbar -->
         <?php include_once('../inc/menu.php'); ?>
-
-
-
         <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
-        <!-- /Vertical Nav -->
-
-
-
-        <!-- Main Content -->
         <div class="hk-pg-wrapper">
-            <!-- Breadcrumb -->
 
-            <!-- /Breadcrumb -->
-
-            <!-- Container -->
             <div class="container">
                 <!-- Title -->
                 <div class="hk-pg-header">
@@ -122,7 +102,6 @@ if (isset($_REQUEST['submit'])) {
                                                 <div class="invalid-feedback">Please select a category.</div>
                                             </div>
                                         </div>
-
 
                                         <div class="form-row">
                                             <div class="col-md-6 mb-10">

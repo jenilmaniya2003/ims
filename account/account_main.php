@@ -1,6 +1,6 @@
 <?php
 include('../inc/connection.php');
-// include('../inc/menu.php');
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
