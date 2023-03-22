@@ -1,14 +1,12 @@
 <?php
 session_start();
-// error_reporting(0);
+error_reporting(0);
 if (strlen($_SESSION['aid'] == 0)) {
     header('location:index.php');
 } else {
     include('../inc/connection.php');
-    //  include("../inc/menu.php");
     $sql = "select * from product where id=" . $_GET['id'];
     $res = mysqli_query($con, $sql);
-
     $row = mysqli_fetch_object($res);
 
     if (isset($_REQUEST['submit'])) {
@@ -90,8 +88,7 @@ if (strlen($_SESSION['aid'] == 0)) {
                             <input type="submit" name="submit" class="register" value="Update">
                             <a href="view_prod.php"> <input type="button" name="btnback" class="register" value="Back"></a>
                         </div>
-
-
+                    </div>
                 </form>
             </div>
         </div>
