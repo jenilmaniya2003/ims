@@ -1,6 +1,5 @@
 <?php
 include('../inc/connection.php');
-// include('../inc/menu.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +19,6 @@ include('../inc/connection.php');
             <font class="f1">Add Invoice</font>
         </a>
     </div>
-
 
     <div class="box1 box2img">
         <a href="../reports/purch_report.php"><br><img src="../IMG/sale-report.png" alt="add" height=100 width=100><br><br>

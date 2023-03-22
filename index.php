@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0);
+error_reporting(0);
 include('inc/connection.php');
 if (isset($_POST['login'])) {
     $adminuser = $_POST['username'];
@@ -47,10 +47,7 @@ if (isset($_POST['login'])) {
                 <b><span class="text-dark font-50">
                         <font face="Bookman Old Style">Avalon Metalic</font>
                     </span></b>
-                <!-- <a class="d-flex auth-brand align-items-center" href="#">
-
-                </a> -->
-
+              
             </header>
             <div class="container-fluid">
                 <div class="row">

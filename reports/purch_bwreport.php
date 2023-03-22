@@ -7,20 +7,6 @@ if (strlen($_SESSION['aid'] == 0)) {
     header('location:index.php');
 } else {
     include('../inc/menu.php');
-    // Add company Code
-    // if (isset($_POST['submit'])) {
-    //     //Getting Post Values
-    //     $cname = $_POST['companyname'];
-    //     $query = mysqli_query($con, "insert into tblcompany(CompanyName) values('$cname')");
-    //     if ($query) {
-    //         echo "<script>alert('Company added successfully.');</script>";
-    //         echo "<script>window.location.href='add-company.php'</script>";
-    //     } else {
-    //         echo "<script>alert('Something went wrong. Please try again.');</script>";
-    //         echo "<script>window.location.href='add-company.php'</script>";
-    //     }
-    // }
-
 ?>
     <!DOCTYPE html>
     <html lang="en">

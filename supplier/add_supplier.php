@@ -1,6 +1,5 @@
 <?php
 include('../inc/connection.php');
-//  include("../inc/menu.php");
 if (isset($_REQUEST['btnsubmit'])) {
     $q = "insert into supplier set
 		name='" . $_REQUEST['name'] . "',
@@ -15,14 +14,12 @@ if (isset($_REQUEST['btnsubmit'])) {
 		mo_no='" . $_REQUEST['mo_no'] . "',
 		email='" . $_REQUEST['email'] . "',
 		website='" . $_REQUEST['website'] . "'		
-
 		";
     mysqli_query($con, $q);
     header("location:view_supplier.php");
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -69,7 +66,6 @@ if (isset($_REQUEST['btnsubmit'])) {
                     </div>
                 </div>
 
-
                 <div class="form-right">
                     <h2>Contact Details</h2>
                     <div class="form-row">
@@ -80,14 +76,17 @@ if (isset($_REQUEST['btnsubmit'])) {
                         <input type="text" name="pin" class="additional" id="pin" placeholder="Pin Code" required autocomplete="off">
                     </div>
 
-
                     <div class="form-row form-row-2">
                         <input type="text" name="mo_no" class="phone" id="mo_no" placeholder="Mobile Number" required autocomplete="off">
                     </div>
 
-
                     <div class="form-row">
+<<<<<<< HEAD
                         <input type="text" name="email" id="email" class="input-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email" autocomplete="off">
+=======
+                        <input type="text" name="email" id="email" class="input-text"
+                            pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email">
+>>>>>>> 6328fc7510423e68eedd9bf90e516bed4aaf17f1
                     </div>
                     <div class="form-row">
                         <input type="text" name="website" class="additional" id="website" placeholder="Website" autocomplete="off">
@@ -95,7 +94,8 @@ if (isset($_REQUEST['btnsubmit'])) {
 
                     <div class="form-row-last">
                         <input type="submit" name="btnsubmit" class="register" value="Register">
-                        <a href="view_supplier.php"><input type="button" name="btnback" class="register" value="Back"></a>
+                        <a href="view_supplier.php"><input type="button" name="btnback" class="register"
+                                value="Back"></a>
                     </div>
                 </div>
             </form>

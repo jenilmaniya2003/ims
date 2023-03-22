@@ -1,6 +1,5 @@
 <?php
 include('../inc/connection.php');
-//  include("../inc/menu.php");
 if (isset($_REQUEST['btnsubmit'])) {
     $q = "insert into party set
 		name='" . $_REQUEST['name'] . "',
@@ -26,7 +25,6 @@ if (isset($_REQUEST['btnsubmit'])) {
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -76,11 +74,15 @@ if (isset($_REQUEST['btnsubmit'])) {
                     </div>
                 </div>
 
-
                 <div class="form-right">
                     <h2>Contact Details</h2>
                     <div class="form-row">
+<<<<<<< HEAD
                         <input type="text" name="con_per_name" class="street" id="con_per_name" placeholder="Contact Person Name" required autocomplete="off">
+=======
+                        <input type="text" name="con_per_name" class="street" id="con_per_name"
+                            placeholder="Contact Person Name" required>
+>>>>>>> 6328fc7510423e68eedd9bf90e516bed4aaf17f1
                     </div>
                     <div class="form-row">
                         <input type="text" name="address" class="additional" id="address" placeholder="Address" autocomplete="off">
@@ -90,13 +92,9 @@ if (isset($_REQUEST['btnsubmit'])) {
                         <input type="text" name="pin" class="additional" id="pin" placeholder="Pin Code" required autocomplete="off">
                     </div>
 
-
                     <div class="form-row form-row-2">
                         <input type="text" name="mo_no" class="phone" id="mo_no" placeholder="Mobile Number" required autocomplete="off">
                     </div>
-
-
-
 
                     <div class="form-row form-row-2">
                         <input type="text" name="phone_no" class="phone" id="phone_no" placeholder="Phone Number" autocomplete="off">
@@ -106,7 +104,12 @@ if (isset($_REQUEST['btnsubmit'])) {
                         <input type="text" name="fax" class="additional" id="fax" placeholder="Fax" autocomplete="off">
                     </div>
                     <div class="form-row">
+<<<<<<< HEAD
                         <input type="text" name="email" id="email" class="input-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email" autocomplete="off">
+=======
+                        <input type="text" name="email" id="email" class="input-text"
+                            pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email">
+>>>>>>> 6328fc7510423e68eedd9bf90e516bed4aaf17f1
                     </div>
                     <div class="form-row">
                         <input type="text" name="website" class="additional" id="website" placeholder="Website" autocomplete="off">
