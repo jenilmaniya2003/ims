@@ -1,13 +1,13 @@
 <?php
 session_start();
 error_reporting(0);
-if (strlen($_SESSION['aid'] == 0)) {
-    header('location:index.php');
-} else {
-    include('../inc/connection.php');
-    $sql = "select * from product where id=" . $_GET['id'];
-    $res = mysqli_query($con, $sql);
-    $row = mysqli_fetch_object($res);
+if (strlen($_SESSION['aid']==0)) {
+  header('location:index.php');
+  } else{
+include('../inc/connection.php');
+$sql = "select * from product where id=" . $_GET['id'];
+$res = mysqli_query($con, $sql);
+$row = mysqli_fetch_object($res);
 
     if (isset($_REQUEST['submit'])) {
         $q = "update product set
@@ -91,13 +91,6 @@ if (strlen($_SESSION['aid'] == 0)) {
                     </div>
                 </form>
             </div>
-        </div>
-        </section>
-
-
-        </div>
-        </form>
-        </div>
         </div>
     </body>
     <?php include_once('../inc/footer.php'); ?>
