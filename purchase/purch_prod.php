@@ -109,193 +109,162 @@ if (strlen($_SESSION['aid'] == 0)) {
     }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Avalon Metalic</title>
-    <link rel="icon" href="../IMG/logo.png" type="image/x-icon">
-    <link href="../vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
-    <link href="../vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
-    <link href="../dist/css/style.css" rel="stylesheet" type="text/css">
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>Avalon Metalic</title>
+        <link rel="icon" href="../IMG/logo.png" type="image/x-icon">
+        <link href="../vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
+        <link href="../vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
+        <link href="../dist/css/style.css" rel="stylesheet" type="text/css">
+    </head>
 
-<body>
+    <body>
 
-    <div class="hk-wrapper">
+        <div class="hk-wrapper">
 
-        <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
-        <div class="hk-pg-wrapper">
+            <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
+            <div class="hk-pg-wrapper">
 
-            <div class="container">
+                <div class="container">
 
-                <div class="row">
-                    <div class="col-xl-12">
+                    <div class="row">
+                        <div class="col-xl-12">
 
-                        <section class="hk-sec-wrapper">
+                            <section class="hk-sec-wrapper">
 
-                            <div class="row">
-                                <div class="col-sm">
-                                    <form class="needs-validation" method="post" novalidate>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <form class="needs-validation" method="post" novalidate>
 
-                                        <div class="form-row">
-                                            <div class="col-md-6 mb-10">
-                                                <select name="productname" id="productname"
-                                                    class="form-control custom-select">
-                                                    <option value="">Select Product</option>
-                                                    <?php
+                                            <div class="form-row">
+                                                <div class="col-md-6 mb-10">
+                                                    <select name="productname" id="productname" class="form-control custom-select">
+                                                        <option value="">Select Product</option>
+                                                        <?php
                                                         while ($id = mysqli_fetch_array($res1)) {
                                                         ?>
-                                                    <option value="<?php echo $id['id']; ?>"> <?php echo $id['name']; ?>
-                                                    </option>
-                                                    <?php
+                                                            <option value="<?php echo $id['id']; ?>"> <?php echo $id['name']; ?>
+                                                            </option>
+                                                        <?php
                                                         }
                                                         ?>
-                                                </select>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <button class="btn btn-primary" type="submit" name="search">search</button>
-                                    </form>
+                                            <button class="btn btn-primary" type="submit" name="search">search</button>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
-                        </section>
-                        <!--code for search result -->
-                        <?php if (isset($_POST['search'])) { ?>
-                        <section class="hk-sec-wrapper">
+                            </section>
+                            <!--code for search result -->
+                            <?php if (isset($_POST['search'])) { ?>
+                                <section class="hk-sec-wrapper">
 
-                            <div class="row">
-                                <div class="col-sm">
-                                    <div class="table-wrap">
-                                        <table id="datable_1" class="table table-hover w-100 display pb-30">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Name</th>
-                                                    <th>Weight</th>
-                                                    <th>Rate</th>
-                                                    <th>Action</th>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <div class="table-wrap">
+                                                <table id="datable_1" class="table table-hover w-100 display pb-30">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Name</th>
+                                                            <th>Weight</th>
+                                                            <th>Rate</th>
+                                                            <th>Action</th>
 
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
                                                         $name = $_POST['productname'];
                                                         $query = mysqli_query($con, "select * from product where id=$name");
                                                         $cnt = 1;
                                                         while ($row = mysqli_fetch_array($query)) {
                                                         ?>
-                                                <form method="post"
-                                                    action="purch_prod.php?action=add&pid=<?php echo $row["id"]; ?>">
-                                                    <tr>
-                                                        <td><?php echo $cnt; ?></td>
-                                                        <td><?php echo $row['name']; ?> &nbsp;
-                                                            (<?php echo $row['category']; ?>)</td>
-                                                        <td><input type="text" class="product-quantity" name="quantity"
-                                                                value="1" size="3" /></td>
-                                                        <td><input type="text" class="product-quantity"
-                                                                name="ProductPrice" size="3" /></td>
-                                                        <td>
-                                                            <input type="submit" value="Add to Cart"
-                                                                class="btnAddAction btn btn-outline-primary" />
-                                                        </td>
-                                                    </tr>
-
-<<<<<<< HEAD
-
-                                                                    <!-- <td><?php //echo $row['category']; 
-                                                                                ?></td> -->
-                                                                    <!-- <td><?php //echo $row['ProductName']; 
-                                                                                ?></td>
-                                                                    <td><?php //echo $row['ProductPrice']; 
-                                                                        ?></td> -->
+                                                            <form method="post" action="purch_prod.php?action=add&pid=<?php echo $row["id"]; ?>">
+                                                                <tr>
+                                                                    <td><?php echo $cnt; ?></td>
+                                                                    <td><?php echo $row['name']; ?> &nbsp;
+                                                                        (<?php echo $row['category']; ?>)</td>
                                                                     <td><input type="text" class="product-quantity" name="quantity" size="3" autocomplete="off" /></td>
                                                                     <td><input type="text" class="product-quantity" name="ProductPrice" size="3" autocomplete="off" /></td>
                                                                     <td>
                                                                         <input type="submit" value="Add to Cart" class="btnAddAction btn btn-outline-primary" />
                                                                     </td>
+
                                                                 </tr>
 
                                                             </form>
                                                         <?php
-=======
-                                                </form>
-                                                <?php
->>>>>>> 6328fc7510423e68eedd9bf90e516bed4aaf17f1
                                                             $cnt++;
                                                         } ?>
 
-                                            </tbody>
-                                        </table>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </section>
-                        <?php } ?>
+                                </section>
+                            <?php } ?>
 
-                        <form class="needs-validation" method="post" novalidate>
+                            <form class="needs-validation" method="post" novalidate>
 
-                            <!--- Shopping Cart ---->
-                            <section class="hk-sec-wrapper">
+                                <!--- Shopping Cart ---->
+                                <section class="hk-sec-wrapper">
 
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <div class="table-wrap">
-                                            <h4>Purchase Cart</h4>
-                                            <hr />
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <div class="table-wrap">
+                                                <h4>Purchase Cart</h4>
+                                                <hr />
 
-                                            <a id="btnEmpty" href="purch_prod.php?action=empty">Empty Cart</a>
-                                            <?php
+                                                <a id="btnEmpty" href="purch_prod.php?action=empty">Empty Cart</a>
+                                                <?php
                                                 if (isset($_SESSION["cart_item"])) {
                                                     $total_quantity = 0;
                                                     $total_price = 0;
                                                 ?>
-                                            <table id="datable_1" class="table table-hover w-100 display pb-30"
-                                                border="1">
-                                                <tbody>
-                                                    <tr>
-                                                        <th>Product Name</th>
-                                                        <th>Category</th>
-                                                        <th width="10%">Weight</th>
-                                                        <th width="10%">Rate</th>
-                                                        <th width="10%">Amount</th>
-                                                        <th width="5%">Remove</th>
-                                                    </tr>
-                                                    <?php
+                                                    <table id="datable_1" class="table table-hover w-100 display pb-30" border="1">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Product Name</th>
+                                                                <th>Category</th>
+                                                                <th width="10%">Weight</th>
+                                                                <th width="10%">Rate</th>
+                                                                <th width="10%">Amount</th>
+                                                                <th width="5%">Remove</th>
+                                                            </tr>
+                                                            <?php
                                                             $productid = array();
                                                             foreach ($_SESSION["cart_item"] as $item) {
                                                                 $item_price = ($item["quantity"] * $item["price"]);
                                                                 array_push($productid, $item['code']);
 
                                                             ?>
-                                                    <!-- New code added -->
-                                                    <input type="hidden" value="<?php echo $item['name']; ?>"
-                                                        name="product_name[<?php echo $item['code']; ?>]">
-                                                    <input type="hidden" value="<?php echo $item['quantity']; ?>"
-                                                        name="quantity[<?php echo $item['code']; ?>]">
-                                                    <input type="hidden"
-                                                        value="<?php echo number_format($item["price"], 2); ?>"
-                                                        name="rate[<?php echo $item['code']; ?>]">
-                                                    <input type="hidden" value="<?php echo $item_price; ?>"
-                                                        name="amount[<?php echo $item['code']; ?>]">
+                                                                <!-- New code added -->
+                                                                <input type="hidden" value="<?php echo $item['name']; ?>" name="product_name[<?php echo $item['code']; ?>]">
+                                                                <input type="hidden" value="<?php echo $item['quantity']; ?>" name="quantity[<?php echo $item['code']; ?>]">
+                                                                <input type="hidden" value="<?php echo number_format($item["price"], 2); ?>" name="rate[<?php echo $item['code']; ?>]">
+                                                                <input type="hidden" value="<?php echo $item_price; ?>" name="amount[<?php echo $item['code']; ?>]">
 
-                                                    <tr>
-                                                        <td><?php echo $item["name"]; ?></td>
-                                                        <td><?php echo $item["catname"]; ?></td>
-                                                        <td style="text-align: center;">
-                                                            <?php echo number_format($item["quantity"], 3); ?></td>
-                                                        <td style="text-align: center;">
-                                                            <?php echo number_format($item["price"], 2); ?></td>
-                                                        <td style="text-align: center;">
-                                                            <?php echo number_format($item_price, 2); ?></td>
-                                                        <td><a href="purch_prod.php?action=remove&code=<?php echo $item["code"]; ?>"
-                                                                class="btnRemoveAction"><img src="../IMG/delete.png"
-                                                                    height="20px" width="20px" alt="Remove Item" /></a>
-                                                        </td>
-                                                    </tr>
-                                                    <?php
+                                                                <tr>
+                                                                    <td><?php echo $item["name"]; ?></td>
+                                                                    <td><?php echo $item["catname"]; ?></td>
+                                                                    <td style="text-align: center;">
+                                                                        <?php echo number_format($item["quantity"], 3); ?></td>
+                                                                    <td style="text-align: center;">
+                                                                        <?php echo number_format($item["price"], 2); ?></td>
+                                                                    <td style="text-align: center;">
+                                                                        <?php echo number_format($item_price, 2); ?></td>
+                                                                    <td><a href="purch_prod.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="../IMG/delete.png" height="20px" width="20px" alt="Remove Item" /></a>
+                                                                    </td>
+                                                                </tr>
+                                                            <?php
                                                                 $total_quantity += $item["quantity"];
                                                                 $total_price += ($item["price"] * $item["quantity"]);
                                                             }
@@ -303,83 +272,71 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                             $_SESSION['productid'] = $productid;
                                                             ?>
 
-                                                    <tr>
-                                                        <td colspan="2" align="right">Sub Total:</td>
-                                                        <td colspan="2"><?php echo number_format($total_quantity, 3); ?>
-                                                        </td>
-                                                        <td style="text-align: center;">
-                                                            <strong><?php echo number_format($total_price, 2); ?></strong>
-                                                        </td>
-                                                        <td><input type='hidden' value='<?php echo $total_price; ?>'
-                                                                name='total_amount'></td>
-                                                    </tr>
+                                                            <tr>
+                                                                <td colspan="2" align="right">Sub Total:</td>
+                                                                <td colspan="2"><?php echo number_format($total_quantity, 3); ?>
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    <strong><?php echo number_format($total_price, 2); ?></strong>
+                                                                </td>
+                                                                <td><input type='hidden' value='<?php echo $total_price; ?>' name='total_amount'></td>
+                                                            </tr>
 
-                                                    <tr>
-                                                        <td colspan="2" align="right">GST(18%):</td>
-                                                        <td colspan="2"></td>
-                                                        <td style="text-align: right;">
-                                                            <strong><?php $gst = round(($total_price * 18) / 100);
+                                                            <tr>
+                                                                <td colspan="2" align="right">GST(18%):</td>
+                                                                <td colspan="2"></td>
+                                                                <td style="text-align: right;">
+                                                                    <strong><?php $gst = round(($total_price * 18) / 100);
                                                                             echo number_format($gst, 2); ?></strong>
-                                                        </td>
+                                                                </td>
 
-                                                        <td><input type='hidden' value='<?php echo $gst; ?>' name='gst'>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" align="right">Total:</td>
-                                                        <td colspan="2"></td>
-                                                        <td style="text-align: right;">
-                                                            <strong><?php echo number_format(($gst + $total_price), 2); ?></strong>
-                                                        </td>
+                                                                <td><input type='hidden' value='<?php echo $gst; ?>' name='gst'>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" align="right">Total:</td>
+                                                                <td colspan="2"></td>
+                                                                <td style="text-align: right;">
+                                                                    <strong><?php echo number_format(($gst + $total_price), 2); ?></strong>
+                                                                </td>
 
-                                                        <td><input type='hidden' value='<?php echo $gst; ?>' name='gst'>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                                                <td><input type='hidden' value='<?php echo $gst; ?>' name='gst'>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
 
-                                            <div class="form-row">
-                                                <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Invoice No</label>
-                                                    <input type="text" class="form-control" id="validationCustom03"
-                                                        value="<?php echo $max + 1 ?>" readonly name="invoice_no"
-                                                        required>
-                                                    <div class="invalid-feedback">Please provide a valid customer name.
-                                                    </div>
-                                                </div>
+                                                    <div class="form-row">
+                                                        <div class="col-md-6 mb-10">
+                                                            <label for="validationCustom03">Invoice No</label>
+                                                            <input type="text" class="form-control" id="validationCustom03" value="<?php echo $max + 1 ?>" readonly name="invoice_no" required>
+                                                            <div class="invalid-feedback">Please provide a valid customer name.
+                                                            </div>
+                                                        </div>
 
-                                                <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Customer Name</label>
+                                                        <div class="col-md-6 mb-10">
+                                                            <label for="validationCustom03">Customer Name</label>
 
 
-                                                    <select name="supplier_name" id="supplier_name"
-                                                        class="form-control custom-select">
-                                                        <option value="">Select Name</option>
-                                                        <?php
+                                                            <select name="supplier_name" id="supplier_name" class="form-control custom-select">
+                                                                <option value="">Select Name</option>
+                                                                <?php
                                                                 while ($id = mysqli_fetch_array($res2)) {
                                                                 ?>
-                                                        <option value="<?php echo $id['id']; ?>">
-                                                            <?php echo $id['name']; ?></option>
-                                                        <?php
+                                                                    <option value="<?php echo $id['id']; ?>">
+                                                                        <?php echo $id['name']; ?></option>
+                                                                <?php
                                                                 }
                                                                 ?>
-                                                    </select>
+                                                            </select>
 
-                                                </div>
+                                                        </div>
 
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Bill No</label>
-                                                    <input type="text" class="form-control" id="validationCustom03"
-                                                        placeholder="Bill No" name="bill_no" required>
-                                                    <div class="invalid-feedback">Please provide a valid Bill No.
                                                     </div>
-<<<<<<< HEAD
                                                     <div class="form-row">
                                                         <div class="col-md-6 mb-10">
                                                             <label for="validationCustom03">Bill No</label>
-                                                            <input type="text" class="form-control" id="validationCustom03" placeholder="Bill No" name="bill_no" required autocomplete="off">
+                                                            <input type="text" class="form-control" id="validationCustom03" placeholder="Bill No" name="bill_no" required>
                                                             <div class="invalid-feedback">Please provide a valid Bill No.
                                                             </div>
                                                         </div>
@@ -390,93 +347,75 @@ if (strlen($_SESSION['aid'] == 0)) {
                                                             <div class="invalid-feedback">Please provide a valid date.
                                                             </div>
                                                         </div>
-=======
-                                                </div>
->>>>>>> 6328fc7510423e68eedd9bf90e516bed4aaf17f1
 
-                                                <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Bill Date</label>
-                                                    <input type="date" class="form-control" id="validationCustom03"
-                                                        name="bill_date" required>
-                                                    <div class="invalid-feedback">Please provide a valid date.
                                                     </div>
-                                                </div>
 
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="col-md-6 mb-10">
-                                                    <label for="validationCustom03">Payment Mode</label>
-                                                    <div class="custom-control custom-radio mb-10">
-                                                        <input type="radio" class="custom-control-input"
-                                                            id="customControlValidation2" name="paymentmode"
-                                                            value="cash" required>
-                                                        <label class="custom-control-label"
-                                                            for="customControlValidation2">Cash</label>
+                                                    <div class="form-row">
+                                                        <div class="col-md-6 mb-10">
+                                                            <label for="validationCustom03">Payment Mode</label>
+                                                            <div class="custom-control custom-radio mb-10">
+                                                                <input type="radio" class="custom-control-input" id="customControlValidation2" name="paymentmode" value="cash" required>
+                                                                <label class="custom-control-label" for="customControlValidation2">Cash</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio mb-10">
+                                                                <input type="radio" class="custom-control-input" id="customControlValidation3" name="paymentmode" value="credit" required>
+                                                                <label class="custom-control-label" for="customControlValidation3">Credit</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 mb-10">
+                                                            <button class="btn btn-primary" type="submit" name="checkout">Checkout</button>
+                                                        </div>
                                                     </div>
-                                                    <div class="custom-control custom-radio mb-10">
-                                                        <input type="radio" class="custom-control-input"
-                                                            id="customControlValidation3" name="paymentmode"
-                                                            value="credit" required>
-                                                        <label class="custom-control-label"
-                                                            for="customControlValidation3">Credit</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mb-10">
-                                                    <button class="btn btn-primary" type="submit"
-                                                        name="checkout">Checkout</button>
-                                                </div>
-                                            </div>
-                        </form>
+                            </form>
 
                         <?php
                                                 } else {
                         ?>
-                        <div style="color:red" align="center">Your Cart is Empty</div>
+                            <div style="color:red" align="center">Your Cart is Empty</div>
                         <?php
                                                 }
                         ?>
+                        </div>
                     </div>
                 </div>
+                </section>
+
             </div>
-            </section>
+        </div>
+        </div>
 
         </div>
-    </div>
-    </div>
+        <!-- /Main Content -->
 
-    </div>
-    <!-- /Main Content -->
+        </div>
 
-    </div>
+        <script src="vendors/jquery/dist/jquery.min.js"></script>
+        <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+        <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="vendors/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
+        <script src="dist/js/jquery.slimscroll.js"></script>
+        <script src="dist/js/dropdown-bootstrap-extended.js"></script>
+        <script src="dist/js/feather.min.js"></script>
+        <script src="vendors/jquery-toggles/toggles.min.js"></script>
+        <script src="dist/js/toggle-data.js"></script>
+        <script src="dist/js/init.js"></script>
+        <script src="dist/js/validation-data.js"></script>
+        <style type="text/css">
+            #btnEmpty {
+                background-color: #ffffff;
+                border: #d00000 1px solid;
+                padding: 5px 10px;
+                color: #d00000;
+                float: right;
+                text-decoration: none;
+                border-radius: 3px;
+                margin: 10px 0px;
+            }
+        </style>
 
-    <script src="vendors/jquery/dist/jquery.min.js"></script>
-    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="vendors/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
-    <script src="dist/js/jquery.slimscroll.js"></script>
-    <script src="dist/js/dropdown-bootstrap-extended.js"></script>
-    <script src="dist/js/feather.min.js"></script>
-    <script src="vendors/jquery-toggles/toggles.min.js"></script>
-    <script src="dist/js/toggle-data.js"></script>
-    <script src="dist/js/init.js"></script>
-    <script src="dist/js/validation-data.js"></script>
-    <style type="text/css">
-    #btnEmpty {
-        background-color: #ffffff;
-        border: #d00000 1px solid;
-        padding: 5px 10px;
-        color: #d00000;
-        float: right;
-        text-decoration: none;
-        border-radius: 3px;
-        margin: 10px 0px;
-    }
-    </style>
+    </body>
 
-</body>
-
-</html>
+    </html>
 
 <?php
 }

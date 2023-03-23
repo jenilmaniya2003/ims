@@ -81,12 +81,7 @@ if (isset($_REQUEST['btnsubmit'])) {
                     </div>
 
                     <div class="form-row">
-<<<<<<< HEAD
                         <input type="text" name="email" id="email" class="input-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email" autocomplete="off">
-=======
-                        <input type="text" name="email" id="email" class="input-text"
-                            pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email">
->>>>>>> 6328fc7510423e68eedd9bf90e516bed4aaf17f1
                     </div>
                     <div class="form-row">
                         <input type="text" name="website" class="additional" id="website" placeholder="Website" autocomplete="off">
@@ -94,8 +89,7 @@ if (isset($_REQUEST['btnsubmit'])) {
 
                     <div class="form-row-last">
                         <input type="submit" name="btnsubmit" class="register" value="Register">
-                        <a href="view_supplier.php"><input type="button" name="btnback" class="register"
-                                value="Back"></a>
+                        <a href="view_supplier.php"><input type="button" name="btnback" class="register" value="Back"></a>
                     </div>
                 </div>
             </form>
