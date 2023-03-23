@@ -37,44 +37,6 @@ if (strlen($_SESSION['aid'] == 0)) {
     <link rel="stylesheet" href="../customer/css/style.css" />
 </head>
 
-<<<<<<< HEAD
-    <body class="form-v10">
-        <div class="page-content">
-            <div class="form-v10-content">
-                <form class="form-detail" action="#" method="post" id="myform">
-
-
-
-                    <div class="form-right">
-                        <h2>Add Product</h2>
-                        <div class="form-row">
-                            <input type="text" name="productname" class="street" id="productname" placeholder="Product Name" required autocomplete="off">
-                        </div>
-
-
-                        <div class="form-row">
-                            <!-- <input type="text" name="email" id="email" class="input-text" placeholder="Categoty"> -->
-                            <select class="form-control custom-select" name="category" required>
-                                <option value="">Select category</option>
-                                <!--  -->
-                                <option>One Side</option>
-                                <option>Both Side</option>
-                                <option>Flora</option>
-                                <option>Gray</option>
-                                <option>Black</option>
-                                <option>Silver</option>
-                            </select>
-                        </div>
-
-                        <div class="form-row">
-                            <input type="text" name="productprice" class="additional" id="productprice" placeholder="Product Price" autocomplete="off">
-                        </div>
-
-                        <div class="form-row-last">
-                            <input type="submit" name="submit" class="register" value="Register">
-                            <a href="view_prod.php"> <input type="button" name="btnback" class="register" value="Back"></a>
-                        </div>
-=======
 <body class="form-v10">
     <div class="page-content">
         <div class="form-v10-content">
@@ -84,7 +46,6 @@ if (strlen($_SESSION['aid'] == 0)) {
                     <div class="form-row">
                         <input type="text" name="productname" class="street" id="productname" placeholder="Product Name"
                             required>
->>>>>>> 6328fc7510423e68eedd9bf90e516bed4aaf17f1
                     </div>
 
                     <div class="form-row">
