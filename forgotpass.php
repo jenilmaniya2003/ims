@@ -78,11 +78,6 @@ if(isset($_POST['submit'])){
 
                             <form action="" class="mt" method="post">
                                 <label for="" class="text-uppercase text-sm">Your Email</label>
-<<<<<<< HEAD
-                                <input type="email" placeholder="Email" name="email" class="form-control mb" autocomplete="off">
-                                <label for="" class="text-uppercase text-sm">Your Contact no</label>
-                                <input type="text" placeholder="Contact no" name="contact" class="form-control mb" autocomplete="off">
-=======
                                 <input type="email" placeholder="Email" name="email" class="form-control mb">
                                 
                                 <?php 
@@ -100,7 +95,6 @@ if(isset($_POST['submit'])){
                                         echo '<a href="http://localhost/IMS/"><input type="button" name="login" class="btn btn-primary btn-block" value="Back"></a>';
                                     }
                                 ?>
->>>>>>> 6328fc7510423e68eedd9bf90e516bed4aaf17f1
 
 
                                 
