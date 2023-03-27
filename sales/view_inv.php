@@ -60,24 +60,21 @@ include('../inc/menu.php');
                         $res = mysqli_query($con, $query);
                         while ($row = mysqli_fetch_array($res)) {
                         ?>
-                        <tr>
+                            <tr>
 
-                            <td style="text-align: center;"><?= $cnt; ?></td>
-                            <td style="text-align: center;"><?= $row['challan_no']; ?></td>
-                            <td style="text-align: center;"><?= $row['name']; ?></td>
-                            <td style="text-align: center;"><?= $row['date']; ?></td>
-                            <td style="text-align: center;">
-                                <a href="del_inv.php?id=<?php echo $row['challan_no']; ?>"
-                                    onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png"
-                                        height="20px" width="25px"></a>&nbsp;
-                                <a href="print.php?id=<?php echo $row['challan_no']; ?>"><img src="../IMG/print.png"
-                                        height="25px" width="25PX"></a>
-                            </td>
-                        </tr>
+                                <td style="text-align: center;"><?= $cnt; ?></td>
+                                <td style="text-align: center;"><?= $row['challan_no']; ?></td>
+                                <td style="text-align: center;"><?= $row['name']; ?></td>
+                                <td style="text-align: center;"><?= $row['date']; ?></td>
+                                <td style="text-align: center;">
+                                    <a href="del_inv.php?id=<?php echo $row['challan_no']; ?>" onclick="return confirm('Are You Sure??');"><img src="../IMG/delete.png" height="20px" width="25px"></a>&nbsp;
+                                    <a href="print.php?id=<?php echo $row['challan_no']; ?>"><img src="../IMG/print.png" height="25px" width="25PX"></a>
+                                </td>
+                            </tr>
                         <?php
                             $cnt++;
                         }
-                      
+
                         ?>
                     </tbody>
                 </table>
@@ -88,17 +85,17 @@ include('../inc/menu.php');
     </div>
 
     <script>
-    $(document).ready(function() {
-        $("#chkAll").change(function() {
-            debugger;
-            if ($(this).prop('checked')) {
-                $('.tblChk').not(this).prop('checked', true);
-            } else {
-                $('.tblChk').not(this).prop('checked', false);
-            }
+        $(document).ready(function() {
+            $("#chkAll").change(function() {
+                debugger;
+                if ($(this).prop('checked')) {
+                    $('.tblChk').not(this).prop('checked', true);
+                } else {
+                    $('.tblChk').not(this).prop('checked', false);
+                }
 
-        })
-    });
+            })
+        });
     </script>
 
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
